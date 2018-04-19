@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.ppjun.android.smzdm.mvp.ui.widget.AutoCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:foreground="?selectableItemBackground"
+    android:layout_margin="10px"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="400px">
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="400px">
+
+
+    <ImageView
+        android:layout_marginLeft="30px"
+        android:layout_centerVertical="true"
+        android:id="@+id/mainProductImage"
+        android:layout_width="320px"
+
+        android:layout_height="340px" />
+
+    <TextView
+        android:minHeight="150px"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textSize="40px"
+        android:textColor="@color/black"
+        android:layout_toRightOf="@+id/mainProductImage"
+        android:layout_marginLeft="30px"
+        android:layout_alignTop="@+id/mainProductImage"
+        android:id="@+id/mainProductTitle"
+        android:layout_width="match_parent"
+        android:paddingRight="30px"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        tools:text="@string/app_name" />
+
+    <TextView
+        android:minHeight="100px"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textSize="40px"
+        android:textColor="@color/black"
+        android:layout_toRightOf="@+id/mainProductImage"
+        android:layout_marginLeft="30px"
+       android:layout_below="@+id/mainProductTitle"
+        android:id="@+id/mainProductPrice"
+        android:layout_width="match_parent"
+        android:paddingRight="30px"
+        android:layout_height="wrap_content"
+        tools:text="@string/app_name" />
+
+
+
+</com.zhy.autolayout.AutoRelativeLayout>
+</com.ppjun.android.smzdm.mvp.ui.widget.AutoCardView>
