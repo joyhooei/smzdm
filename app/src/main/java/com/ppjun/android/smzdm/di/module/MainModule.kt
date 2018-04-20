@@ -40,7 +40,7 @@ class MainModule constructor(var view: MainContract.View) {
 
     @FragmentScope
     @Provides
-    fun provideRowList() :ArrayList<Row> = ArrayList<Row>()
+    fun provideRowList() :ArrayList<Row> = ArrayList()
 
 
     @FragmentScope

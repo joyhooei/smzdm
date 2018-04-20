@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
     android:orientation="vertical"
     tools:context=".mvp.ui.activity.MainActivity">
 
@@ -23,9 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="?android:attr/windowBackground"
-        android:elevation="1dp"
-        app:elevation="1dp"
-        app:layout_behavior="com.ppjun.android.smzdm.mvp.ui.widget.behavior.BottomNavigationBehavior"
+        android:elevation="5dp"
+        app:elevation="5dp"
         app:menu="@menu/navigation" />
 
     <FrameLayout

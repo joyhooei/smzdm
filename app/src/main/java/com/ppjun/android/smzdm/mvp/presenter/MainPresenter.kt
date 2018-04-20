@@ -15,6 +15,7 @@ import com.ppjun.android.smzdm.mvp.contract.MainContract
 import com.ppjun.android.smzdm.mvp.model.entity.Response
 import com.ppjun.android.smzdm.mvp.model.entity.main.MainList
 import com.ppjun.android.smzdm.mvp.model.entity.main.Row
+import com.ppjun.android.smzdm.mvp.model.entity.main.Rows
 import com.ppjun.android.smzdm.mvp.model.entity.main.TestBean
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -107,13 +108,12 @@ class MainPresenter @Inject constructor(model: MainContract.Model, view: MainCon
                             mRow?.clear()
                         }
                         preEndIndex = mRow?.size!!
-                        mRow?.addAll(result.data.rows)
+                        mRow?.addAll(result.data!!.rows)
                         if (pullToRefresh) {
                             mAdapter?.notifyDataSetChanged()
                         } else {
                             mAdapter?.notifyItemRangeInserted(preEndIndex, result.data.rows.size)
                         }
-
 
                     }
 

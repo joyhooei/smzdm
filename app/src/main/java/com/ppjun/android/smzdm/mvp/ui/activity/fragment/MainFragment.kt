@@ -3,6 +3,7 @@ package com.ppjun.android.smzdm.mvp.ui.activity.fragment
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -48,6 +49,7 @@ class MainFragment : BaseFragView<MainPresenter>(), MainContract.View {
     lateinit var mAdapter: DefaultAdapter<Row>
 
     var rv: RecyclerView? = null
+    var swipe:SwipeRefreshLayout ?=null
     var mPaginate: Paginate? = null
     var isLoadingMore = false
 
@@ -69,7 +71,7 @@ class MainFragment : BaseFragView<MainPresenter>(), MainContract.View {
     override fun initData(savedInstanceState: Bundle?) {
         initRecyclerView()
         rv?.adapter = mAdapter
-        mPresenter.requestMainList(false)
+
         initPaginate()
     }
 
@@ -98,7 +100,13 @@ class MainFragment : BaseFragView<MainPresenter>(), MainContract.View {
 
     private fun initRecyclerView() {
         rv = view?.mainViewRv
+        swipe =view?.mainSwipe
+        swipe?.setOnRefreshListener {
+            mPresenter.requestMainList(true)
+        }
+
         ArmsUtils.configRecyclerView(rv, mLayoutManager)
+
     }
 
 
@@ -126,10 +134,13 @@ class MainFragment : BaseFragView<MainPresenter>(), MainContract.View {
     }
 
     override fun showLoading() {
+        swipe?.isRefreshing=true
+
     }
 
 
     override fun hideLoading() {
+        swipe?.isRefreshing=false
     }
 
 

@@ -13,6 +13,7 @@ import com.ppjun.android.smzdm.mvp.model.api.service.MainService
 import com.ppjun.android.smzdm.mvp.model.entity.Response
 import com.ppjun.android.smzdm.mvp.model.entity.main.MainList
 import com.ppjun.android.smzdm.mvp.model.entity.main.Row
+import com.ppjun.android.smzdm.mvp.model.entity.main.Rows
 import com.ppjun.android.smzdm.mvp.model.entity.main.TestBean
 import io.reactivex.Observable
 import io.reactivex.ObservableSource
