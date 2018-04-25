@@ -3,27 +3,22 @@ package com.ppjun.android.smzdm.mvp.presenter
 import android.app.Application
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.OnLifecycleEvent
-import android.support.v7.widget.RecyclerView
 import com.jess.arms.base.DefaultAdapter
-import com.jess.arms.di.scope.ActivityScope
 import com.jess.arms.di.scope.FragmentScope
 import com.jess.arms.integration.AppManager
 import com.jess.arms.mvp.BasePresenter
 import com.jess.arms.utils.PermissionUtil
 import com.jess.arms.utils.RxLifecycleUtils
 import com.ppjun.android.smzdm.mvp.contract.MainContract
-import com.ppjun.android.smzdm.mvp.model.entity.Response
 import com.ppjun.android.smzdm.mvp.model.entity.main.MainList
+import com.ppjun.android.smzdm.mvp.model.entity.main.Response
 import com.ppjun.android.smzdm.mvp.model.entity.main.Row
-import com.ppjun.android.smzdm.mvp.model.entity.main.Rows
-import com.ppjun.android.smzdm.mvp.model.entity.main.TestBean
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import me.jessyan.rxerrorhandler.core.RxErrorHandler
 import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber
 import me.jessyan.rxerrorhandler.handler.RetryWithDelay
 import javax.inject.Inject
-import javax.inject.Singleton
 
 
 @FragmentScope
@@ -50,23 +45,37 @@ class MainPresenter @Inject constructor(model: MainContract.Model, view: MainCon
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     fun onCreate() {
-      requestMainList(true)
+      //requestMainList(true)
     }
 
     fun requestMainList(pullToRefresh: Boolean) {
-//        PermissionUtil.externalStorage(object : PermissionUtil.RequestPermission {
-//            override fun onRequestPermissionFailureWithAskNeverAgain(permissions: MutableList<String>?) {
-//                mRootView.showMessage("need to go to teh settings")
-//            }
-//
-//            override fun onRequestPermissionSuccess() {
-//                mRootView.showMessage("request permission failure")
-//            }
-//
-//            override fun onRequestPermissionFailure(permissions: MutableList<String>?) {
-//            }
-//
-//        }, mRootView.getRxPermission(), mErrorHandler)
+        PermissionUtil.readPhonestate(object : PermissionUtil.RequestPermission {
+            override fun onRequestPermissionFailureWithAskNeverAgain(permissions: MutableList<String>?) {
+                mRootView.showMessage("need to go to teh settings")
+            }
+
+            override fun onRequestPermissionSuccess() {
+               // mRootView.showMessage("request permission failure")
+            }
+
+            override fun onRequestPermissionFailure(permissions: MutableList<String>?) {
+            }
+
+        }, mRootView.getRxPermission(), mErrorHandler)
+
+        PermissionUtil.externalStorage(object : PermissionUtil.RequestPermission {
+            override fun onRequestPermissionFailureWithAskNeverAgain(permissions: MutableList<String>?) {
+                mRootView.showMessage("need to go to teh settings")
+            }
+
+            override fun onRequestPermissionSuccess() {
+               // mRootView.showMessage("request permission failure")
+            }
+
+            override fun onRequestPermissionFailure(permissions: MutableList<String>?) {
+            }
+
+        }, mRootView.getRxPermission(), mErrorHandler)
 
         if (pullToRefresh) {
             offset = 0
@@ -99,16 +108,14 @@ class MainPresenter @Inject constructor(model: MainContract.Model, view: MainCon
                     }
                 }
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
-                .subscribe(object : ErrorHandleSubscriber<TestBean>(mErrorHandler) {
-                    override fun onNext(result: TestBean) {
-
-
+                .subscribe(object : ErrorHandleSubscriber<MainList>(mErrorHandler) {
+                    override fun onNext(result: MainList) {
                         offset += 20
                         if (pullToRefresh) {
                             mRow?.clear()
                         }
                         preEndIndex = mRow?.size!!
-                        mRow?.addAll(result.data!!.rows)
+                        mRow?.addAll(result.data.rows)
                         if (pullToRefresh) {
                             mAdapter?.notifyDataSetChanged()
                         } else {

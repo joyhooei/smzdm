@@ -46,4 +46,5 @@ class MainModule constructor(var view: MainContract.View) {
     @FragmentScope
     @Provides
     fun provideRowAdapter(list: ArrayList<Row>): DefaultAdapter<Row> = MainAdapter(list)
+
 }

@@ -37,8 +37,6 @@ class MainFragment : BaseFragView<MainPresenter>(), MainContract.View {
     override fun killMyself() {
     }
 
-
-
     @Inject
     lateinit var mRxPermissions: RxPermissions
 
@@ -105,6 +103,7 @@ class MainFragment : BaseFragView<MainPresenter>(), MainContract.View {
             mPresenter.requestMainList(true)
         }
 
+        mPresenter.requestMainList(true)
         ArmsUtils.configRecyclerView(rv, mLayoutManager)
 
     }

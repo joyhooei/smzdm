@@ -10,6 +10,7 @@ import com.ppjun.android.smzdm.BuildConfig
 import com.squareup.leakcanary.LeakCanary
 import com.squareup.leakcanary.RefWatcher
 import com.tencent.bugly.crashreport.CrashReport
+import com.tencent.smtt.sdk.QbSdk
 import timber.log.Timber
 
 class AppLifecyclesImpl : AppLifecycles {
@@ -36,6 +37,16 @@ class AppLifecyclesImpl : AppLifecycles {
 
             }
         }
+
+        QbSdk.initX5Environment(application,object:QbSdk.PreInitCallback{
+            override fun onCoreInitFinished() {
+
+            }
+
+            override fun onViewInitFinished(p0: Boolean) {
+            }
+
+        })
     }
 
     override fun onTerminate(application: Application?) {

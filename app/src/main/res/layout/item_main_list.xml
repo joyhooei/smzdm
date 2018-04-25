@@ -19,9 +19,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20px"
             android:padding="10px"
-            tools:text="好价"
+            android:textColor="@color/black"
             android:textSize="36px"
-            android:textColor="@color/black" />
+            tools:text="好价" />
 
         <View
             android:layout_width="match_parent"
@@ -29,7 +29,7 @@
             android:background="@color/greyBg" />
 
 
-        <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
 
             android:layout_width="match_parent"
@@ -54,7 +54,7 @@
                 android:layout_toRightOf="@+id/mainProductImage"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:minHeight="150px"
+                android:minHeight="100px"
                 android:paddingRight="30px"
                 android:textColor="@color/black"
                 android:textSize="40px"
@@ -70,7 +70,7 @@
                 android:layout_toRightOf="@+id/mainProductImage"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:minHeight="100px"
+
                 android:paddingRight="30px"
                 android:textColor="@color/red"
                 android:textSize="40px"
@@ -81,9 +81,9 @@
                 android:id="@+id/mainProductShop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/mainProductImage"
                 android:layout_alignLeft="@+id/mainProductPrice"
-                android:layout_below="@+id/mainProductPrice"
-                android:layout_marginTop="20px"
+
                 android:background="@drawable/shape_pink"
                 android:ellipsize="end"
                 android:maxWidth="200px"
@@ -98,9 +98,10 @@
                 android:id="@+id/mainProductTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/mainProductShop"
                 android:layout_below="@+id/mainProductPrice"
+
                 android:layout_marginLeft="30px"
-                android:layout_marginTop="20px"
                 android:layout_toRightOf="@+id/mainProductShop"
                 android:background="@drawable/shape_pink"
                 android:ellipsize="end"
@@ -112,77 +113,72 @@
                 tools:text="@string/app_name" />
 
 
-
             <LinearLayout
                 android:id="@+id/mainProductWorthLayout"
-                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_alignTop="@+id/mainProductShop"
                 android:layout_marginRight="30px"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
+                android:orientation="horizontal">
 
 
                 <ImageView
-                    android:visibility="gone"
-                    android:layout_gravity="bottom"
                     android:id="@+id/mainThumbImg"
                     android:layout_width="40px"
                     android:layout_height="40px"
+                    android:layout_gravity="bottom"
                     android:layout_marginRight="10px"
                     android:src="@drawable/ic_thumb_up_black_24dp"
+                    android:visibility="gone"
 
                     />
+
                 <TextView
-                    android:textSize="33px"
+                    android:id="@+id/mainProductWorthTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/mainProductWorthTv"
-                    android:text="@string/worth"
                     android:layout_marginRight="10px"
+                    android:text="@string/worth"
                     android:textColor="@color/colorAccent"
+                    android:textSize="33px"
 
                     />
 
 
-            <TextView
-                android:id="@+id/mainProductWorth"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/mainProductWorth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
-                android:textSize="36px"
-                tools:text="10" />
-
-
-
+                    android:textSize="36px"
+                    tools:text="10" />
 
 
             </LinearLayout>
 
             <TextView
-                android:textSize="36px"
+                android:id="@+id/mainProductComment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/mainProductComment"
-                android:text="12"
-
+                android:layout_alignBottom="@+id/mainProductWorthLayout"
                 android:layout_marginRight="30px"
 
                 android:layout_toLeftOf="@+id/mainProductWorthLayout"
-                android:layout_alignBottom="@+id/mainProductWorthLayout"
-                />
+
+                android:text="12"
+                android:textSize="36px" />
 
             <ImageView
-                android:layout_toLeftOf="@+id/mainProductComment"
-                android:layout_alignBottom="@+id/mainProductComment"
                 android:layout_width="40px"
                 android:layout_height="40px"
+                android:layout_alignBottom="@+id/mainProductComment"
                 android:layout_marginRight="10px"
+                android:layout_toLeftOf="@+id/mainProductComment"
                 android:src="@drawable/ic_article_24dp"
 
                 />
 
-        </com.zhy.autolayout.AutoRelativeLayout>
+        </RelativeLayout>
     </LinearLayout>
 </com.ppjun.android.smzdm.mvp.ui.widget.AutoCardView>

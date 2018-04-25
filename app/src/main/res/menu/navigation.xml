@@ -8,17 +8,17 @@
 
     <item
         android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_price_24dp"
-        android:title="@string/title_home" />
+        android:icon="@drawable/ic_redeem_black_24dp"
+        android:title="@string/title_dashboard" />
 
     <item
         android:id="@+id/navigation_notifications"
         android:icon="@drawable/ic_article_24dp"
-       android:title="@string/title_home" />
+       android:title="@string/title_notifications" />
 
-    <item
-        android:id="@+id/navigation_notifications2"
-        android:icon="@drawable/ic_person_24dp"
-        android:title="@string/title_home" />
+    <!--<item-->
+        <!--android:id="@+id/navigation_notifications2"-->
+        <!--android:icon="@drawable/ic_person_24dp"-->
+        <!--android:title="@string/title_mine" />-->
 
 </menu>

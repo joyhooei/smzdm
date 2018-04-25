@@ -6,21 +6,32 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.widget.Toast
+import com.jess.arms.di.component.AppComponent
 import com.jess.arms.mvp.IPresenter
 import com.jess.arms.utils.LogUtils
 import com.ppjun.android.smzdm.R
 import com.ppjun.android.smzdm.app.base.BaseUI
 import com.ppjun.android.smzdm.app.utils.BottomNavigationHelper
+import com.ppjun.android.smzdm.mvp.ui.activity.fragment.ArticleFragment
 import com.ppjun.android.smzdm.mvp.ui.activity.fragment.MainFragment
+import com.ppjun.android.smzdm.mvp.ui.activity.fragment.PriceFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : BaseUI<IPresenter>() {
+    override fun setupActivityComponent(appComponent: AppComponent?) {
+
+    }
+
     var currentFragment: Fragment? = null
     lateinit var mainFragment: Fragment
+    lateinit var mPriceListFragment:Fragment
+    lateinit var mArticleListFragment:Fragment
     var firstTimeStamp = 0L
     override fun initData(savedInstanceState: Bundle?) {
         mainFragment = MainFragment()
+        mPriceListFragment=PriceFragment()
+        mArticleListFragment=ArticleFragment()
         BottomNavigationHelper.disableShiftModel(navigation)
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         setBackInvisible()
@@ -40,17 +51,14 @@ class MainActivity : BaseUI<IPresenter>() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
-                switchFragment(0)
+                switchFragment(1)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
-                switchFragment(0)
+                switchFragment(2)
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_notifications2 -> {
-                switchFragment(0)
-                return@OnNavigationItemSelectedListener true
-            }
+
         }
         false
     }
@@ -63,6 +71,13 @@ class MainActivity : BaseUI<IPresenter>() {
                 showFragment(transaction, mainFragment, mainTag)
             }
             1 -> {
+                val priceTag = "mPriceListFragment"
+                showFragment(transaction, mPriceListFragment, priceTag)
+
+            }
+            2 -> {
+                val priceTag = "mArticleListFragment"
+                showFragment(transaction, mArticleListFragment, priceTag)
 
             }
         }

@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">什么值得买</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="app_name">什么值得Buy</string>
+    <string name="title_home">主页</string>
+    <string name="title_dashboard">好价</string>
+    <string name="title_notifications">好文</string>
+    <string name="title_mine">我的</string>
     <string name="worth">值</string>
 </resources>

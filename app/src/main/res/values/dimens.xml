@@ -5,10 +5,10 @@
 
 
     <!--因为选中的item icon会上移动，可以设置默认和激活文字大小来取消这个动画-->
-    <dimen name="design_bottom_navigation_active_text_size">0sp</dimen>
-    <dimen name="design_bottom_navigation_text_size">0sp</dimen>
+    <dimen name="design_bottom_navigation_active_text_size">12sp</dimen>
+    <dimen name="design_bottom_navigation_text_size">10sp</dimen>
 
     <!--设置默认和激活文字大小0 只显示icon-->
-    <dimen name="design_bottom_navigation_margin">16dp</dimen>
+    <dimen name="design_bottom_navigation_margin">10dp</dimen>
 
 </resources>

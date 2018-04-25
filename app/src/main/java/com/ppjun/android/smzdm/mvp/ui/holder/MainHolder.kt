@@ -1,5 +1,6 @@
 package com.ppjun.android.smzdm.mvp.ui.holder
 
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.jess.arms.base.BaseHolder
@@ -7,12 +8,20 @@ import com.jess.arms.di.component.AppComponent
 import com.jess.arms.http.imageloader.ImageLoader
 import com.jess.arms.http.imageloader.glide.ImageConfigImpl
 import com.jess.arms.utils.ArmsUtils
+import com.ppjun.android.smzdm.app.base.Constant
 import com.ppjun.android.smzdm.mvp.model.entity.main.Row
+import com.ppjun.android.smzdm.mvp.ui.activity.NewsInfoActivity
+import com.ppjun.android.smzdm.mvp.ui.activity.PriceInfoActivity
+import com.zhy.autolayout.utils.AutoUtils
 import kotlinx.android.synthetic.main.item_main_list.view.*
 import java.math.BigDecimal
 import java.text.DecimalFormat
 
 class MainHolder(itemView: View) : BaseHolder<Row>(itemView) {
+
+    init {
+        AutoUtils.autoSize(itemView)
+    }
     private var mAppComponent: AppComponent = ArmsUtils.obtainAppComponentFromContext(itemView.context)
     private var mImageLoader: ImageLoader = mAppComponent.imageLoader()
 
@@ -42,6 +51,11 @@ class MainHolder(itemView: View) : BaseHolder<Row>(itemView) {
             mainThumbImg.visibility = View.VISIBLE
             mainProductWorthTv.visibility = View.GONE
             mainProductWorth.text = data.articleLoveCount
+            itemView.setOnClickListener {
+                val resultIntent=Intent(itemView.context,NewsInfoActivity::class.java)
+                resultIntent.putExtra(Constant.ID,data.articleId)
+                itemView.context.startActivity(resultIntent)
+            }
 
         } else {
             mainThumbImg.visibility = View.GONE
@@ -50,6 +64,12 @@ class MainHolder(itemView: View) : BaseHolder<Row>(itemView) {
                 mainProductWorth.text = "0%"
             } else {
                 mainProductWorth.text = "${DecimalFormat("0").format(data.articleWorthy.toDouble().div(data.articleUnworthy.toDouble() + data.articleWorthy.toDouble()) * 100)}%"
+            }
+
+            itemView.setOnClickListener {
+                val resultIntent=Intent(itemView.context,PriceInfoActivity::class.java)
+                resultIntent.putExtra(Constant.ID,data.articleId)
+                itemView.context.startActivity(resultIntent)
             }
         }
 

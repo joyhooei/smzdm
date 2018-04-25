@@ -1,5 +1,6 @@
 package com.ppjun.android.smzdm.app.base
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -14,7 +15,9 @@ import com.jess.arms.mvp.IPresenter
 import com.jess.arms.utils.ArmsUtils
 import com.ppjun.android.smzdm.app.utils.StatusUtils
 import com.ppjun.android.smzdm.app.utils.StatusUtils.Companion.StatusBarLightMode
+import com.ppjun.android.smzdm.mvp.ui.activity.WebActivity
 import com.trello.rxlifecycle2.android.ActivityEvent
+import com.zhy.autolayout.AutoLayoutActivity
 import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.Subject
 import kotlinx.android.synthetic.main.include_title.*
@@ -22,7 +25,7 @@ import java.util.*
 import javax.inject.Inject
 
 @Suppress("UNCHECKED_CAST")
-abstract class BaseUI<P : IPresenter> : AppCompatActivity(), IActivity, ActivityLifecycleable {
+abstract class BaseUI<P : IPresenter> : AutoLayoutActivity(), IActivity, ActivityLifecycleable {
 
     protected val TAG = this.javaClass.simpleName
     val mLifecycleSubject: BehaviorSubject<ActivityEvent> = BehaviorSubject.create()
@@ -44,18 +47,19 @@ abstract class BaseUI<P : IPresenter> : AppCompatActivity(), IActivity, Activity
         super.onCreate(savedInstanceState)
 
 
-        var layoutResID = initView(savedInstanceState)
+        val layoutResID = initView(savedInstanceState)
         if (layoutResID != 0) {
             StatusBarLightMode(this)
             setContentView(layoutResID)
-            toolbar.setPadding(0, StatusUtils.getStatusBarHeight(this), 0, 0)
+            setToolbarPadding()
             mUnbinder = ButterKnife.bind(this)
         }
         initData(savedInstanceState)
     }
 
 
-    override fun setupActivityComponent(appComponent: AppComponent?) {
+    fun setToolbarPadding() {
+        toolbar.setPadding(0, StatusUtils.getStatusBarHeight(this), 0, 0)
     }
 
     fun setBackInvisible() {
@@ -87,4 +91,11 @@ abstract class BaseUI<P : IPresenter> : AppCompatActivity(), IActivity, Activity
         this.mUnbinder = null
 
     }
+
+    fun toWebUI(url: String) {
+        val result = Intent(this, WebActivity::class.java)
+        result.putExtra(Constant.URL, url)
+        startActivity(result)
+    }
+
 }

@@ -25,7 +25,7 @@ class GlobalConfiguration : ConfigModule {
 
 
     override fun applyOptions(context: Context?, builder: GlobalConfigModule.Builder?) {
-        if (!BuildConfig.LOG_DEBUG) {
+        if (BuildConfig.LOG_DEBUG) {
             builder?.printHttpLogLevel(RequestInterceptor.Level.NONE)
 
         }

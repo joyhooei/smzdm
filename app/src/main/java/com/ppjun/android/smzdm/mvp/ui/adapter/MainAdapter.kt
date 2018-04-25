@@ -21,7 +21,7 @@ class MainAdapter(var list: ArrayList<Row>) : DefaultAdapter<Row>(list) {
          * id=6  资讯
          */
 
-        return if (list[position].articleirstChannelName == "好文") {
+        return if (list[position].articleFirstChannelName == "好文") {
             ARTICLE
         } else if (list[position].articleChannelName == "优惠" || list[position].articleChannelName == "海淘") {
             PRICE
