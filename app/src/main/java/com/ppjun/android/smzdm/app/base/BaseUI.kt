@@ -71,6 +71,7 @@ abstract class BaseUI<P : IPresenter> : AutoLayoutActivity(), IActivity, Activit
     }
 
 
+
     override fun useFragment(): Boolean {
         return true
     }

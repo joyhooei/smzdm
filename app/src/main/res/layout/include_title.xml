@@ -10,8 +10,11 @@
     android:elevation="1dp"
     app:contentInsetStart="0dp">
 
-
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="?actionBarSize">
     <com.zhy.autolayout.AutoRelativeLayout
+        android:foreground="?selectableItemBackgroundBorderless"
         android:id="@+id/toolBack"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -29,14 +32,33 @@
     </com.zhy.autolayout.AutoRelativeLayout>
 
     <TextView
+        android:foreground="?selectableItemBackground"
+        android:layout_toRightOf="@+id/toolBack"
         android:id="@+id/toolbarTitle"
         android:singleLine="true"
         android:ellipsize="end"
+        android:gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="left"
         android:textColor="@color/black"
         android:textSize="18dp"
-        android:layout_marginLeft="60px"
+       android:paddingLeft="30px"
+        android:paddingRight="30px"
         tools:text="asd" />
+
+
+    <ImageView
+        android:foreground="?selectableItemBackgroundBorderless"
+        android:id="@+id/toolSearch"
+        android:paddingRight="60px"
+        android:paddingLeft="50px"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+
+        android:src="@drawable/ic_search_black_24dp"
+        />
+</RelativeLayout>
+
 </com.jess.arms.widget.autolayout.AutoToolbar>

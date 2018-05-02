@@ -35,4 +35,13 @@ interface CommonCache {
     @LifeCache(timeUnit = TimeUnit.MINUTES, duration = 2)
     fun newsInfo(response: Observable<Response<NewsInfo>>, page: DynamicKey, evictProvider: EvictDynamicKey)
             : Observable<Reply<Response<NewsInfo>>>
+
+
+    @LifeCache(timeUnit = TimeUnit.MINUTES, duration = 2)
+    fun priceSearch(response: Observable<PriceList>, page: DynamicKey, evictProvider: EvictDynamicKey)
+            : Observable<Reply<PriceList>>
+
+    @LifeCache(timeUnit = TimeUnit.MINUTES, duration = 2)
+    fun articleSearch(response: Observable<Response<ArticleSearch<ArticleData>>>, page: DynamicKey, evictProvider: EvictDynamicKey)
+            : Observable<Reply<Response<ArticleSearch<ArticleData>>>>
 }

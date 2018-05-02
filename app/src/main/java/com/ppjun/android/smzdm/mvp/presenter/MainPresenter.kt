@@ -3,16 +3,23 @@ package com.ppjun.android.smzdm.mvp.presenter
 import android.app.Application
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.OnLifecycleEvent
+import android.content.Intent
+import android.net.Uri
+import android.provider.Settings
 import com.jess.arms.base.DefaultAdapter
 import com.jess.arms.di.scope.FragmentScope
 import com.jess.arms.integration.AppManager
 import com.jess.arms.mvp.BasePresenter
 import com.jess.arms.utils.PermissionUtil
 import com.jess.arms.utils.RxLifecycleUtils
+import com.ppjun.android.smzdm.app.base.Constant
 import com.ppjun.android.smzdm.mvp.contract.MainContract
 import com.ppjun.android.smzdm.mvp.model.entity.main.MainList
 import com.ppjun.android.smzdm.mvp.model.entity.main.Response
 import com.ppjun.android.smzdm.mvp.model.entity.main.Row
+import com.ppjun.android.smzdm.mvp.ui.activity.MainActivity
+import com.tencent.bugly.Bugly
+import com.tencent.bugly.beta.Beta
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import me.jessyan.rxerrorhandler.core.RxErrorHandler
@@ -45,37 +52,42 @@ class MainPresenter @Inject constructor(model: MainContract.Model, view: MainCon
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     fun onCreate() {
-      //requestMainList(true)
+
     }
 
     fun requestMainList(pullToRefresh: Boolean) {
-        PermissionUtil.readPhonestate(object : PermissionUtil.RequestPermission {
-            override fun onRequestPermissionFailureWithAskNeverAgain(permissions: MutableList<String>?) {
-                mRootView.showMessage("need to go to teh settings")
-            }
 
-            override fun onRequestPermissionSuccess() {
-               // mRootView.showMessage("request permission failure")
-            }
 
-            override fun onRequestPermissionFailure(permissions: MutableList<String>?) {
-            }
+//        PermissionUtil.readPhonestate(object : PermissionUtil.RequestPermission {
+//            override fun onRequestPermissionFailureWithAskNeverAgain(permissions: MutableList<String>?) {
+//               // toSystemSettingUI()
+//            }
+//
+//            override fun onRequestPermissionSuccess() {
+//                PermissionUtil.externalStorage(object : PermissionUtil.RequestPermission {
+//                    override fun onRequestPermissionFailureWithAskNeverAgain(permissions: MutableList<String>?) {
+//                       // toSystemSettingUI()
+//                    }
+//
+//                    override fun onRequestPermissionSuccess() {
+//
+//                    }
+//
+//                    override fun onRequestPermissionFailure(permissions: MutableList<String>?) {
+//                        mRootView.showMessage("授权失败")
+//                    }
+//
+//                }, mRootView.getRxPermission(), mErrorHandler)
+//            }
+//
+//            override fun onRequestPermissionFailure(permissions: MutableList<String>?) {
+//                mRootView.showMessage("授权失败")
+//            }
+//
+//        }, mRootView.getRxPermission(), mErrorHandler)
 
-        }, mRootView.getRxPermission(), mErrorHandler)
 
-        PermissionUtil.externalStorage(object : PermissionUtil.RequestPermission {
-            override fun onRequestPermissionFailureWithAskNeverAgain(permissions: MutableList<String>?) {
-                mRootView.showMessage("need to go to teh settings")
-            }
 
-            override fun onRequestPermissionSuccess() {
-               // mRootView.showMessage("request permission failure")
-            }
-
-            override fun onRequestPermissionFailure(permissions: MutableList<String>?) {
-            }
-
-        }, mRootView.getRxPermission(), mErrorHandler)
 
         if (pullToRefresh) {
             offset = 0
@@ -136,5 +148,13 @@ class MainPresenter @Inject constructor(model: MainContract.Model, view: MainCon
         this.mErrorHandler = null
         this.mAppManager = null
         this.mApplication = null
+    }
+
+    fun toSystemSettingUI() {
+        val localIntent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+        localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+
+        localIntent.data = Uri.fromParts(Constant.PACKAGE, mRootView.getTheActivity().packageName, null)
+        mRootView.getTheActivity().startActivity(localIntent)
     }
 }

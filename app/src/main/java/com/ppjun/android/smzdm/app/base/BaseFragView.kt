@@ -1,10 +1,13 @@
 package com.ppjun.android.smzdm.app.base
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import butterknife.Unbinder
 import com.jess.arms.base.delegate.IFragment
 import com.jess.arms.di.component.AppComponent
@@ -53,6 +56,16 @@ abstract class BaseFragView<P : IPresenter> : Fragment(), IFragment, FragmentLif
             mPresenter?.onDestroy()
         }
 
+    }
+
+    protected fun closeKeyBoard(context: Activity) {
+        val manager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+        if (manager!!.isActive && context.currentFocus != null) {
+            if (context.currentFocus!!.windowToken != null) {
+                manager.hideSoftInputFromWindow(context.currentFocus!!.windowToken,
+                        InputMethodManager.HIDE_NOT_ALWAYS)
+            }
+        }
     }
 
 

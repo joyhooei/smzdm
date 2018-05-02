@@ -23,7 +23,9 @@ import com.ppjun.android.smzdm.di.module.MainModule
 import com.ppjun.android.smzdm.mvp.contract.MainContract
 import com.ppjun.android.smzdm.mvp.model.entity.main.Row
 import com.ppjun.android.smzdm.mvp.presenter.MainPresenter
+import com.ppjun.android.smzdm.mvp.ui.activity.MainActivity
 import com.ppjun.android.smzdm.mvp.ui.holder.MainHolder
+import com.ppjun.android.smzdm.mvp.ui.widget.PPJunRecyclerView
 import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.main_rv.view.*
 
@@ -46,8 +48,8 @@ class MainFragment : BaseFragView<MainPresenter>(), MainContract.View {
     @Inject
     lateinit var mAdapter: DefaultAdapter<Row>
 
-    var rv: RecyclerView? = null
-    var swipe:SwipeRefreshLayout ?=null
+    var rv: PPJunRecyclerView? = null
+    var swipe: SwipeRefreshLayout? = null
     var mPaginate: Paginate? = null
     var isLoadingMore = false
 
@@ -71,6 +73,7 @@ class MainFragment : BaseFragView<MainPresenter>(), MainContract.View {
         rv?.adapter = mAdapter
 
         initPaginate()
+
     }
 
     private fun initPaginate() {
@@ -98,7 +101,7 @@ class MainFragment : BaseFragView<MainPresenter>(), MainContract.View {
 
     private fun initRecyclerView() {
         rv = view?.mainViewRv
-        swipe =view?.mainSwipe
+        swipe = view?.mainSwipe
         swipe?.setOnRefreshListener {
             mPresenter.requestMainList(true)
         }
@@ -110,6 +113,8 @@ class MainFragment : BaseFragView<MainPresenter>(), MainContract.View {
 
 
     override fun setData(data: Any?) {
+
+
 
     }
 
@@ -133,13 +138,13 @@ class MainFragment : BaseFragView<MainPresenter>(), MainContract.View {
     }
 
     override fun showLoading() {
-        swipe?.isRefreshing=true
+        swipe?.isRefreshing = true
 
     }
 
 
     override fun hideLoading() {
-        swipe?.isRefreshing=false
+        swipe?.isRefreshing = false
     }
 
 

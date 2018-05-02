@@ -13,6 +13,7 @@ import com.jess.arms.di.module.GlobalConfigModule
 import com.jess.arms.http.RequestInterceptor
 import com.jess.arms.integration.ConfigModule
 import com.jess.arms.utils.ArmsUtils
+import com.jess.arms.utils.LogUtils
 import com.ppjun.android.smzdm.BuildConfig
 import com.ppjun.android.smzdm.mvp.model.api.Api.Companion.APP_DOMAIN
 import com.squareup.leakcanary.RefWatcher
@@ -25,10 +26,10 @@ class GlobalConfiguration : ConfigModule {
 
 
     override fun applyOptions(context: Context?, builder: GlobalConfigModule.Builder?) {
-        if (BuildConfig.LOG_DEBUG) {
-            builder?.printHttpLogLevel(RequestInterceptor.Level.NONE)
 
-        }
+          //  builder?.printHttpLogLevel(RequestInterceptor.Level.REQUEST)
+
+
         builder!!.baseurl(APP_DOMAIN)
                 .globalHttpHandler(GlobalHttpHandlerImpl(context!!))
                 .responseErrorListener(ResponseErrorListenerImpl())
@@ -42,7 +43,7 @@ class GlobalConfiguration : ConfigModule {
                     run {
                         builder.writeTimeout(10, TimeUnit.SECONDS)
                         ProgressManager.getInstance().with(builder)
-                        //Retrofitur
+
                     }
                 }
                 .rxCacheConfiguration { context1, builder ->

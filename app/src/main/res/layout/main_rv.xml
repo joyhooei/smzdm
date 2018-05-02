@@ -10,12 +10,14 @@
         android:id="@+id/mainSwipe"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <android.support.v7.widget.RecyclerView
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        <com.ppjun.android.smzdm.mvp.ui.widget.PPJunRecyclerView
             android:id="@+id/mainViewRv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+</RelativeLayout>
     </android.support.v4.widget.SwipeRefreshLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -28,7 +28,6 @@ data class Row(
 		@SerializedName("article_channel_id") val articleChannelId: String = "",
 		@SerializedName("article_channel_name") val articleChannelName: String = "",
 		@SerializedName("article_url") val articleUrl: String = "",
-		@SerializedName("redirect_data") val redirectData: RedirectData = RedirectData(),
 		@SerializedName("article_type_id") val articleTypeId: String = "",
 		@SerializedName("article_type_name") val articleTypeName: String = "",
 		@SerializedName("article_id") val articleId: String = "",
@@ -62,12 +61,3 @@ data class Row(
 		@SerializedName("matches_rules") val matchesRules: String = ""
 )
 
-data class RedirectData(
-		@SerializedName("link") val link: String = "",
-		@SerializedName("link_type") val linkType: String = "",
-		@SerializedName("sub_type") val subType: String = "",
-		@SerializedName("link_val") val linkVal: String = "",
-		@SerializedName("link_title") val linkTitle: String = "",
-		@SerializedName("isv_code_second") val isvCodeSecond: String = "",
-		@SerializedName("jd_isv_code") val jdIsvCode: String = ""
-)

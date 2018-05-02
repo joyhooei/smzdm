@@ -7,11 +7,17 @@ import com.jess.arms.base.delegate.AppLifecycles
 import com.jess.arms.integration.AppManager
 import com.jess.arms.utils.ArmsUtils
 import com.ppjun.android.smzdm.BuildConfig
+import com.ppjun.android.smzdm.R
+import com.ppjun.android.smzdm.app.base.Constant
 import com.squareup.leakcanary.LeakCanary
 import com.squareup.leakcanary.RefWatcher
+import com.tencent.bugly.Bugly
+import com.tencent.bugly.beta.Beta
 import com.tencent.bugly.crashreport.CrashReport
 import com.tencent.smtt.sdk.QbSdk
 import timber.log.Timber
+import com.ppjun.android.smzdm.mvp.ui.activity.MainActivity
+
 
 class AppLifecyclesImpl : AppLifecycles {
     override fun attachBaseContext(base: Context?) {
@@ -20,8 +26,8 @@ class AppLifecyclesImpl : AppLifecycles {
 
     override fun onCreate(application: Application?) {
 
-        CrashReport.initCrashReport(application, "29e07ce703", true)
-
+        Beta.enableHotfix = false
+        Bugly.init(application, Constant.BUGLY_ID, false)
         if (LeakCanary.isInAnalyzerProcess(application)) {
             return
         }
@@ -31,14 +37,13 @@ class AppLifecyclesImpl : AppLifecycles {
         ArmsUtils.obtainAppComponentFromContext(application).extras().put(RefWatcher::class.java.name,
                 if (BuildConfig.USE_CANARY) LeakCanary.install(application) else RefWatcher.DISABLED)
 
-        ArmsUtils.obtainAppComponentFromContext(application).appManager().handleListener = AppManager.HandleListener {
-            appManager, message ->
-            when(message?.what){
+        ArmsUtils.obtainAppComponentFromContext(application).appManager().handleListener = AppManager.HandleListener { appManager, message ->
+            when (message?.what) {
 
             }
         }
 
-        QbSdk.initX5Environment(application,object:QbSdk.PreInitCallback{
+        QbSdk.initX5Environment(application, object : QbSdk.PreInitCallback {
             override fun onCoreInitFinished() {
 
             }
