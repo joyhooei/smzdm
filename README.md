@@ -8,4 +8,4 @@
 2. 详情评论
 
 
-[![CYQCtO.png](https://s1.ax1x.com/2018/05/02/CYQCtO.png)](https://imgchr.com/i/CYQCtO)
+![pic](https://s1.ax1x.com/2018/05/03/CttlrD.png)
