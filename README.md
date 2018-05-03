@@ -8,4 +8,4 @@
 2. 详情评论
 
 
-![pic](https://s1.ax1x.com/2018/05/03/CttlrD.png)
+![pic](https://s1.ax1x.com/2018/05/04/CttrZQ.png)
