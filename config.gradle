@@ -109,7 +109,8 @@ ext {
             "RecyclerViewBanner"       : "com.github.loonggg:RecyclerViewBanner:v1.2.2",
             "constraint-layout"        : "com.android.support.constraint:constraint-layout:1.1.0",
             "support-vector-drawable"  : "com.android.support:support-vector-drawable:27.0.2",
-            "arms":"me.jessyan:arms:2.3.5"
+            "arms":"me.jessyan:arms:2.3.5",
+            "lottie":"com.airbnb.android:lottie:2.5.4"
     ]
 
 

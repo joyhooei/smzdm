@@ -97,4 +97,7 @@ dependencies {
     implementation rootProject.ext.dependencies["RecyclerViewBanner"]
     implementation files('libs/tbs_v3.1.0.jar')
     implementation 'com.github.mancj:MaterialSearchBar:0.7.6'
+    implementation (rootProject.ext.dependencies["lottie"]){
+        exclude group:'com.android.support'
+    }
 }
