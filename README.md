@@ -3,6 +3,7 @@
 
 体验地址 下载链接(https://fir.im/smzdbuy)
 
+小米应用市场 http://app.mi.com/details?id=com.ppjun.android.smzdm
 ## todo
 1. ~~列表搜索~~
 2. 详情评论
