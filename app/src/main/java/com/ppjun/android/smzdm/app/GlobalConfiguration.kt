@@ -33,20 +33,20 @@ class GlobalConfiguration : ConfigModule {
         builder!!.baseurl(APP_DOMAIN)
                 .globalHttpHandler(GlobalHttpHandlerImpl(context!!))
                 .responseErrorListener(ResponseErrorListenerImpl())
-                .gsonConfiguration { context1, builder ->
+                .gsonConfiguration { _, builder ->
                     run {
                         builder.serializeNulls()
                                 .enableComplexMapKeySerialization()
                     }
                 }
-                .okhttpConfiguration { context, builder ->
+                .okhttpConfiguration { _, builder ->
                     run {
                         builder.writeTimeout(10, TimeUnit.SECONDS)
                         ProgressManager.getInstance().with(builder)
 
                     }
                 }
-                .rxCacheConfiguration { context1, builder ->
+                .rxCacheConfiguration { _, builder ->
                     run {
                         builder.useExpiredDataIfLoaderNotAvailable(true)
                         return@run null

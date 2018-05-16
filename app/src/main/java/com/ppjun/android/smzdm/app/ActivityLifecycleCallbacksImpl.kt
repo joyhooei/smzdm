@@ -44,12 +44,13 @@ class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
                 }
             }
 
-            activity.findViewById<TextView>(R.id.toolbarTitle)?.text = activity.title
+            activity.findViewById<TextView>(R.id.toolbarTitle)?.setText(R.string.title)
             activity.findViewById<RelativeLayout>(R.id.toolBack)?.setOnClickListener {
                 activity.onBackPressed()
             }
             activity.findViewById<ImageView>(R.id.toolSearch)?.setOnClickListener {
                 activity.startActivity(Intent(activity,SearchResultActivity::class.java))
+
             }
         }
     }

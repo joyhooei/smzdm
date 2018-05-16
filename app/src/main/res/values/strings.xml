@@ -1,8 +1,13 @@
 <resources>
-    <string name="app_name">什么值得Buy</string>
+    <string name="app_name">Binary</string>
+    <string name="title">什么值得买</string>
     <string name="title_home">主页</string>
     <string name="title_dashboard">好价</string>
     <string name="title_notifications">好文</string>
     <string name="title_mine">我的</string>
     <string name="worth">值</string>
+    <string name="share">分享</string>
+    <string name="exit_tip">再按一次退出</string>
+    <string name="clip_tip">已复制到粘贴板</string>
+    <string name="share_success">分享成功</string>
 </resources>

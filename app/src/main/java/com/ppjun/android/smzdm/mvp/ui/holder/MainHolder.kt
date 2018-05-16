@@ -54,6 +54,8 @@ class MainHolder(itemView: View) : BaseHolder<Row>(itemView) {
             itemView.setOnClickListener {
                 val resultIntent=Intent(itemView.context,NewsInfoActivity::class.java)
                 resultIntent.putExtra(Constant.ID,data.articleId)
+                resultIntent.putExtra(Constant.COLLECT,data.articleLoveCount)
+                resultIntent.putExtra(Constant.COMMENT,data.articleComment)
                 itemView.context.startActivity(resultIntent)
             }
 

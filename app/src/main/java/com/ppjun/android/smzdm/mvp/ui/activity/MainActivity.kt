@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction
 import android.widget.Toast
 import com.jess.arms.di.component.AppComponent
 import com.jess.arms.mvp.IPresenter
+import com.jess.arms.utils.ArmsUtils
 import com.jess.arms.utils.LogUtils
 import com.ppjun.android.smzdm.R
 import com.ppjun.android.smzdm.app.base.BaseUI
@@ -36,10 +37,7 @@ class MainActivity : BaseUI<IPresenter>() {
         BottomNavigationHelper.disableShiftModel(navigation)
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         setBackInvisible()
-        switchFragment(0)
-
-
-    }
+        switchFragment(0) }
 
 
     override fun initView(savedInstanceState: Bundle?): Int {
@@ -115,8 +113,8 @@ class MainActivity : BaseUI<IPresenter>() {
     override fun onBackPressed() {
 
         if (System.currentTimeMillis() - firstTimeStamp > 2000) {
-            toast("再按一次退出")
 
+            ArmsUtils.snackbarText(getString(R.string.exit_tip))
             firstTimeStamp = System.currentTimeMillis()
         } else {
             finish()
