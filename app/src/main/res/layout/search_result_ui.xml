@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greyBg"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/include_title"
+        android:visibility="gone" />
+
+    <com.mancj.materialsearchbar.MaterialSearchBar
+        android:id="@+id/searchED"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:imeOptions="actionSearch"
+        android:singleLine="true"
+        app:mt_hint="输入商品"
+        app:mt_textCursorTint="@color/colorAccent"
+        app:mt_highlightedTextColor="@color/colorAccent"
+        app:mt_placeholder="@string/app_name" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/searchTablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:background="@color/greyBg"
+        app:tabIndicatorColor="@color/colorAccent"
+        app:tabIndicatorHeight="10px"
+        app:tabSelectedTextColor="@color/colorAccent"
+        app:tabTextColor="@color/black"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+
+        />
+
+    <FrameLayout
+
+        android:id="@+id/searchFrame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</LinearLayout>

@@ -85,14 +85,16 @@
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:exported="true"
+            android:theme="@android:style/Theme.Translucent"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-                <data android:scheme="wx0bc4d24f8effbe21" />
+                <data android:scheme="wxa91ede520e7c64c5" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
         </activity>
+        <activity android:name=".mvp.ui.activity.PhotoUI" />
     </application>
 
 </manifest>

@@ -29,7 +29,7 @@ class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
     override fun onActivityStarted(activity: Activity?) {
         Timber.w(activity.toString() + "-onActivityStarted")
         if(activity is BaseUI<*>) {
-            if (activity!!.intent.getBooleanExtra("isInitToolbar", false).not()) {
+            if (activity.intent.getBooleanExtra("isInitToolbar", false).not()) {
                 activity.intent.putExtra("isInitToolbar", true)
                 if (activity.findViewById<Toolbar>(R.id.toolbar) != null) {
                     if (activity is AppCompatActivity) {

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.ppjun.android.smzdm.mvp.ui.widget.AutoCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20px"
+    android:background="@color/white"
+    android:foreground="?selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20px"
+            android:padding="10px"
+            android:text="资讯"
+            android:textSize="36px"
+            android:textColor="@color/black" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/greyBg" />
+
+
+        <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+
+            android:layout_width="match_parent"
+            android:layout_height="400px"
+            android:background="@color/white">
+
+
+            <ImageView
+                android:id="@+id/mainNewsImage"
+                android:layout_width="320px"
+                android:layout_height="340px"
+                android:layout_centerVertical="true"
+
+                android:layout_marginLeft="30px" />
+
+            <TextView
+                android:id="@+id/mainNewsTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/mainNewsImage"
+                android:layout_marginLeft="30px"
+                android:layout_toRightOf="@+id/mainNewsImage"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:minHeight="150px"
+                android:paddingRight="30px"
+                android:textColor="@color/black"
+                android:textSize="40px"
+                android:textStyle="bold"
+                tools:text="@string/app_name" />
+
+            <TextView
+                android:id="@+id/mainNewsPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mainNewsTitle"
+                android:layout_marginLeft="30px"
+                android:layout_toRightOf="@+id/mainNewsImage"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:minHeight="100px"
+                android:paddingRight="30px"
+                android:textColor="@color/red"
+                android:textSize="40px"
+                tools:text="@string/app_name" />
+
+
+            <TextView
+                android:id="@+id/mainNewsRzlx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/mainNewsPrice"
+                android:layout_below="@+id/mainNewsPrice"
+                android:layout_marginTop="20px"
+                android:background="@drawable/shape_pink"
+                android:ellipsize="end"
+                android:maxWidth="200px"
+                android:padding="6px"
+
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="30px"
+                tools:text="asdasdasdasdasdasdasd" />
+
+            <TextView
+                android:id="@+id/mainNewsTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mainNewsPrice"
+                android:layout_marginLeft="30px"
+                android:layout_marginTop="20px"
+                android:layout_toRightOf="@+id/mainNewsRzlx"
+                android:background="@drawable/shape_pink"
+                android:ellipsize="end"
+                android:maxWidth="120px"
+                android:padding="6px"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="30px"
+                tools:text="@string/app_name" />
+
+
+            <TextView
+                android:id="@+id/mainNewsWorth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/mainNewsRzlx"
+                android:layout_marginRight="30px"
+                android:textSize="36px"
+                tools:text="10" />
+
+
+            <TextView
+                android:textSize="33px"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/mainNewsWorthTv"
+                android:text="@string/worth"
+                android:layout_marginRight="10px"
+                android:textColor="@color/colorAccent"
+                android:layout_toLeftOf="@+id/mainNewsWorth"
+                android:layout_alignBottom="@+id/mainNewsWorth"
+                />
+
+
+            <TextView
+                android:textSize="36px"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/mainNewsComment"
+                android:text="12"
+
+                android:layout_marginRight="30px"
+
+                android:layout_toLeftOf="@+id/mainNewsWorthTv"
+                android:layout_alignBottom="@+id/mainNewsWorthTv"
+                />
+
+            <ImageView
+                android:layout_toLeftOf="@+id/mainNewsComment"
+                android:layout_alignBottom="@+id/mainNewsComment"
+                android:layout_width="40px"
+                android:layout_height="40px"
+                android:layout_marginRight="10px"
+                android:src="@drawable/ic_article_24dp"
+
+                />
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </LinearLayout>
+</com.ppjun.android.smzdm.mvp.ui.widget.AutoCardView>

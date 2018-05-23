@@ -25,7 +25,7 @@ class BottomNavigationBehavior(context: Context, attrs: AttributeSet) : Coordina
                 outAnimator = ObjectAnimator.ofFloat(child, "translationY", 0.0f, child.height.toFloat())
                 outAnimator?.duration = 200
             }
-            if (!outAnimator!!.isRunning && child.translationY <= 0) {
+            if (!requireNotNull(outAnimator).isRunning && child.translationY <= 0) {
                 outAnimator?.start()
             }
         } else if (dy < -20) {

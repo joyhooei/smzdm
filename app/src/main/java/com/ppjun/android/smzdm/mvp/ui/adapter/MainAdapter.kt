@@ -36,15 +36,14 @@ class MainAdapter(var list: ArrayList<Row>) : DefaultAdapter<Row>(list) {
             ARTICLE -> R.layout.item_article_list
             PRICE -> R.layout.item_main_list
             else -> R.layout.item_main_list
-
         }
     }
 
     override fun getHolder(v: View?, viewType: Int): BaseHolder<Row> {
         return when (viewType) {
-            ARTICLE -> ArticleHolder(v!!)
-            PRICE -> MainHolder(v!!)
-            else -> MainHolder(v!!)
+            ARTICLE -> ArticleHolder(requireNotNull(v))
+            PRICE -> MainHolder(requireNotNull(v))
+            else -> MainHolder(requireNotNull(v))
         }
 
     }

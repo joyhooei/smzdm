@@ -14,6 +14,12 @@ interface MainService {
     fun getMain(@Query("offset") offset: Int, @Query("limit") limit: Int): Observable<MainList>
 
     /**
+     * 首页Banner
+     */
+    @GET("/v2/util/banner?type=zdmapp&weixin=1&f=wxapp&wxapp=zdmapp")
+    fun getMainBanner(): Observable<Response<RowData<MainBanner>>>
+
+    /**
      * 好价列表
      */
     @GET("/v1/home/articles_new?f=wxapp&wxapp=zdmapp")

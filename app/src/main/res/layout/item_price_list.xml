@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ppjun.android.smzdm.mvp.ui.widget.AutoCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20px"
+    android:background="@color/white"
+    android:foreground="?selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/priceListTip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20px"
+            android:padding="10px"
+            android:textColor="@color/black"
+            android:textSize="36px"
+            android:visibility="gone"
+            tools:text="好价" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/greyBg"
+            android:visibility="gone" />
+
+
+        <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+
+            android:layout_width="match_parent"
+            android:layout_height="400px"
+            android:background="@color/white">
+
+
+            <ImageView
+                android:id="@+id/priceListImage"
+                android:layout_width="320px"
+                android:layout_height="340px"
+                android:layout_centerVertical="true"
+
+                android:layout_marginLeft="30px" />
+
+            <TextView
+                android:id="@+id/priceListTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/priceListImage"
+                android:layout_marginLeft="30px"
+                android:layout_toRightOf="@+id/priceListImage"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:minHeight="100px"
+                android:paddingRight="30px"
+                android:textColor="@color/black"
+                android:textSize="40px"
+                android:textStyle="bold"
+                tools:text="@string/app_name" />
+
+            <TextView
+                android:id="@+id/priceListPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/priceListTitle"
+                android:layout_marginLeft="30px"
+                android:layout_toRightOf="@+id/priceListImage"
+                android:ellipsize="end"
+                android:maxLines="2"
+
+                android:paddingRight="30px"
+                android:textColor="@color/red"
+                android:textSize="40px"
+                tools:text="@string/app_name" />
+
+
+            <TextView
+                android:id="@+id/priceListShop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/priceListImage"
+
+                android:layout_alignLeft="@+id/priceListPrice"
+                android:background="@drawable/shape_pink"
+                android:ellipsize="end"
+                android:maxWidth="200px"
+                android:padding="6px"
+
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="30px"
+                tools:text="asdasdasdasdasdasdasd" />
+
+            <TextView
+                android:id="@+id/priceListTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/priceListShop"
+                android:layout_marginLeft="30px"
+
+                android:layout_toRightOf="@+id/priceListShop"
+                android:background="@drawable/shape_pink"
+                android:ellipsize="end"
+                android:maxWidth="120px"
+                android:padding="6px"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="30px"
+                tools:text="@string/app_name" />
+
+
+            <LinearLayout
+                android:id="@+id/priceListWorthLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/priceListShop"
+                android:layout_marginRight="30px"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/priceListWorthTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10px"
+                    android:text="@string/worth"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="33px"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/priceListWorth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:textSize="36px"
+                    tools:text="10" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/priceListComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/priceListWorthLayout"
+                android:layout_marginRight="30px"
+
+                android:layout_toLeftOf="@+id/priceListWorthLayout"
+
+                android:text="12"
+                android:textSize="36px" />
+
+            <ImageView
+                android:layout_width="40px"
+                android:layout_height="40px"
+                android:layout_alignBottom="@+id/priceListComment"
+                android:layout_marginRight="10px"
+                android:layout_toLeftOf="@+id/priceListComment"
+                android:src="@drawable/ic_article_24dp"
+
+                />
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </LinearLayout>
+</com.ppjun.android.smzdm.mvp.ui.widget.AutoCardView>

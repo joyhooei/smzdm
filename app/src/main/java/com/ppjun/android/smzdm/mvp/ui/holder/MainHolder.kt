@@ -62,25 +62,27 @@ class MainHolder(itemView: View) : BaseHolder<Row>(itemView) {
         } else {
             mainThumbImg.visibility = View.GONE
             mainProductWorthTv.visibility = View.VISIBLE
-            if ((data!!.articleWorthy.toInt().plus(data.articleUnworthy.toInt())) == 0) {
+
+            if ((requireNotNull(data).articleWorthy.toInt().plus(requireNotNull(data).articleUnworthy.toInt())) == 0) {
                 mainProductWorth.text = "0%"
             } else {
-                mainProductWorth.text = "${DecimalFormat("0").format(data.articleWorthy.toDouble().div(data.articleUnworthy.toDouble() + data.articleWorthy.toDouble()) * 100)}%"
+                mainProductWorth.text = "${DecimalFormat("0").format(requireNotNull(data).articleWorthy.toDouble()
+                        .div(requireNotNull(data).articleUnworthy.toDouble() + requireNotNull(data).articleWorthy.toDouble()) * 100)}%"
             }
 
             itemView.setOnClickListener {
                 val resultIntent=Intent(itemView.context,PriceInfoActivity::class.java)
-                resultIntent.putExtra(Constant.ID,data.articleId)
+                resultIntent.putExtra(Constant.ID, requireNotNull(data).articleId)
                 itemView.context.startActivity(resultIntent)
             }
         }
 
-        mainProductTime.text = data.articleFormatDate
-        mainProductComment.text = data.articleComment
+        mainProductTime.text = requireNotNull(data).articleFormatDate
+        mainProductComment.text = requireNotNull(data).articleComment
 
 
         mImageLoader.loadImage(itemView.context, ImageConfigImpl.builder()
-                .url(data.articlePic)
+                .url(requireNotNull(data).articlePic)
                 .imageView(mainProductImg)
                 .build())
     }

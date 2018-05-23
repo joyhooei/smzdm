@@ -6,6 +6,7 @@ import android.arch.lifecycle.OnLifecycleEvent
 import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
+import com.alibaba.android.vlayout.DelegateAdapter
 import com.jess.arms.base.DefaultAdapter
 import com.jess.arms.di.scope.FragmentScope
 import com.jess.arms.integration.AppManager
@@ -14,10 +15,9 @@ import com.jess.arms.utils.PermissionUtil
 import com.jess.arms.utils.RxLifecycleUtils
 import com.ppjun.android.smzdm.app.base.Constant
 import com.ppjun.android.smzdm.mvp.contract.MainContract
-import com.ppjun.android.smzdm.mvp.model.entity.main.MainList
-import com.ppjun.android.smzdm.mvp.model.entity.main.Response
-import com.ppjun.android.smzdm.mvp.model.entity.main.Row
+import com.ppjun.android.smzdm.mvp.model.entity.main.*
 import com.ppjun.android.smzdm.mvp.ui.activity.MainActivity
+import com.ppjun.android.smzdm.mvp.ui.widget.HeaderAndFooterWrapper
 import com.tencent.bugly.Bugly
 import com.tencent.bugly.beta.Beta
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -41,7 +41,7 @@ class MainPresenter @Inject constructor(model: MainContract.Model, view: MainCon
     var mApplication: Application? = null
     @Inject
     @JvmField
-    var mAdapter: DefaultAdapter<Row>? = null
+    var mAdapter:DelegateAdapter ?= null
     @Inject
     @JvmField
     var mRow: ArrayList<Row>? = null
@@ -55,39 +55,34 @@ class MainPresenter @Inject constructor(model: MainContract.Model, view: MainCon
 
     }
 
+    fun requestMainBanner() {
+
+
+        mModel.getMainBanner(offset, true)
+
+                .subscribeOn(Schedulers.io())
+                .retryWhen(
+                        RetryWithDelay(3, 2)
+                )
+                .doOnSubscribe { disposible ->
+
+                }
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doFinally {
+
+                }
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(object : ErrorHandleSubscriber<Response<RowData<MainBanner>>>(mErrorHandler) {
+                    override fun onNext(result: Response<RowData<MainBanner>>) {
+                      mRootView.setBanner(result.data.rows)
+                    }
+                })
+
+
+    }
+
     fun requestMainList(pullToRefresh: Boolean) {
-
-
-//        PermissionUtil.readPhonestate(object : PermissionUtil.RequestPermission {
-//            override fun onRequestPermissionFailureWithAskNeverAgain(permissions: MutableList<String>?) {
-//               // toSystemSettingUI()
-//            }
-//
-//            override fun onRequestPermissionSuccess() {
-//                PermissionUtil.externalStorage(object : PermissionUtil.RequestPermission {
-//                    override fun onRequestPermissionFailureWithAskNeverAgain(permissions: MutableList<String>?) {
-//                       // toSystemSettingUI()
-//                    }
-//
-//                    override fun onRequestPermissionSuccess() {
-//
-//                    }
-//
-//                    override fun onRequestPermissionFailure(permissions: MutableList<String>?) {
-//                        mRootView.showMessage("授权失败")
-//                    }
-//
-//                }, mRootView.getRxPermission(), mErrorHandler)
-//            }
-//
-//            override fun onRequestPermissionFailure(permissions: MutableList<String>?) {
-//                mRootView.showMessage("授权失败")
-//            }
-//
-//        }, mRootView.getRxPermission(), mErrorHandler)
-
-
-
 
         if (pullToRefresh) {
             offset = 0
@@ -98,6 +93,9 @@ class MainPresenter @Inject constructor(model: MainContract.Model, view: MainCon
             isFirst = false
             isEvictCache = false
         }
+
+
+
         mModel.getMain(offset, isEvictCache)
                 .subscribeOn(Schedulers.io())
                 .retryWhen(
@@ -126,12 +124,14 @@ class MainPresenter @Inject constructor(model: MainContract.Model, view: MainCon
                         if (pullToRefresh) {
                             mRow?.clear()
                         }
-                        preEndIndex = mRow?.size!!
+                        preEndIndex = requireNotNull(mRow?.size)
                         mRow?.addAll(result.data.rows)
                         if (pullToRefresh) {
-                            mAdapter?.notifyDataSetChanged()
+                           // mAdapter?.notifyDataSetChanged()
+                            mRootView.setMainList(true,result.data.rows)
                         } else {
-                            mAdapter?.notifyItemRangeInserted(preEndIndex, result.data.rows.size)
+                          //  mAdapter?.notifyItemRangeInserted(preEndIndex, result.data.rows.size)
+                            mRootView.setMainList(false,result.data.rows)
                         }
 
                     }

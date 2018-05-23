@@ -8,10 +8,10 @@ import com.jess.arms.mvp.BaseModel
 import com.ppjun.android.smzdm.mvp.contract.MainContract
 import com.ppjun.android.smzdm.mvp.model.api.cache.CommonCache
 import com.ppjun.android.smzdm.mvp.model.api.service.MainService
+import com.ppjun.android.smzdm.mvp.model.entity.main.MainBanner
 import com.ppjun.android.smzdm.mvp.model.entity.main.MainList
 import com.ppjun.android.smzdm.mvp.model.entity.main.Response
-import com.ppjun.android.smzdm.mvp.model.entity.main.Row
-import com.ppjun.android.smzdm.mvp.model.entity.main.Rows
+import com.ppjun.android.smzdm.mvp.model.entity.main.RowData
 
 import io.reactivex.Observable
 import io.rx_cache2.DynamicKey
@@ -22,6 +22,17 @@ import javax.inject.Inject
 
 @FragmentScope
 class MainModel @Inject constructor(mRepositoryManager:IRepositoryManager) :BaseModel(mRepositoryManager),MainContract.Model {
+    override fun getMainBanner(page: Int, boolean: Boolean): Observable<Response<RowData<MainBanner>>> {
+        return Observable.just(mRepositoryManager.obtainRetrofitService(MainService::class.java)
+                .getMainBanner())
+                .flatMap { t ->
+                    mRepositoryManager.obtainCacheService(CommonCache::class.java)
+                            .getMainBanner(t, DynamicKey(page), EvictDynamicKey(true))
+                            .map { list ->
+                                list.data
+                            }
+                }
+    }
 
 
     val MAIN_PER_PAGE = 15

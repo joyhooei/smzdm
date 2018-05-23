@@ -30,7 +30,7 @@ class GlobalConfiguration : ConfigModule {
           //  builder?.printHttpLogLevel(RequestInterceptor.Level.REQUEST)
 
 
-        builder!!.baseurl(APP_DOMAIN)
+        requireNotNull(builder).baseurl(APP_DOMAIN)
                 .globalHttpHandler(GlobalHttpHandlerImpl(context!!))
                 .responseErrorListener(ResponseErrorListenerImpl())
                 .gsonConfiguration { _, builder ->

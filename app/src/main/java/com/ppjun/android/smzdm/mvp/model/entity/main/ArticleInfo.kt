@@ -1,0 +1,66 @@
+package com.ppjun.android.smzdm.mvp.model.entity.main
+import com.google.gson.annotations.SerializedName
+
+
+
+data class ArticleInfo(
+        @SerializedName("post_flag") val postFlag: String = "",
+        @SerializedName("article_id") val articleId: String = "",
+        @SerializedName("article_uhome") val articleUhome: String = "",
+        @SerializedName("article_recommend") val articleRecommend: String = "",
+        @SerializedName("article_url") val articleUrl: String = "",
+        @SerializedName("article_title") val articleTitle: String = "",
+        @SerializedName("article_date") val articleDate: String = "",
+        @SerializedName("article_format_date") val articleFormatDate: String = "",
+        @SerializedName("article_comment_switch") val articleCommentSwitch: String = "",
+        @SerializedName("article_push_type") val articlePushType: String = "",
+        @SerializedName("article_brand") val articleBrand: String = "",
+        @SerializedName("article_brand_id") val articleBrandId: String = "",
+        @SerializedName("article_mall") val articleMall: String = "",
+        @SerializedName("article_mall_id") val articleMallId: String = "",
+        @SerializedName("article_mall_region") val articleMallRegion: String = "",
+        @SerializedName("article_mall_domain") val articleMallDomain: String = "",
+        @SerializedName("article_tag_names") val articleTagNames: List<String> = listOf(),
+        @SerializedName("article_pic") val articlePic: String = "",
+        @SerializedName("article_small_pic") val articleSmallPic: String = "",
+        @SerializedName("article_format_pic") val articleFormatPic: String = "",
+        @SerializedName("article_collection") val articleCollection: String = "",
+        @SerializedName("article_comment") val articleComment: String = "",
+        @SerializedName("article_favorite") val articleFavorite: String = "",
+        @SerializedName("user_smzdm_id") val userSmzdmId: String = "",
+        @SerializedName("article_referrals") val articleReferrals: String = "",
+        @SerializedName("article_avatar") val articleAvatar: String = "",
+        @SerializedName("article_anonymous") val articleAnonymous: Boolean = false,
+        @SerializedName("author_description") val authorDescription: String = "",
+        @SerializedName("level_logo") val levelLogo: String = "",
+        @SerializedName("author_level") val authorLevel: String = "",
+        @SerializedName("author_medal") val authorMedal: String = "",
+        @SerializedName("fans_num") val fansNum: String = "",
+        @SerializedName("article_filter_content") val articleFilterContent: String = "",
+        @SerializedName("article_navigation") val articleNavigation: List<String> = listOf(),
+        @SerializedName("article_series") val articleSeries: String = "",
+        @SerializedName("article_series_array") val articleSeriesArray: List<Any> = listOf(),
+        @SerializedName("article_content_img_list") val articleContentImgList: List<Any> = listOf(),
+        @SerializedName("article_comment_open") val articleCommentOpen: String = "",
+        @SerializedName("probreport_id") val probreportId: String = "",
+        @SerializedName("article_type") val articleType: String = "",
+        @SerializedName("type") val type: String = "",
+        @SerializedName("share_title") val shareTitle: String = "",
+        @SerializedName("share_title_other") val shareTitleOther: String = "",
+        @SerializedName("share_pic_title") val sharePicTitle: String = "",
+        @SerializedName("share_pic") val sharePic: String = "",
+        @SerializedName("b_share_title") val bShareTitle: String = "",
+        @SerializedName("share_title_separate") val shareTitleSeparate: String = "",
+        @SerializedName("share_long_pic_title") val shareLongPicTitle: String = "",
+        @SerializedName("share_reward") val shareReward: String = "",
+        @SerializedName("display_mode") val displayMode: String = "",
+        @SerializedName("uhome") val uhome: String = "",
+        @SerializedName("interested_list") val interestedList: List<Any> = listOf(),
+        @SerializedName("relate_youhui") val relateYouhui: List<Any> = listOf(),
+        @SerializedName("article_html_content") val articleHtmlContent: String = "",
+        @SerializedName("share_wxapp_url") val shareWxappUrl: String = ""
+)
+
+
+
+

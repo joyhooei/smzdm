@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?><!--<android.support.design.widget.CoordinatorLayout--><!--xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:app="http://schemas.android.com/apk/res-auto"--><!--xmlns:tools="http://schemas.android.com/tools"--><!--android:layout_width="match_parent"-->
+
+<!--android:layout_height="match_parent"--><!--android:background="@color/white">-->
+
+
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+    <com.jess.arms.widget.autolayout.AutoScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        android:layout_above="@+id/priceInfoBottom"
+        android:scrollbars="none">
+
+        <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include
+                layout="@layout/include_title"
+                android:visibility="gone" />
+
+            <com.ppjun.android.ppbannerview.PPBannerView
+                android:id="@+id/priceInfoBanner"
+                android:layout_width="match_parent"
+                android:layout_height="600px"
+                android:layout_below="@+id/toolbar"
+                app:pp_indicatorGravity="right"
+                app:pp_imageViewScaleType="FIT_CENTER"
+                android:background="@color/white"
+                app:pp_indicatorSelectedSrc="@color/colorAccent"
+                app:pp_indicatorUnSelectedSrc="@color/greyBg"
+                tools:background="@color/white" />
+
+
+            <TextView
+                android:id="@+id/priceInfoShop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/priceInfoBanner"
+                android:layout_marginLeft="30px"
+                android:layout_marginTop="30px"
+                android:background="@drawable/shape_pink"
+                android:padding="10px"
+                android:textColor="@color/white"
+                android:textSize="30px"
+                android:visibility="invisible"
+                tools:text="@string/app_name" />
+
+
+            <TextView
+                android:id="@+id/priceInfoTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/priceInfoBanner"
+                android:layout_marginLeft="20px"
+                android:layout_marginTop="30px"
+                android:layout_toRightOf="@+id/priceInfoShop"
+                android:background="@drawable/shape_pink"
+                android:padding="10px"
+                android:textColor="@color/white"
+                android:textSize="30px"
+                android:visibility="invisible"
+                tools:text="@string/app_name" />
+
+
+            <TextView
+                android:id="@+id/priceInfoAuthor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/priceInfoBanner"
+                android:layout_marginLeft="20px"
+                android:layout_marginTop="30px"
+                android:layout_toRightOf="@+id/priceInfoTime"
+                android:background="@drawable/shape_pink"
+                android:padding="10px"
+                android:textColor="@color/white"
+                android:textSize="30px"
+                android:visibility="invisible"
+                tools:text="@string/app_name" />
+
+
+            <TextView
+                android:id="@+id/priceInfoTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/priceInfoShop"
+                android:layout_marginTop="30px"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:paddingLeft="30px"
+                android:paddingRight="30px"
+                android:textColor="#434343"
+                android:textSize="60px"
+
+                tools:text="@string/app_name" />
+
+
+            <TextView
+                android:id="@+id/priceInfoPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/priceInfoTitle"
+                android:ellipsize="end"
+                android:paddingBottom="20px"
+                android:paddingLeft="30px"
+                android:paddingRight="30px"
+                android:paddingTop="30px"
+                android:singleLine="true"
+                android:textColor="@color/red"
+                android:textSize="50px"
+                android:textStyle="bold"
+                tools:text="@string/app_name" />
+
+            <TextView
+                android:id="@+id/priceInfoDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/priceInfoPrice"
+                android:layout_margin="10px"
+                android:padding="30px"
+                android:textColor="#434343"
+                android:textSize="50px"
+                android:textStyle="bold"
+                tools:text="@string/app_name" />
+
+
+            <WebView
+                android:id="@+id/priceInfoWeb"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/priceInfoDesc" />
+
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+
+    </com.jess.arms.widget.autolayout.AutoScrollView>
+
+
+    <RelativeLayout
+        android:id="@+id/priceInfoBottom"
+        android:layout_width="match_parent"
+        android:layout_height="130px"
+        android:layout_alignParentBottom="true"
+        android:background="@color/bottom">
+
+        <ImageView
+            android:id="@+id/priceInfoShareImg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:paddingBottom="40px"
+            android:paddingLeft="40px"
+            android:paddingRight="40px"
+            android:paddingTop="40px"
+            android:src="@drawable/ic_share_black_24dp" />
+
+        <LinearLayout
+            android:id="@+id/priceInfoWorthLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/priceInfoShareImg"
+            android:paddingLeft="20px"
+            android:paddingRight="20px">
+
+            <ImageView
+                android:id="@+id/priceInfoWorthImg"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingBottom="40px"
+                android:paddingRight="20px"
+                android:paddingTop="40px"
+                android:src="@drawable/ic_thumb_up_black_24dp" />
+
+            <TextView
+                android:id="@+id/priceInfoWorth"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/priceInfoWorthImg"
+                android:gravity="left|center_vertical"
+                android:minWidth="50px"
+                android:textColor="@color/colorAccent"
+                android:textSize="35px"
+                tools:text="100" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/priceInfoUnWorthLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/priceInfoWorthLayout"
+            android:paddingLeft="20px"
+            android:paddingRight="20px">
+
+            <ImageView
+                android:id="@+id/priceInfoUnWorthImg"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingBottom="40px"
+                android:paddingRight="20px"
+                android:paddingTop="40px"
+                android:src="@drawable/ic_thumb_down_black_24dp" />
+
+            <TextView
+                android:id="@+id/priceInfoUnworth"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:minWidth="80px"
+                android:textColor="@color/greyBlack"
+                android:textSize="35px"
+                tools:text="100" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/priceInfoShare"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/priceInfoShareImg"
+            android:gravity="center"
+            android:text="@string/share"
+            android:textColor="@color/greyBlack"
+            android:textSize="35px"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/priceInfoBuy"
+            android:layout_width="wrap_content"
+            android:layout_height="130px"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/shape_pink_corner"
+            android:gravity="center"
+            android:paddingLeft="50px"
+            android:paddingRight="35px"
+            android:text="直达链接"
+            android:textColor="@color/white"
+            android:textSize="38px" />
+    </RelativeLayout>
+</com.zhy.autolayout.AutoRelativeLayout><!--<include--><!--layout="@layout/share_ui"/>-->
+
+    <!--</android.support.design.widget.CoordinatorLayout>-->

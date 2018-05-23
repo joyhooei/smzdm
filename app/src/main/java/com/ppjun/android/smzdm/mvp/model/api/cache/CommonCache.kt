@@ -12,7 +12,9 @@ interface CommonCache {
     @LifeCache(timeUnit = TimeUnit.MINUTES, duration = 2)
     fun getMainList(response: Observable<MainList>, page: DynamicKey, evictProvider: EvictDynamicKey)
             : Observable<Reply<MainList>>
-
+    @LifeCache(timeUnit = TimeUnit.MINUTES, duration = 2)
+    fun getMainBanner(response: Observable<Response<RowData<MainBanner>>>, page: DynamicKey, evictProvider: EvictDynamicKey)
+            : Observable<Reply<Response<RowData<MainBanner>>>>
 
     @LifeCache(timeUnit = TimeUnit.MINUTES, duration = 2)
     fun priceList(response: Observable<PriceList>, page: DynamicKey, evictProvider: EvictDynamicKey)

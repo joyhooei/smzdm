@@ -52,9 +52,8 @@ abstract class BaseFragView<P : IPresenter> : Fragment(), IFragment, FragmentLif
 
     override fun onDestroy() {
         super.onDestroy()
-        if (mPresenter != null) {
-            mPresenter?.onDestroy()
-        }
+            mPresenter.onDestroy()
+
 
     }
 

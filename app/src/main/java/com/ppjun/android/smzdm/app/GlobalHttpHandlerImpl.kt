@@ -15,7 +15,7 @@ class GlobalHttpHandlerImpl(var context: Context) : GlobalHttpHandler {
     override fun onHttpRequestBefore(chain: Interceptor.Chain?, request: Request?): Request {
 
         // return  chain!!.request().newBuilder().header("token","").build()
-        return request!!
+        return requireNotNull(request)
     }
 
     override fun onHttpResultResponse(httpResult: String?, chain: Interceptor.Chain?, response: Response?): Response {
