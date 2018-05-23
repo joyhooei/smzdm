@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<com.ppjun.android.smzdm.mvp.ui.widget.AutoConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/bottomSheetLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    android:paddingTop="50px"
-    app:behavior_hideable="false"
-    app:behavior_peekHeight="0dp"
-    app:layout_behavior="@string/bottom_sheet_behavior">
+    android:paddingTop="30px">
 
     <ImageView
         android:id="@+id/qqShareImg"
@@ -108,6 +106,7 @@
         app:layout_constraintTop_toBottomOf="@+id/qqShareImg" />
 
     <View
+        android:id="@+id/shareLine"
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:layout_marginTop="30px"
@@ -117,10 +116,10 @@
     <Button
         android:id="@+id/shareCancel"
         android:layout_width="match_parent"
-        android:layout_height="140px"
-        android:layout_marginTop="30px"
+        android:layout_height="120px"
         android:background="#FFF"
         android:foreground="?selectableItemBackground"
         android:text="取消"
-        app:layout_constraintTop_toBottomOf="@+id/moreShareText" />
-</android.support.constraint.ConstraintLayout>
+        android:textSize="30px"
+        app:layout_constraintTop_toBottomOf="@+id/shareLine" />
+</com.ppjun.android.smzdm.mvp.ui.widget.AutoConstraintLayout>

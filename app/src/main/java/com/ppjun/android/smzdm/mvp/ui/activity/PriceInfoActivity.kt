@@ -3,6 +3,7 @@ package com.ppjun.android.smzdm.mvp.ui.activity
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.widget.AppCompatImageView
 import android.view.View
@@ -11,7 +12,6 @@ import android.webkit.WebViewClient
 import com.bumptech.glide.Glide
 import com.jess.arms.di.component.AppComponent
 import com.jess.arms.utils.ArmsUtils
-import com.jess.arms.utils.LogUtils
 import com.ppjun.android.ppbannerview.PPBannerView
 import com.ppjun.android.smzdm.R
 import com.ppjun.android.smzdm.app.base.BaseUI
@@ -26,6 +26,7 @@ import com.ppjun.android.smzdm.mvp.ui.activity.fragment.ShareBottomSheetDialogFr
 import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.price_info_ui.*
 import javax.inject.Inject
+
 
 class PriceInfoActivity : BaseUI<PriceInfoPresenter>(), PriceInfoContract.View {
     var mShareFragment: ShareBottomSheetDialogFragment? = null
@@ -57,7 +58,15 @@ class PriceInfoActivity : BaseUI<PriceInfoPresenter>(), PriceInfoContract.View {
 
     @SuppressLint("JavascriptInterface")
     override fun showInfo(info: PriceInfo) {
+
+
         setContentView(R.layout.price_info_ui)
+        val displayCutout = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+
+        } else {
+
+        }
         val images = ArrayList<String>()
         if (info.articleProductFocusPicUrl.isNotEmpty()) {
             for (image in info.articleProductFocusPicUrl) {
@@ -76,8 +85,8 @@ class PriceInfoActivity : BaseUI<PriceInfoPresenter>(), PriceInfoContract.View {
                         .load(images[position])
                         .into(imageView)
                 imageView.setOnClickListener {
-                    val newIntent=Intent(imageView.context,PhotoUI::class.java)
-                    newIntent.putExtra(Constant.KEY,images[position])
+                    val newIntent = Intent(imageView.context, PhotoUI::class.java)
+                    newIntent.putExtra(Constant.KEY, images[position])
                     startActivity(newIntent)
                 }
             }
@@ -108,15 +117,6 @@ class PriceInfoActivity : BaseUI<PriceInfoPresenter>(), PriceInfoContract.View {
                 toWebUI(url!!)
                 return true
             }
-
-            /*    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-                override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
-                    LogUtils.debugInfo("url=",request!!.url.toString())
-                    toWebUI(request!!.url.toString())
-                    return true
-                }*/
-
-
         }
         val data = "<!DOCTYPE HTML><html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"file:///android_asset/editor.css\" /></head><body>" + info.productIntro + info.articleContent + info.articleBlReason + "</body></html>"
         priceInfoWeb.loadDataWithBaseURL(null, data, "text/html;charset=utf-8", "utf-8", null)
