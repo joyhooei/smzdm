@@ -66,6 +66,12 @@ class NewsInfoActivity : BaseUI<NewsInfoPresenter>(), NewsInfoContract.View {
         return mRxPermissions
     }
 
+
+    override fun onPostResume() {
+        super.onPostResume()
+
+
+    }
     fun share(info: NewsInfo) {
         mShareFragment = ShareBottomSheetDialogFragment()
                 .apply {

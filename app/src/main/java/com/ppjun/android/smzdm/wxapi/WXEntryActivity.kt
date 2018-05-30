@@ -23,6 +23,9 @@ class WXEntryActivity : Activity(), IWXAPIEventHandler {
         mIWXAPI.handleIntent(intent, this)
     }
 
+    override fun onSaveInstanceState(outState: Bundle?) {
+        //super.onSaveInstanceState(outState)
+    }
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
         mIWXAPI.handleIntent(intent, this)
@@ -37,12 +40,17 @@ class WXEntryActivity : Activity(), IWXAPIEventHandler {
                 when (resp.type) {
                     ConstantsAPI.COMMAND_SENDMESSAGE_TO_WX -> {
                         //share
-                        LogUtils.debugInfo("debug=", "分享成功wx")
 
-                        finish()
-                        if (onWxShareListener != null) {
-                            onWxShareListener?.onSuccess()
+
+                        try {
+                            if (onWxShareListener != null) {
+                               onWxShareListener?.onSuccess()
+                            }
+                        } catch (e: Exception) {
+                            e.printStackTrace()
                         }
+                        LogUtils.debugInfo("debug=", "分享成功wx")
+                        finish()
                     }
                     ConstantsAPI.COMMAND_SENDAUTH -> {
                         //login
@@ -60,7 +68,7 @@ class WXEntryActivity : Activity(), IWXAPIEventHandler {
             }
 
         }
-        finish()
+
     }
 
     override fun onReq(p0: BaseReq?) {

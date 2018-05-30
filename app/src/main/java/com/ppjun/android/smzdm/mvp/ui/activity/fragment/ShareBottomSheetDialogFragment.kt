@@ -10,6 +10,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.support.design.widget.BottomSheetDialogFragment
+import android.support.v4.app.FragmentManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -65,6 +66,10 @@ class ShareBottomSheetDialogFragment : BottomSheetDialogFragment() {
     }
 
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        //super.onSaveInstanceState(outState)
+    }
+
     private fun initView(view: View?) {
         val share = arguments?.getParcelable<Share>(Constant.KEY)
 
@@ -119,29 +124,29 @@ class ShareBottomSheetDialogFragment : BottomSheetDialogFragment() {
                         req.transaction = System.currentTimeMillis().toString()
                         req.message = msg
                         req.scene = SendMessageToWX.Req.WXSceneSession
+
+
+                        onWxShareListener = object : OnWxShareListener {
+                            override fun onSuccess() {
+                                Toast.makeText(context, getString(R.string.share_success), Toast.LENGTH_SHORT).show()
+                                dismissAllowingStateLoss()
+                            }
+
+                            override fun onFailure() {
+                                LogUtils.debugInfo("debug=", "分享failure fragment")
+                            }
+
+                            override fun onCancel() {
+                                LogUtils.debugInfo("debug=", "分享cancel fragment")
+                            }
+                        }
+
                         mIWXAPI.sendReq(req)
-                       // dismiss()
+
                     }
 
 
                 })
-        onWxShareListener = object : OnWxShareListener {
-            override fun onSuccess() {
-                LogUtils.debugInfo("debug=", "分享成功fragment")
-                dismiss()
-
-
-                //ArmsUtils.snackbarText(getString(R.string.share_success))
-            }
-
-            override fun onFailure() {
-
-            }
-
-            override fun onCancel() {
-
-            }
-        }
 
     }
 
@@ -217,6 +222,26 @@ class ShareBottomSheetDialogFragment : BottomSheetDialogFragment() {
         }
 
         return result
+    }
+
+    override fun show(manager: FragmentManager?, tag: String?) {
+        super.show(manager, tag)
+//           try {
+//            val c=Class.forName("android.support.v4.app.DialogFragment")
+//            val con = c.getConstructor()
+//            val obj = con.newInstance()
+//            val dismissed = c.getDeclaredField("mDismissed")
+//            dismissed.isAccessible=true
+//            dismissed.set(obj,false)
+//            val shownByMe = c.getDeclaredField("mShownByMe")
+//            shownByMe.isAccessible=true
+//            shownByMe.set(obj,true)
+//        } catch ( e:Exception) {
+//            e.printStackTrace()
+//        }
+//            val ft = manager?.beginTransaction()
+//            ft?.add(this, tag)
+//            ft?.commitAllowingStateLoss()
     }
 
 }

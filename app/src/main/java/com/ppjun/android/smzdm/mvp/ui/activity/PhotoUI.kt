@@ -10,6 +10,7 @@ import com.jess.arms.mvp.IPresenter
 import com.ppjun.android.smzdm.R
 import com.ppjun.android.smzdm.app.base.BaseUI
 import com.ppjun.android.smzdm.app.base.Constant
+import io.reactivex.Observable
 import kotlinx.android.synthetic.main.photo_ui.*
 
 class PhotoUI :BaseUI<IPresenter>(){
@@ -18,6 +19,7 @@ class PhotoUI :BaseUI<IPresenter>(){
         val imageUrl = intent.getStringExtra(Constant.KEY)
         Glide.with(this)
                 .asBitmap()
+
                 .load(imageUrl)
                 .into(object : SimpleTarget<Bitmap>() {
                     override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {

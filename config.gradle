@@ -5,8 +5,8 @@ ext {
             buildToolsVersion: "27.1.1",
             minSdkVersion    : 19,
             targetSdkVersion : 27,
-            versionCode      : 6,
-            versionName      : "1.5"
+            versionCode      : 5,
+            versionName      : "1.6"
     ]
 
     version = [
@@ -47,11 +47,10 @@ ext {
             "butterknife"              : "com.jakewharton:butterknife:${version["butterknifeSdkVersion"]}",
             "butterknife-compiler"     : "com.jakewharton:butterknife-compiler:${version["butterknifeSdkVersion"]}",
             "pickerview"               : "com.contrarywind:Android-PickerView:3.2.5",
-            "photoview"                : "com.github.chrisbanes.photoview:library:1.2.3",
             "numberprogressbar"        : "com.daimajia.numberprogressbar:library:1.2@aar",
             "nineoldandroids"          : "com.nineoldandroids:library:2.4.0",
             "paginate"                 : "com.github.markomilos:paginate:0.5.1",
-            "vlayout"                  : "com.alibaba.android:vlayout:1.1.0@aar",
+
 
             //rx1
             "rxandroid"                : "io.reactivex:rxandroid:1.2.1",
@@ -110,7 +109,13 @@ ext {
             "constraint-layout"        : "com.android.support.constraint:constraint-layout:1.1.0",
             "support-vector-drawable"  : "com.android.support:support-vector-drawable:27.1.1",
             "arms":"me.jessyan:arms:2.3.5",
-            "lottie":"com.airbnb.android:lottie:2.5.4"
+            "lottie":"com.airbnb.android:lottie:2.5.4",
+            "vlayout":"com.alibaba.android:vlayout:1.2.14@aar",
+           "photoview": "com.github.chrisbanes:PhotoView:2.1.3",
+            "wechat":"com.tencent.mm.opensdk:wechat-sdk-android-with-mta:1.4.0",
+            "searchbar":"com.github.mancj:MaterialSearchBar:0.7.6"
+
+
     ]
 
 
