@@ -14,6 +14,11 @@ interface Constant {
         val QQ_ID = "101473445"
         val WX_ID = "wxa91ede520e7c64c5"
         val LABEL="Label"
+        val OPEN_JD_PREFIX="openapp.jdmobile"
+        val OPEN_TB_PREFIX="tbopen"
+        val JD_PACKAGE_NAME="com.jingdong.app.mall"
+        val TAOBAO_PACKAGE_NAME="com.taobao.taobao"
+
     }
 
 }

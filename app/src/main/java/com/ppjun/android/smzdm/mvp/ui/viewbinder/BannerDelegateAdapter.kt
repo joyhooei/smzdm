@@ -88,6 +88,11 @@ class BannerDelegateAdapter(var data:List<MainBanner>):DelegateAdapter.Adapter<B
                             context.startActivity(resultIntent)
 
                         }
+                        "zhuanti"->{
+                            val result = Intent(context, WebActivity::class.java)
+                            result.putExtra(Constant.URL, data[position].redirectData.link)
+                            context.startActivity(result)
+                        }
                         else -> {
 
                         }
@@ -104,6 +109,5 @@ class BannerDelegateAdapter(var data:List<MainBanner>):DelegateAdapter.Adapter<B
 
     class BannerHolder( view: android.view.View) : RecyclerView.ViewHolder(view){
         val banner = view.includeBanner!!
-
     }
 }

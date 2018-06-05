@@ -48,6 +48,11 @@ class ArticleFragment : BaseFragView<ArticleListPresenter>(), ArticleListContrac
 
     override fun initData(savedInstanceState: Bundle?) {
         initRecyclerView()
+        val toTop = view?.mainToTop
+        toTop?.visibility=View.VISIBLE
+        toTop?.setOnClickListener {
+            rv?.scrollToPosition(0)
+        }
         rv?.adapter = mAdapter
         initPaginate()
 

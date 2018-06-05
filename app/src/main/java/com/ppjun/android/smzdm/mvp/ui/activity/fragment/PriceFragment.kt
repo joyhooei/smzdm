@@ -78,6 +78,11 @@ class PriceFragment : BaseFragView<PriceListPresenter>(), PriceContract.View {
 
     private fun initRecyclerView() {
         rv = view?.mainViewRv
+        val toTop = view?.mainToTop
+        toTop?.visibility=View.VISIBLE
+        toTop?.setOnClickListener {
+            rv?.scrollToPosition(0)
+        }
         swipe = view?.mainSwipe
         swipe?.setOnRefreshListener {
             mPresenter.requestPriceList(true)

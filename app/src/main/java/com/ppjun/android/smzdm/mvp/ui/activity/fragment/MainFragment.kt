@@ -2,18 +2,18 @@ package com.ppjun.android.smzdm.mvp.ui.activity.fragment
 
 import android.app.Activity
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
 import android.support.v4.widget.SwipeRefreshLayout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.alibaba.android.vlayout.DelegateAdapter
 import com.alibaba.android.vlayout.VirtualLayoutManager
-import com.alibaba.android.vlayout.layout.LinearLayoutHelper
 import com.jess.arms.base.DefaultAdapter
 import com.jess.arms.di.component.AppComponent
 import com.jess.arms.utils.ArmsUtils
-import com.jess.arms.utils.LogUtils
 import com.paginate.Paginate
 import com.ppjun.android.smzdm.R
 import com.ppjun.android.smzdm.app.base.BaseFragView
@@ -39,7 +39,7 @@ class MainFragment : BaseFragView<MainPresenter>(), MainContract.View {
     @Inject
     lateinit var delegateAdapter: DelegateAdapter
 
-    var mainDelegateAdapter:MainDelegateAdapter ?=null
+    var mainDelegateAdapter: MainDelegateAdapter? = null
 
     var rv: PPJunRecyclerView? = null
     var swipe: SwipeRefreshLayout? = null
@@ -49,9 +49,12 @@ class MainFragment : BaseFragView<MainPresenter>(), MainContract.View {
     var adapters = ArrayList<DelegateAdapter.Adapter<*>>()
 
     override fun setMainList(isRefresh: Boolean, bannerList: List<Row>) {
-//
-        mainDelegateAdapter=MainDelegateAdapter(bannerList)
+
+
+        mainDelegateAdapter = MainDelegateAdapter(bannerList)
         adapters.add(mainDelegateAdapter!!)
+
+
         delegateAdapter.setAdapters(adapters)
         mainDelegateAdapter?.notifyDataSetChanged()
         initPaginate()
@@ -117,15 +120,26 @@ class MainFragment : BaseFragView<MainPresenter>(), MainContract.View {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun initRecyclerView() {
         rv = view?.mainViewRv
         swipe = view?.mainSwipe
         swipe?.setOnRefreshListener {
-              mPresenter.requestMainBanner()
+            mPresenter.requestMainBanner()
         }
-        //  mPresenter.requestMainList(true)
 
-
+        val toTop = view?.mainToTop
+        toTop?.visibility=View.VISIBLE
+        toTop?.setOnClickListener {
+            rv?.scrollToPosition(0)
+        }
+        /*toTop?.outlineProvider = @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+        object : ViewOutlineProvider() {
+            override fun getOutline(view: View, outline: Outline) {
+                outline.setRoundRect(0, 0, view.width, view.height,30F)
+            }
+        }
+        toTop?.clipToOutline = true*/
         rv?.layoutManager = mLayoutManager
         rv?.adapter = delegateAdapter
         mPresenter.requestMainBanner()

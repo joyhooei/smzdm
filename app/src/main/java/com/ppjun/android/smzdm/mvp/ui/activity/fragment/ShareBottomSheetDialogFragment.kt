@@ -8,15 +8,19 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Outline
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
 import android.support.design.widget.BottomSheetDialogFragment
-import android.support.v4.app.FragmentManager
+import android.support.v4.content.ContextCompat
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewOutlineProvider
+import android.widget.FrameLayout
 import android.widget.Toast
-import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
 import com.jess.arms.http.imageloader.glide.GlideArms
@@ -25,7 +29,6 @@ import com.jess.arms.utils.LogUtils
 import com.ppjun.android.smzdm.R
 import com.ppjun.android.smzdm.app.base.Constant
 import com.ppjun.android.smzdm.mvp.model.entity.Share
-import com.tencent.bugly.beta.ui.UILifecycleListener
 import com.tencent.connect.common.Constants
 import com.tencent.connect.share.QQShare
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX
@@ -35,9 +38,6 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory
 import com.tencent.tauth.IUiListener
 import com.tencent.tauth.Tencent
 import com.tencent.tauth.UiError
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.share_ui.view.*
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -45,7 +45,7 @@ import java.io.File
 
 class ShareBottomSheetDialogFragment : BottomSheetDialogFragment() {
     private var mIUListener: IUiListener? = null
-
+    lateinit var rootView:View
     companion object {
         var onWxShareListener: OnWxShareListener? = null
 
@@ -60,17 +60,31 @@ class ShareBottomSheetDialogFragment : BottomSheetDialogFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.share_ui, container, false)
-        initView(view)
-        return view
+        rootView = inflater.inflate(R.layout.share_ui, container, false)
+        initView(rootView)
+        return rootView
     }
 
+    override fun onStart() {
+        super.onStart()
+        (rootView.parent as View).setBackgroundColor(ContextCompat.getColor(rootView.context,android.R.color.transparent))
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        //super.onSaveInstanceState(outState)
+
     }
+
 
     private fun initView(view: View?) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            view?.outlineProvider=object:ViewOutlineProvider(){
+                @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+                override fun getOutline(view: View, outline: Outline) {
+                    outline.setRoundRect(0,0,view.width,view.height,30F)
+                }
+
+            }
+           // view?.clipToOutline=true
+        }
         val share = arguments?.getParcelable<Share>(Constant.KEY)
 
         view?.moreShareImg?.setOnClickListener {
@@ -224,25 +238,8 @@ class ShareBottomSheetDialogFragment : BottomSheetDialogFragment() {
         return result
     }
 
-    override fun show(manager: FragmentManager?, tag: String?) {
-        super.show(manager, tag)
-//           try {
-//            val c=Class.forName("android.support.v4.app.DialogFragment")
-//            val con = c.getConstructor()
-//            val obj = con.newInstance()
-//            val dismissed = c.getDeclaredField("mDismissed")
-//            dismissed.isAccessible=true
-//            dismissed.set(obj,false)
-//            val shownByMe = c.getDeclaredField("mShownByMe")
-//            shownByMe.isAccessible=true
-//            shownByMe.set(obj,true)
-//        } catch ( e:Exception) {
-//            e.printStackTrace()
-//        }
-//            val ft = manager?.beginTransaction()
-//            ft?.add(this, tag)
-//            ft?.commitAllowingStateLoss()
-    }
+
+
 
 }
 
