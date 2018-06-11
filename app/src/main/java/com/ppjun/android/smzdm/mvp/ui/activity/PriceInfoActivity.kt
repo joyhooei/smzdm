@@ -61,12 +61,14 @@ class PriceInfoActivity : BaseUI<PriceInfoPresenter>(), PriceInfoContract.View {
 
 
         setContentView(R.layout.price_info_ui)
-        val displayCutout = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-
-
-        } else {
-
+        priceInfoCommentLayout.setOnClickListener {
+            val resultIntent=Intent(getTheActivity(),PriceCommentActivity::class.java)
+            resultIntent.putExtra(Constant.ARTICLE_ID,info.articleId)
+            resultIntent.putExtra(Constant.ARTICLE_COUNT,info.articleComment)
+            resultIntent.putExtra(Constant.ARTICLE_TYPE,Constant.YOU_HUI)
+            startActivity(resultIntent)
         }
+
         val images = ArrayList<String>()
         if (info.articleProductFocusPicUrl.isNotEmpty()) {
             for (image in info.articleProductFocusPicUrl) {
@@ -95,14 +97,15 @@ class PriceInfoActivity : BaseUI<PriceInfoPresenter>(), PriceInfoContract.View {
         priceInfoShop.visibility = View.VISIBLE
         priceInfoTime.visibility = View.VISIBLE
         priceInfoAuthor.visibility = View.VISIBLE
-        priceInfoShop.text = if (info.articleMall.isEmpty()) "什么值得买" else info.articleMall
+        priceInfoShop.text = if (info.articleMall.isEmpty()) getString(R.string.title) else info.articleMall
         priceInfoTime.text = info.articleFormatDate
-        priceInfoAuthor.text = "爆料人：${info.articleReferrals}"
+        priceInfoAuthor.text = String.format(getString(R.string.author),info.articleReferrals)
         priceInfoTitle.text = info.articleTitle
         priceInfoPrice.text = info.articlePrice
         if (info.articlePhraseDesc.isEmpty()) {
             priceInfoDesc.height = 0
         }
+        priceInfoCommentText.text=info.articleComment
         priceInfoDesc.text = info.articlePhraseDesc
         priceInfoWorth.text = info.articleWorthy
         priceInfoUnworth.text = info.articleUnworthy

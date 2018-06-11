@@ -1,27 +1,21 @@
 package com.ppjun.android.smzdm.mvp.ui.activity
 
 import android.app.Activity
-import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
-import android.util.AttributeSet
-import android.view.View
 import android.widget.Toast
 import com.jess.arms.di.component.AppComponent
 import com.jess.arms.mvp.IPresenter
 import com.jess.arms.utils.ArmsUtils
-import com.jess.arms.utils.LogUtils
 import com.ppjun.android.smzdm.R
 import com.ppjun.android.smzdm.app.base.BaseUI
 import com.ppjun.android.smzdm.app.utils.BottomNavigationHelper
 import com.ppjun.android.smzdm.mvp.ui.activity.fragment.ArticleFragment
 import com.ppjun.android.smzdm.mvp.ui.activity.fragment.MainFragment
 import com.ppjun.android.smzdm.mvp.ui.activity.fragment.PriceFragment
-import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.include_title.*
 
 
 class MainActivity : BaseUI<IPresenter>() {

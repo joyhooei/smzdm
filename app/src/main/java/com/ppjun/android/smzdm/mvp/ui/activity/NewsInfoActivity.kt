@@ -72,6 +72,7 @@ class NewsInfoActivity : BaseUI<NewsInfoPresenter>(), NewsInfoContract.View {
 
 
     }
+
     fun share(info: NewsInfo) {
         mShareFragment = ShareBottomSheetDialogFragment()
                 .apply {
@@ -88,6 +89,14 @@ class NewsInfoActivity : BaseUI<NewsInfoPresenter>(), NewsInfoContract.View {
     }
 
     override fun showInfo(info: NewsInfo) {
+        newsInfoComment.setOnClickListener {
+            val resultIntent = Intent(getTheActivity(), PriceCommentActivity::class.java)
+            resultIntent.putExtra(Constant.ARTICLE_ID, info.articleId)
+            resultIntent.putExtra(Constant.ARTICLE_COUNT, info.articleComment)
+            resultIntent.putExtra(Constant.ARTICLE_TYPE, Constant.NEWS)
+            startActivity(resultIntent)
+
+        }
 
         setContentView(R.layout.news_info_ui)
         newsInfoCommentText.text = intent.getStringExtra(Constant.COMMENT)

@@ -17,7 +17,7 @@ interface MainService {
      * 首页Banner
      */
     @GET("/v2/util/banner?type=zdmapp&weixin=1&f=wxapp&wxapp=zdmapp")
-    fun getMainBanner(): Observable<Response<RowData<MainBanner>>>
+    fun getMainBanner(): Observable<Response<Data<MainBanner>>>
 
     /**
      * 好价列表
@@ -53,13 +53,23 @@ interface MainService {
      * 搜索好价
      */
     @GET("/v1/list?f=wxapp&wxapp=zdmapp&order=score&type=good_price")
-    fun priceSearch(@Query("keyword") keyword: String,@Query("offset") offset: Int, @Query("limit") limit: Int):
+    fun priceSearch(@Query("keyword") keyword: String, @Query("offset") offset: Int, @Query("limit") limit: Int):
             Observable<PriceList>
 
     /**
      * 搜索好文
      */
     @GET("/v1/list?f=wxapp&wxapp=zdmapp&type=yuanchuang")
-    fun articleSearch(@Query("keyword") keyword: String,@Query("offset") offset: Int, @Query("limit") limit: Int):
+    fun articleSearch(@Query("keyword") keyword: String, @Query("offset") offset: Int, @Query("limit") limit: Int):
             Observable<Response<ArticleSearch<ArticleData>>>
+
+
+    /**
+     * 评论
+     */
+    @GET("/v1/comments?f=wxapp&wxapp=zdmapp")
+    fun infoComment(@Query("article_id") articleId: String, @Query("type") type: String, @Query("offset") offset: Int,
+                    @Query("limit") limit: Int=20)
+            : Observable<Response<Data<InfoComment>>>
+
 }

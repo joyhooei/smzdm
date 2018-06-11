@@ -2,6 +2,7 @@ package com.ppjun.android.smzdm.app
 
 import android.app.Application
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Message
 import com.jess.arms.base.delegate.AppLifecycles
 import com.jess.arms.integration.AppManager
@@ -24,7 +25,11 @@ class AppLifecyclesImpl : AppLifecycles {
 
     }
 
-    override fun onCreate(application: Application?) {
+    override fun onCreate(application: Application) {
+        val config = Configuration()
+        config.setToDefaults()
+        application.resources.updateConfiguration(config, application.resources.displayMetrics)//过时了，有效，推荐使用createConfigurationContext
+
 
         Beta.enableHotfix = false
         Bugly.init(application, Constant.BUGLY_ID, false)

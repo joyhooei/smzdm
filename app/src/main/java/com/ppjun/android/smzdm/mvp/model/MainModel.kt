@@ -11,7 +11,7 @@ import com.ppjun.android.smzdm.mvp.model.api.service.MainService
 import com.ppjun.android.smzdm.mvp.model.entity.main.MainBanner
 import com.ppjun.android.smzdm.mvp.model.entity.main.MainList
 import com.ppjun.android.smzdm.mvp.model.entity.main.Response
-import com.ppjun.android.smzdm.mvp.model.entity.main.RowData
+import com.ppjun.android.smzdm.mvp.model.entity.main.Data
 
 import io.reactivex.Observable
 import io.rx_cache2.DynamicKey
@@ -22,7 +22,7 @@ import javax.inject.Inject
 
 @FragmentScope
 class MainModel @Inject constructor(mRepositoryManager:IRepositoryManager) :BaseModel(mRepositoryManager),MainContract.Model {
-    override fun getMainBanner(page: Int, boolean: Boolean): Observable<Response<RowData<MainBanner>>> {
+    override fun getMainBanner(page: Int, boolean: Boolean): Observable<Response<Data<MainBanner>>> {
         return Observable.just(mRepositoryManager.obtainRetrofitService(MainService::class.java)
                 .getMainBanner())
                 .flatMap { t ->

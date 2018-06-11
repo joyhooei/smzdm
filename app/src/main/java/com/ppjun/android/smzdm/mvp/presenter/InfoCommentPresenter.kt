@@ -2,12 +2,12 @@ package com.ppjun.android.smzdm.mvp.presenter
 
 import android.app.Application
 import com.jess.arms.base.DefaultAdapter
-import com.jess.arms.di.scope.FragmentScope
+import com.jess.arms.di.scope.ActivityScope
 import com.jess.arms.integration.AppManager
-import com.jess.arms.integration.IRepositoryManager
 import com.jess.arms.mvp.BasePresenter
+import com.jess.arms.utils.LogUtils
 import com.jess.arms.utils.RxLifecycleUtils
-import com.ppjun.android.smzdm.mvp.contract.ArticleSearchContract
+import com.ppjun.android.smzdm.mvp.contract.InfoCommentContract
 import com.ppjun.android.smzdm.mvp.model.entity.main.*
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -17,10 +17,10 @@ import me.jessyan.rxerrorhandler.handler.RetryWithDelay
 import javax.inject.Inject
 
 
-@FragmentScope
-class ArticleSearchPresenter @Inject constructor(model: ArticleSearchContract.Model
-                                                 , view: ArticleSearchContract.View) : BasePresenter<ArticleSearchContract.Model, ArticleSearchContract.View>(model, view) {
-
+@ActivityScope
+class InfoCommentPresenter @Inject constructor(model:InfoCommentContract.Model,view:InfoCommentContract.View):
+BasePresenter<InfoCommentContract.Model,InfoCommentContract.View>(model,view)
+{
     @Inject
     @JvmField
     var mErrorHandler: RxErrorHandler? = null
@@ -32,16 +32,16 @@ class ArticleSearchPresenter @Inject constructor(model: ArticleSearchContract.Mo
     var mApplication: Application? = null
     @Inject
     @JvmField
-    var mAdapter: DefaultAdapter<ArticleData>? = null
+    var mAdapter: DefaultAdapter<InfoComment>? = null
     @Inject
     @JvmField
-    var mRow: ArrayList<ArticleData>? = null
+    var mRow: ArrayList<InfoComment>? = null
     private var offset =0
     private var isFirst = true
     private var preEndIndex = 0
 
 
-    fun requestArticleList(keyword: String, pullToRefresh: Boolean) {
+    fun requestCommentList(articleId: String, type:String,pullToRefresh: Boolean) {
 
 
         if (pullToRefresh) {
@@ -50,12 +50,12 @@ class ArticleSearchPresenter @Inject constructor(model: ArticleSearchContract.Mo
 
         var isEvictCache = pullToRefresh
         if (pullToRefresh && isFirst) {
-            mRootView?.moveRVToTop()
+
             isFirst = true
             mRootView.hasLoadedAllItems(false)
             isEvictCache = false
         }
-        mModel.articleList(keyword,offset, true)
+        mModel.commentList(articleId,type,offset)
                 .subscribeOn(Schedulers.io())
                 .retryWhen(
                         RetryWithDelay(3, 2)
@@ -77,8 +77,8 @@ class ArticleSearchPresenter @Inject constructor(model: ArticleSearchContract.Mo
                     }
                 }
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
-                .subscribe(object : ErrorHandleSubscriber<Response<ArticleSearch<ArticleData>>>(mErrorHandler) {
-                    override fun onNext(result: Response<ArticleSearch<ArticleData>>) {
+                .subscribe(object : ErrorHandleSubscriber<Response<Data<InfoComment>>>(mErrorHandler) {
+                    override fun onNext(result: Response<Data<InfoComment>>) {
 
                         if(pullToRefresh&&result.data.rows.isEmpty()){
                             //empty view
@@ -96,13 +96,11 @@ class ArticleSearchPresenter @Inject constructor(model: ArticleSearchContract.Mo
                         }
                         offset += 20
                         if (pullToRefresh) {
-
                             mRow?.clear()
                         }
                         preEndIndex = requireNotNull(mRow?.size)
                         mRow?.addAll(result.data.rows)
                         if (pullToRefresh) {
-
                             mAdapter?.notifyDataSetChanged()
                         } else {
                             mAdapter?.notifyItemRangeInserted(preEndIndex, result.data.rows.size)
@@ -115,6 +113,7 @@ class ArticleSearchPresenter @Inject constructor(model: ArticleSearchContract.Mo
 
                 })
     }
+
 
     override fun onDestroy() {
         super.onDestroy()

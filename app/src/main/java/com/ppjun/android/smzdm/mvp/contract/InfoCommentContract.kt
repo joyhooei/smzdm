@@ -7,20 +7,18 @@ import com.ppjun.android.smzdm.mvp.model.entity.main.*
 import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.Observable
 
-interface MainContract {
-
-
+class InfoCommentContract {
     interface View : IView {
-        fun setBanner(bannerList:ArrayList<MainBanner>)
-        fun setMainList(isRefresh:Boolean,bannerList:List<Row>)
         fun startLoadMore()
         fun endLoadMore()
+        fun setEmptyView()
         fun getTheActivity(): Activity
         fun getRxPermission(): RxPermissions
+        fun hasLoadedAllItems(isLoadedAll:Boolean)
+
+    }
+    interface Model : IModel {
+        fun commentList(articleId: String, type: String ,page: Int): Observable<Response<Data<InfoComment>>>
     }
 
-    interface Model : IModel {
-        fun getMain(page: Int, boolean: Boolean): Observable<MainList>
-        fun getMainBanner(page: Int, boolean: Boolean): Observable<Response<Data<MainBanner>>>
-    }
 }

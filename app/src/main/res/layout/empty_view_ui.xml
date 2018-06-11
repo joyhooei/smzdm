@@ -9,7 +9,7 @@
         android:layout_centerHorizontal="true"
 
         android:layout_alignParentTop="true"
-        android:text="银不了，莓戏了"
+        android:text="@string/no_data"
         android:textSize="40px"
         android:textColor="@color/black"
         android:layout_marginTop="150px"

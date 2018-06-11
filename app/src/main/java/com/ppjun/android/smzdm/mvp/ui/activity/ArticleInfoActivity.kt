@@ -77,6 +77,14 @@ class ArticleInfoActivity : BaseUI<ArticleInfoPresenter>(), ArticleInfoContract.
         setContentView(R.layout.article_info_ui)
         articleInfoCollectText.text = intent.getStringExtra(Constant.COLLECT)
         articleInfoCommentText.text = intent.getStringExtra(Constant.COMMENT)
+        articleInfoComment.setOnClickListener {
+            val resultIntent=Intent(getTheActivity(),PriceCommentActivity::class.java)
+            resultIntent.putExtra(Constant.ARTICLE_ID,info.articleId)
+            resultIntent.putExtra(Constant.ARTICLE_COUNT,info.articleComment)
+            resultIntent.putExtra(Constant.ARTICLE_TYPE,Constant.YUAN_CHUANG)
+            startActivity(resultIntent)
+        }
+
         articleInfoTop.setOnClickListener {
             articleInfoScroll.smoothScrollTo(0, 0)
         }

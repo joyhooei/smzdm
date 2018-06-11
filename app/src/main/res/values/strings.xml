@@ -10,4 +10,8 @@
     <string name="exit_tip">再按一次退出</string>
     <string name="clip_tip">已复制到粘贴板</string>
     <string name="share_success">分享成功</string>
+    <string name="comment">评论</string>
+    <string name="comment_s">评论（%s）</string>
+    <string name="no_data">噫，什么都没找到 :)</string>
+    <string name="author">爆料人：%s</string>
 </resources>

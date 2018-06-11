@@ -12,9 +12,10 @@ interface CommonCache {
     @LifeCache(timeUnit = TimeUnit.MINUTES, duration = 2)
     fun getMainList(response: Observable<MainList>, page: DynamicKey, evictProvider: EvictDynamicKey)
             : Observable<Reply<MainList>>
+
     @LifeCache(timeUnit = TimeUnit.MINUTES, duration = 2)
-    fun getMainBanner(response: Observable<Response<RowData<MainBanner>>>, page: DynamicKey, evictProvider: EvictDynamicKey)
-            : Observable<Reply<Response<RowData<MainBanner>>>>
+    fun getMainBanner(response: Observable<Response<Data<MainBanner>>>, page: DynamicKey, evictProvider: EvictDynamicKey)
+            : Observable<Reply<Response<Data<MainBanner>>>>
 
     @LifeCache(timeUnit = TimeUnit.MINUTES, duration = 2)
     fun priceList(response: Observable<PriceList>, page: DynamicKey, evictProvider: EvictDynamicKey)
@@ -46,4 +47,10 @@ interface CommonCache {
     @LifeCache(timeUnit = TimeUnit.MINUTES, duration = 2)
     fun articleSearch(response: Observable<Response<ArticleSearch<ArticleData>>>, page: DynamicKey, evictProvider: EvictDynamicKey)
             : Observable<Reply<Response<ArticleSearch<ArticleData>>>>
+
+    @LifeCache(timeUnit = TimeUnit.MINUTES, duration = 2)
+    fun infoComment(response: Observable<Response<Data<InfoComment>>>, page: DynamicKey, evictProvider: EvictDynamicKey)
+            : Observable<Reply<Response<Data<InfoComment>>>>
+
+
 }

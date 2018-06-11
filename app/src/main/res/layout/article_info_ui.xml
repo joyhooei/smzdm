@@ -33,17 +33,17 @@
             android:id="@+id/articleInfoCollect"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginRight="30px"
             android:layout_toRightOf="@+id/articleInfoShareImg"
             android:background="?selectableItemBackground"
-            android:paddingLeft="20px"
-            android:paddingRight="20px">
+            android:paddingLeft="10px"
+            android:paddingRight="10px">
 
             <ImageView
                 android:id="@+id/articleInfoCollectImg"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:paddingBottom="40px"
-                android:paddingRight="20px"
                 android:paddingTop="40px"
                 android:src="@drawable/ic_star_black_24dp" />
 
@@ -52,9 +52,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
+                android:layout_marginLeft="10px"
                 android:layout_toRightOf="@+id/articleInfoCollectImg"
                 android:gravity="left|center_vertical"
-                android:minWidth="80px"
+
                 android:textColor="@color/greyBlack"
                 android:textSize="35px"
                 tools:text="1" />
@@ -65,17 +66,18 @@
             android:id="@+id/articleInfoComment"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginRight="30px"
             android:layout_toRightOf="@+id/articleInfoCollect"
             android:background="?selectableItemBackground"
-            android:paddingLeft="20px"
-            android:paddingRight="20px">
+            android:paddingLeft="10px"
+            android:paddingRight="10px">
 
             <ImageView
                 android:id="@+id/articleInfoCommemtImg"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:paddingBottom="40px"
-                android:paddingRight="20px"
+
                 android:paddingTop="40px"
                 android:src="@drawable/ic_article_24dp" />
 
@@ -86,7 +88,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/articleInfoCollectImg"
                 android:gravity="left|center_vertical"
-                android:minWidth="80px"
+                android:paddingLeft="10px"
                 android:textColor="@color/greyBlack"
                 android:textSize="35px"
                 tools:text="2" />

@@ -8,10 +8,10 @@ data class PriceList(
 		@SerializedName("error_msg") val errorMsg: String = "",
 		@SerializedName("smzdm_id") val smzdmId: String = "",
 		@SerializedName("s") val s: String = "",
-		@SerializedName("data") val data: Data = Data()
+		@SerializedName("data") val data: PriceData = PriceData()
 )
 
-data class Data(
+data class PriceData(
 		@SerializedName("rows") val rows: List<PriceRow> = listOf(),
 		@SerializedName("total") val total: String = "",
 		@SerializedName("promotion_num") val promotionNum: String = "",

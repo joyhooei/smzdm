@@ -2,112 +2,115 @@
 <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <RelativeLayout
-        android:background="@color/bottom"
         android:id="@+id/newsShareLayout"
         android:layout_width="match_parent"
         android:layout_height="130px"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:background="@color/bottom">
 
 
         <ImageView
 
-            android:foreground="?selectableItemBackgroundBorderless"
             android:id="@+id/newsInfoShareImg"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
+            android:foreground="?selectableItemBackgroundBorderless"
+            android:paddingBottom="40px"
             android:paddingLeft="40px"
             android:paddingRight="40px"
             android:paddingTop="40px"
-            android:paddingBottom="40px"
             android:src="@drawable/ic_share_black_24dp" />
 
         <LinearLayout
             android:id="@+id/newsInfoLoveount"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginRight="30px"
             android:layout_toRightOf="@+id/newsInfoShareImg"
             android:background="?selectableItemBackground"
-            android:paddingLeft="20px"
-            android:paddingRight="20px">
+            android:paddingLeft="10px"
+            android:paddingRight="10px">
 
             <ImageView
-                android:paddingTop="40px"
-                android:paddingBottom="40px"
-                android:paddingRight="20px"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:paddingBottom="40px"
+                android:paddingTop="40px"
 
                 android:src="@drawable/ic_thumb_up_black_24dp" />
 
             <TextView
-                android:minWidth="80px"
                 android:id="@+id/newsInfoLoveountText"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
+                android:layout_marginLeft="10px"
                 android:layout_toRightOf="@+id/articleInfoCollectImg"
                 android:gravity="left|center_vertical"
-                tools:text="1"
                 android:textColor="@color/greyBlack"
-                android:textSize="35px" />
+                android:textSize="35px"
+                tools:text="1" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:foreground="?selectableItemBackground"
             android:id="@+id/newsInfoComment"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginRight="30px"
             android:layout_toRightOf="@+id/newsInfoLoveount"
             android:background="?selectableItemBackground"
-            android:paddingLeft="20px"
-            android:paddingRight="20px">
+            android:paddingLeft="10px"
+            android:paddingRight="10px">
 
             <ImageView
-                android:paddingTop="40px"
-                android:paddingBottom="40px"
-                android:paddingRight="20px"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:paddingBottom="40px"
+
+                android:paddingTop="40px"
 
                 android:src="@drawable/ic_article_24dp" />
 
             <TextView
                 android:id="@+id/newsInfoCommentText"
-                android:minWidth="80px"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
+                android:layout_marginLeft="10px"
                 android:gravity="left|center_vertical"
-                tools:text="2"
                 android:textColor="@color/greyBlack"
-                android:textSize="35px" />
+                android:textSize="35px"
+                tools:text="2" />
 
         </LinearLayout>
 
 
         <ImageView
-            android:foreground="?selectableItemBackgroundBorderless"
             android:id="@+id/newsInfoTop"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
+            android:foreground="?selectableItemBackgroundBorderless"
             android:paddingLeft="40px"
             android:paddingRight="40px"
             android:src="@drawable/ic_arrow_upward_black_24dp" />
     </RelativeLayout>
+
     <com.jess.arms.widget.autolayout.AutoScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
         android:id="@+id/newsInfoScroll"
-        android:layout_above="@+id/newsShareLayout"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/newsShareLayout"
 
 
         android:scrollbars="none">
@@ -126,8 +129,8 @@
                 android:id="@+id/newsInfoBanner"
                 android:layout_width="match_parent"
                 android:layout_height="600px"
-                android:background="@color/white"
                 android:layout_below="@+id/toolbar"
+                android:background="@color/white"
                 app:pp_imageViewScaleType="FIT_CENTER"
                 app:pp_indicatorGravity="right"
                 app:pp_indicatorSelectedSrc="@color/colorAccent"
@@ -169,21 +172,21 @@
 
 
             <TextView
-                android:visibility="gone"
                 android:id="@+id/newsInfoTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/newsInfoAuthor"
-
                 android:layout_alignTop="@+id/newsInfoAuthor"
 
                 android:layout_below="@+id/newsInfoBanner"
+
                 android:layout_marginLeft="20px"
                 android:layout_toRightOf="@+id/newsInfoAuthor"
                 android:background="@drawable/shape_pink"
                 android:padding="10px"
                 android:textColor="@color/white"
                 android:textSize="30px"
+                android:visibility="gone"
 
                 tools:text="@string/app_name" />
 
@@ -217,7 +220,6 @@
 
 
     </com.jess.arms.widget.autolayout.AutoScrollView>
-
 
 
 </com.zhy.autolayout.AutoRelativeLayout>

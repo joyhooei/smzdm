@@ -7,19 +7,13 @@ import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
 import com.alibaba.android.vlayout.DelegateAdapter
-import com.jess.arms.base.DefaultAdapter
 import com.jess.arms.di.scope.FragmentScope
 import com.jess.arms.integration.AppManager
 import com.jess.arms.mvp.BasePresenter
-import com.jess.arms.utils.PermissionUtil
 import com.jess.arms.utils.RxLifecycleUtils
 import com.ppjun.android.smzdm.app.base.Constant
 import com.ppjun.android.smzdm.mvp.contract.MainContract
 import com.ppjun.android.smzdm.mvp.model.entity.main.*
-import com.ppjun.android.smzdm.mvp.ui.activity.MainActivity
-import com.ppjun.android.smzdm.mvp.ui.widget.HeaderAndFooterWrapper
-import com.tencent.bugly.Bugly
-import com.tencent.bugly.beta.Beta
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import me.jessyan.rxerrorhandler.core.RxErrorHandler
@@ -73,8 +67,8 @@ class MainPresenter @Inject constructor(model: MainContract.Model, view: MainCon
 
                 }
                 .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
-                .subscribe(object : ErrorHandleSubscriber<Response<RowData<MainBanner>>>(mErrorHandler) {
-                    override fun onNext(result: Response<RowData<MainBanner>>) {
+                .subscribe(object : ErrorHandleSubscriber<Response<Data<MainBanner>>>(mErrorHandler) {
+                    override fun onNext(result: Response<Data<MainBanner>>) {
                       mRootView.setBanner(result.data.rows)
                     }
                 })

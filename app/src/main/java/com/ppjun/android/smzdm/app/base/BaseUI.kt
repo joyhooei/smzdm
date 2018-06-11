@@ -2,12 +2,10 @@ package com.ppjun.android.smzdm.app.base
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.View
 import butterknife.ButterKnife
 import butterknife.Unbinder
 import com.jess.arms.base.delegate.IActivity
-import com.jess.arms.di.component.AppComponent
 import com.jess.arms.integration.cache.Cache
 import com.jess.arms.integration.cache.CacheType
 import com.jess.arms.integration.lifecycle.ActivityLifecycleable
@@ -21,7 +19,6 @@ import com.zhy.autolayout.AutoLayoutActivity
 import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.Subject
 import kotlinx.android.synthetic.main.include_title.*
-import java.util.*
 import javax.inject.Inject
 
 @Suppress("UNCHECKED_CAST")
