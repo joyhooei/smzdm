@@ -30,5 +30,28 @@ data class InfoComment(
     @SerializedName("from_client") val fromClient: String = "",
     @SerializedName("from_client_version") val fromClientVersion: String = "",
     @SerializedName("from_client_uri") val fromClientUri: String = "",
-    @SerializedName("from_client_suff") val fromClientSuff: String = ""
+    @SerializedName("from_client_suff") val fromClientSuff: String = "",
+    @SerializedName("parent_data") val parentData: ArrayList<CommentParent> = arrayListOf()
+)
+data class CommentParent(
+    @SerializedName("comment_ID") val commentID: String = "",
+    @SerializedName("user_smzdm_id") val userSmzdmId: String = "",
+    @SerializedName("comment_author") val commentAuthor: String = "",
+    @SerializedName("comment_content") val commentContent: String = "",
+    @SerializedName("support_count") val supportCount: String = "",
+    @SerializedName("oppose_count") val opposeCount: String = "",
+    @SerializedName("comment_date") val commentDate: String = "",
+    @SerializedName("format_date") val formatDate: String = "",
+    @SerializedName("format_date_client") val formatDateClient: String = "",
+    @SerializedName("ding_class") val dingClass: String = "",
+    @SerializedName("depth") val depth: String = "",
+    @SerializedName("post_author") val postAuthor: String = "",
+    @SerializedName("level") val level: String = "",
+    @SerializedName("head") val head: String = "",
+    @SerializedName("official") val official: String = "",
+    @SerializedName("level_logo") val levelLogo: String = "",
+    @SerializedName("have_current_user") val haveCurrentUser: String = "",
+    @SerializedName("is_anonymous") val isAnonymous: String = ""
+
+
 )

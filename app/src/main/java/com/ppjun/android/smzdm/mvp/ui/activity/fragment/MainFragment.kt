@@ -27,6 +27,7 @@ import com.ppjun.android.smzdm.mvp.ui.viewbinder.BannerDelegateAdapter
 import com.ppjun.android.smzdm.mvp.ui.viewbinder.MainDelegateAdapter
 import com.ppjun.android.smzdm.mvp.ui.widget.PPJunRecyclerView
 import com.tbruyelle.rxpermissions2.RxPermissions
+import io.reactivex.Observable
 import kotlinx.android.synthetic.main.main_rv.view.*
 import javax.inject.Inject
 
@@ -120,8 +121,8 @@ class MainFragment : BaseFragView<MainPresenter>(), MainContract.View {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun initRecyclerView() {
+
         rv = view?.mainViewRv
         swipe = view?.mainSwipe
         swipe?.setOnRefreshListener {
@@ -133,13 +134,7 @@ class MainFragment : BaseFragView<MainPresenter>(), MainContract.View {
         toTop?.setOnClickListener {
             rv?.scrollToPosition(0)
         }
-        /*toTop?.outlineProvider = @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-        object : ViewOutlineProvider() {
-            override fun getOutline(view: View, outline: Outline) {
-                outline.setRoundRect(0, 0, view.width, view.height,30F)
-            }
-        }
-        toTop?.clipToOutline = true*/
+
         rv?.layoutManager = mLayoutManager
         rv?.adapter = delegateAdapter
         mPresenter.requestMainBanner()

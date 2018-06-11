@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ppjun.android.smzdm.mvp.ui.widget.AutoConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/commentUserImg"
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:layout_marginLeft="30px"
+        android:layout_marginTop="30px"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+
+    <TextView
+        android:id="@+id/commentUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30px"
+        android:layout_marginTop="60px"
+        android:textColor="@color/black"
+        android:textSize="40px"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@+id/commentUserImg"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="name" />
+
+
+    <TextView
+        android:id="@+id/commentUserContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="30px"
+        android:layout_marginLeft="30px"
+        android:layout_marginRight="30px"
+        android:layout_marginTop="30px"
+        android:gravity="left"
+        android:textSize="40px"
+
+        app:layout_constraintLeft_toLeftOf="@+id/commentUserImg"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/commentUserImg"
+        tools:text="name" />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/commentParentRV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintLeft_toLeftOf="@+id/commentUserContent"
+        app:layout_constraintRight_toRightOf="@+id/commentUserContent"
+        app:layout_constraintTop_toBottomOf="@+id/commentUserContent" />
+
+
+    <TextView
+        android:id="@+id/commentInfoTime"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginRight="30px"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/commentUserName"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/commentUserName"
+        tools:text="09:80" />
+
+
+</com.ppjun.android.smzdm.mvp.ui.widget.AutoConstraintLayout>
+

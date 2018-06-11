@@ -1,13 +1,9 @@
 package com.ppjun.android.smzdm.mvp.ui.holder
 
 import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
-import android.graphics.drawable.DrawableWrapper
-import android.os.Handler
 import android.support.v7.widget.LinearLayoutManager
 import android.text.Html
-import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
 import com.jess.arms.base.BaseHolder
@@ -15,16 +11,14 @@ import com.jess.arms.di.component.AppComponent
 import com.jess.arms.http.imageloader.ImageLoader
 import com.jess.arms.http.imageloader.glide.GlideArms
 import com.jess.arms.utils.ArmsUtils
-import com.jess.arms.utils.LogUtils
-import com.ppjun.android.smzdm.mvp.model.entity.main.ArticleData
+import com.ppjun.android.smzdm.mvp.model.entity.main.CommentParent
 import com.ppjun.android.smzdm.mvp.model.entity.main.InfoComment
-import com.ppjun.android.smzdm.mvp.ui.adapter.CommentParentAdapter
 import kotlinx.android.synthetic.main.item_info_comment.view.*
 
-class CommentHolder(itemView: android.view.View) : BaseHolder<InfoComment>(itemView) {
+class CommentParentHolder (itemView: android.view.View) : BaseHolder<CommentParent>(itemView) {
     private var mAppComponent: AppComponent = ArmsUtils.obtainAppComponentFromContext(itemView.context)
     private var mImageLoader: ImageLoader = mAppComponent.imageLoader()
-    override fun setData(data: InfoComment?, position: Int) {
+    override fun setData(data: CommentParent?, position: Int) {
         val commentUserImg = itemView.commentUserImg
         val commentUserName = itemView.commentUserName
         val commentUserContent = itemView.commentUserContent
@@ -32,7 +26,7 @@ class CommentHolder(itemView: android.view.View) : BaseHolder<InfoComment>(itemV
         val commentInfoTime = itemView.commentInfoTime
         val commentParentRV=itemView.commentParentRV
         commentUserName.text = data?.commentAuthor
-        commentInfoFloor.text = data?.floor
+
         commentInfoTime.text = data?.formatDateClient
 
         commentUserContent.text = Html.fromHtml(data?.commentContent, object : Html.ImageGetter {
@@ -60,12 +54,7 @@ class CommentHolder(itemView: android.view.View) : BaseHolder<InfoComment>(itemV
 
 
 
-        if(data?.parentData!!.isNotEmpty()){
-            commentParentRV.layoutManager=LinearLayoutManager(itemView.context
-                    , LinearLayoutManager.VERTICAL, false)
-            commentParentRV.adapter= CommentParentAdapter(data?.parentData)
-            commentParentRV.isNestedScrollingEnabled=false
-        }
+
     }
 
 

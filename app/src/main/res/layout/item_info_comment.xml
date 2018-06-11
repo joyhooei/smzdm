@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="1px"
-
+    android:layout_margin="10px"
     >
 
     <com.ppjun.android.smzdm.mvp.ui.widget.AutoConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -43,17 +42,26 @@
             android:id="@+id/commentUserContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30px"
+            android:paddingBottom="30px"
             android:layout_marginLeft="30px"
             android:layout_marginRight="30px"
             android:layout_marginTop="30px"
             android:gravity="left"
             android:textSize="40px"
-            app:layout_constraintBottom_toBottomOf="parent"
+
             app:layout_constraintLeft_toLeftOf="@+id/commentUserImg"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/commentUserImg"
             tools:text="name" />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginLeft="100px"
+            android:id="@+id/commentParentRV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/commentUserContent"
+    />
 
 
         <TextView
@@ -68,14 +76,13 @@
             tools:text="09:80" />
 
         <TextView
+            android:id="@+id/commentInfoFloor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/commentInfoFloor"
-            tools:text="1L"
+            android:layout_marginRight="30px"
             app:layout_constraintRight_toLeftOf="@+id/commentInfoTime"
             app:layout_constraintTop_toTopOf="@+id/commentInfoTime"
-            android:layout_marginRight="30px"
-            />
+            tools:text="1L" />
 
 
     </com.ppjun.android.smzdm.mvp.ui.widget.AutoConstraintLayout>
