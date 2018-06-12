@@ -18,9 +18,9 @@ import javax.inject.Inject
 
 
 @ActivityScope
-class InfoCommentPresenter @Inject constructor(model:InfoCommentContract.Model,view:InfoCommentContract.View):
-BasePresenter<InfoCommentContract.Model,InfoCommentContract.View>(model,view)
-{
+class InfoCommentPresenter @Inject constructor(model: InfoCommentContract.Model, view: InfoCommentContract.View) :
+        BasePresenter<InfoCommentContract.Model, InfoCommentContract.View>(model, view) {
+    var isEmptyView = false
     @Inject
     @JvmField
     var mErrorHandler: RxErrorHandler? = null
@@ -36,12 +36,12 @@ BasePresenter<InfoCommentContract.Model,InfoCommentContract.View>(model,view)
     @Inject
     @JvmField
     var mRow: ArrayList<InfoComment>? = null
-    private var offset =0
+    private var offset = 0
     private var isFirst = true
     private var preEndIndex = 0
 
 
-    fun requestCommentList(articleId: String, type:String,pullToRefresh: Boolean) {
+    fun requestCommentList(articleId: String, type: String, pullToRefresh: Boolean) {
 
 
         if (pullToRefresh) {
@@ -55,7 +55,7 @@ BasePresenter<InfoCommentContract.Model,InfoCommentContract.View>(model,view)
             mRootView.hasLoadedAllItems(false)
             isEvictCache = false
         }
-        mModel.commentList(articleId,type,offset)
+        mModel.commentList(articleId, type, offset)
                 .subscribeOn(Schedulers.io())
                 .retryWhen(
                         RetryWithDelay(3, 2)
@@ -80,14 +80,15 @@ BasePresenter<InfoCommentContract.Model,InfoCommentContract.View>(model,view)
                 .subscribe(object : ErrorHandleSubscriber<Response<Data<InfoComment>>>(mErrorHandler) {
                     override fun onNext(result: Response<Data<InfoComment>>) {
 
-                        if(pullToRefresh&&result.data.rows.isEmpty()){
+                        if (pullToRefresh && result.data.rows.isEmpty()) {
                             //empty view
                             mRow?.clear()
+                            isEmptyView = true
                             mAdapter?.notifyDataSetChanged()
                             mRootView.setEmptyView()
                             return
                         }
-                        if(!pullToRefresh&&result.data.rows.isEmpty()){
+                        if (!pullToRefresh && result.data.rows.isEmpty()) {
                             // loaded all data
                             mRootView.endLoadMore()
                             mRootView.showMessage("没有更多数据了")
@@ -105,7 +106,7 @@ BasePresenter<InfoCommentContract.Model,InfoCommentContract.View>(model,view)
                         } else {
                             mAdapter?.notifyItemRangeInserted(preEndIndex, result.data.rows.size)
                         }
-                        if(pullToRefresh&&result.data.rows.size<10){
+                        if (pullToRefresh && result.data.rows.size < 10) {
                             mRootView.endLoadMore()
                             mRootView.hasLoadedAllItems(true)
                         }
@@ -113,6 +114,8 @@ BasePresenter<InfoCommentContract.Model,InfoCommentContract.View>(model,view)
 
                 })
     }
+
+
 
 
     override fun onDestroy() {

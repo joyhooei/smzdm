@@ -84,7 +84,7 @@ class PriceCommentActivity : BaseUI<InfoCommentPresenter>(), InfoCommentContract
     override fun hideLoading() {
 
         swipe?.isRefreshing = false
-        if (mainToTop.visibility == View.GONE) {
+        if (mainToTop.visibility == View.GONE&&mPresenter.isEmptyView.not()) {
             toolbarTitle.text = String.format(getString(R.string.comment_s), intent.getStringExtra(Constant.ARTICLE_COUNT))
             mainToTop.visibility = View.VISIBLE
             mainToTop.setOnClickListener {
@@ -122,11 +122,10 @@ class PriceCommentActivity : BaseUI<InfoCommentPresenter>(), InfoCommentContract
 
         mArticleId = intent.getStringExtra(Constant.ARTICLE_ID)
         mType = intent.getStringExtra(Constant.ARTICLE_TYPE)
-        LogUtils.debugInfo("debug=", mArticleId)
         initRecyclerView()
         rv?.adapter = mAdapter
         initPaginate()
-        mPresenter.requestCommentList(mArticleId,mType, true)
+        mPresenter.requestCommentList(mArticleId, mType, true)
 
     }
 
@@ -135,7 +134,7 @@ class PriceCommentActivity : BaseUI<InfoCommentPresenter>(), InfoCommentContract
             val callbacks = object : Paginate.Callbacks {
                 override fun onLoadMore() {
                     if (mAdapter.infos.size > 4)
-                        mPresenter.requestCommentList(mArticleId,mType, false)
+                        mPresenter.requestCommentList(mArticleId, mType, false)
                 }
 
                 override fun isLoading(): Boolean {
