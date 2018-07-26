@@ -13,32 +13,12 @@ import okhttp3.*
 import java.io.IOException
 
 class SplashActivity : BaseUI<IPresenter>() {
+
+
     override fun initData(savedInstanceState: Bundle?) {
-        splashLottieView.addAnimatorListener(object : Animator.AnimatorListener {
-            override fun onAnimationRepeat(animation: Animator?) {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
 
-
-            }
-
-            override fun onAnimationEnd(animation: Animator?) {
-                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-                finish()
-            }
-
-            override fun onAnimationCancel(animation: Animator?) {
-            }
-
-            override fun onAnimationStart(animation: Animator?) {
-            }
-
-
-        })
-        splashLottieView.addAnimatorUpdateListener(object : ValueAnimator.AnimatorUpdateListener {
-            override fun onAnimationUpdate(animation: ValueAnimator?) {
-
-            }
-
-        })
 
     }
 
@@ -48,6 +28,7 @@ class SplashActivity : BaseUI<IPresenter>() {
     }
 
     override fun initView(savedInstanceState: Bundle?): Int {
+        intent.putExtra("isInitToolbar", false)
         return R.layout.splash_ui
 
     }

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
+import android.util.SparseArray
 import android.widget.Toast
 import com.jess.arms.di.component.AppComponent
 import com.jess.arms.mvp.IPresenter
@@ -114,6 +115,8 @@ class MainActivity : BaseUI<IPresenter>() {
 
     override fun onBackPressed() {
 
+
+
         if (System.currentTimeMillis() - firstTimeStamp > 2000) {
 
             ArmsUtils.snackbarText(getString(R.string.exit_tip))
@@ -128,4 +131,6 @@ class MainActivity : BaseUI<IPresenter>() {
     private fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
         Toast.makeText(this, message, duration).show()
     }
+
+
 }

@@ -56,15 +56,15 @@ abstract class BaseUI<P : IPresenter> : AutoLayoutActivity(), IActivity, Activit
 
 
     fun setToolbarPadding() {
-        toolbar.setPadding(0, StatusUtils.getStatusBarHeight(this), 0, 0)
+        toolbar?.setPadding(0, StatusUtils.getStatusBarHeight(this), 0, 0)
     }
 
     fun setBackInvisible() {
-        toolBack.visibility = View.GONE
+        toolBack?.visibility = View.GONE
     }
 
     fun setToolBarGone() {
-        toolbar.visibility = View.GONE
+        toolbar?.visibility = View.GONE
     }
 
 
