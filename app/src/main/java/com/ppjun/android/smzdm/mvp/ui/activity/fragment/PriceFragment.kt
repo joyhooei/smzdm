@@ -19,6 +19,7 @@ import com.ppjun.android.smzdm.di.module.PriceListModule
 import com.ppjun.android.smzdm.mvp.contract.PriceContract
 import com.ppjun.android.smzdm.mvp.model.entity.main.PriceRow
 import com.ppjun.android.smzdm.mvp.presenter.PriceListPresenter
+import com.ppjun.android.smzdm.mvp.ui.adapter.BottomLoadingCreator
 import com.ppjun.android.smzdm.mvp.ui.widget.PPJunRecyclerView
 import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.main_rv.view.*
@@ -66,6 +67,7 @@ class PriceFragment : BaseFragView<PriceListPresenter>(), PriceContract.View {
 
             mPaginate = Paginate.with(rv, callbacks)
                     .setLoadingTriggerThreshold(0)
+                    .setLoadingListItemCreator(BottomLoadingCreator())
                     .build()
             mPaginate?.setHasMoreDataToLoad(false)
         }

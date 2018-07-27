@@ -176,6 +176,7 @@ class PriceInfoActivity : BaseUI<PriceInfoPresenter>(), PriceInfoContract.View {
     }
 
     override fun initView(savedInstanceState: Bundle?): Int {
+        intent.putExtra("isInitToolbar", true)
         return R.layout.loading
     }
 

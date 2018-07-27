@@ -26,9 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <include
-                layout="@layout/include_title"
-                android:visibility="gone" />
+
 
             <com.ppjun.android.ppbannerview.PPBannerView
                 android:id="@+id/priceInfoBanner"
@@ -283,6 +281,4 @@
             android:textColor="@color/white"
             android:textSize="38px" />
     </RelativeLayout>
-</com.zhy.autolayout.AutoRelativeLayout><!--<include--><!--layout="@layout/share_ui"/>-->
-
-    <!--</android.support.design.widget.CoordinatorLayout>-->
+</com.zhy.autolayout.AutoRelativeLayout>

@@ -49,6 +49,7 @@ class NewsInfoActivity : BaseUI<NewsInfoPresenter>(), NewsInfoContract.View {
     }
 
     override fun initView(savedInstanceState: Bundle?): Int {
+        intent.putExtra("isInitToolbar", true)
         return R.layout.loading
     }
 

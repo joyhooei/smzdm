@@ -15,6 +15,7 @@ import com.jess.arms.base.DefaultAdapter
 import com.jess.arms.di.component.AppComponent
 import com.jess.arms.utils.ArmsUtils
 import com.paginate.Paginate
+import com.paginate.recycler.LoadingListItemCreator
 import com.ppjun.android.smzdm.R
 import com.ppjun.android.smzdm.app.base.BaseFragView
 import com.ppjun.android.smzdm.di.component.DaggerMainComponent
@@ -23,6 +24,7 @@ import com.ppjun.android.smzdm.mvp.contract.MainContract
 import com.ppjun.android.smzdm.mvp.model.entity.main.MainBanner
 import com.ppjun.android.smzdm.mvp.model.entity.main.Row
 import com.ppjun.android.smzdm.mvp.presenter.MainPresenter
+import com.ppjun.android.smzdm.mvp.ui.adapter.BottomLoadingCreator
 import com.ppjun.android.smzdm.mvp.ui.viewbinder.BannerDelegateAdapter
 import com.ppjun.android.smzdm.mvp.ui.viewbinder.MainDelegateAdapter
 import com.ppjun.android.smzdm.mvp.ui.widget.PPJunRecyclerView
@@ -116,8 +118,11 @@ class MainFragment : BaseFragView<MainPresenter>(), MainContract.View {
 
             mPaginate = Paginate.with(rv, callbacks)
                     .setLoadingTriggerThreshold(2)
+                    .setLoadingListItemCreator(BottomLoadingCreator())
                     .build()
             mPaginate?.setHasMoreDataToLoad(false)
+
+
         }
     }
 

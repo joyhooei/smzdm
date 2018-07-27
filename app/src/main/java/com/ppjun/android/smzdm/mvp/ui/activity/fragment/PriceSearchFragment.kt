@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +24,7 @@ import com.ppjun.android.smzdm.mvp.contract.PriceSearchContract
 import com.ppjun.android.smzdm.mvp.model.entity.main.PriceRow
 import com.ppjun.android.smzdm.mvp.presenter.PriceSearchPresenter
 import com.ppjun.android.smzdm.mvp.ui.activity.SearchResultActivity
+import com.ppjun.android.smzdm.mvp.ui.adapter.BottomLoadingCreator
 import com.ppjun.android.smzdm.mvp.ui.widget.PPJunRecyclerView
 import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.main_rv.view.*
@@ -78,10 +80,10 @@ class PriceSearchFragment : BaseFragView<PriceSearchPresenter>(), PriceSearchCon
         initRecyclerView()
         rv?.adapter = mAdapter
         initPaginate()
-        val aa = activity as SearchResultActivity
-        aa.setOnPriceSearchListener(object : SearchResultActivity.OnPriceSearchListener {
+        val searchUI = activity as SearchResultActivity
+        searchUI.setOnPriceSearchListener(object : SearchResultActivity.OnPriceSearchListener {
             override fun search(keyword: String) {
-                LogUtils.debugInfo("keyword=", "pricekeyword="+keyword)
+
                 mKeyword = keyword
                 if (mKeyword.isNotEmpty())
                     mPresenter.requestPriceList(mKeyword, true)
@@ -105,15 +107,14 @@ class PriceSearchFragment : BaseFragView<PriceSearchPresenter>(), PriceSearchCon
                 }
 
                 override fun hasLoadedAllItems(): Boolean {
-//                    if(mAdapter.infos.isEmpty()){
-//                      return true
-//                    }
+
                     return isLoadedAll
                 }
             }
             //0个到底了就触发
             mPaginate = Paginate.with(rv, callbacks)
                     .setLoadingTriggerThreshold(0)
+                    .setLoadingListItemCreator(BottomLoadingCreator())
                     .build()
             mPaginate?.setHasMoreDataToLoad(false)
         }

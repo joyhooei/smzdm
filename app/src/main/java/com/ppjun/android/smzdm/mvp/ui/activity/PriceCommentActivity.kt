@@ -21,6 +21,7 @@ import com.ppjun.android.smzdm.di.module.PriceCommentModule
 import com.ppjun.android.smzdm.mvp.contract.InfoCommentContract
 import com.ppjun.android.smzdm.mvp.model.entity.main.InfoComment
 import com.ppjun.android.smzdm.mvp.presenter.InfoCommentPresenter
+import com.ppjun.android.smzdm.mvp.ui.adapter.BottomLoadingCreator
 import com.ppjun.android.smzdm.mvp.ui.widget.PPJunRecyclerView
 import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.include_title.*
@@ -150,6 +151,7 @@ class PriceCommentActivity : BaseUI<InfoCommentPresenter>(), InfoCommentContract
             //0个到底了就触发
             mPaginate = Paginate.with(rv, callbacks)
                     .setLoadingTriggerThreshold(0)
+                    .setLoadingListItemCreator(BottomLoadingCreator())
                     .build()
             mPaginate?.setHasMoreDataToLoad(false)
         }

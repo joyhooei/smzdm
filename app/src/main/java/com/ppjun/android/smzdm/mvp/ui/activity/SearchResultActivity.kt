@@ -1,14 +1,13 @@
 package com.ppjun.android.smzdm.mvp.ui.activity
 
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
+import android.util.Log
 import android.view.KeyEvent
-import android.view.LayoutInflater
-import android.view.View
-import android.view.inputmethod.EditorInfo
-import android.widget.TextView
 import com.jess.arms.di.component.AppComponent
 import com.jess.arms.mvp.IPresenter
 import com.jess.arms.utils.LogUtils
@@ -19,9 +18,8 @@ import com.ppjun.android.smzdm.app.base.Constant.Companion.KEYWORD
 import com.ppjun.android.smzdm.app.utils.StatusUtils
 import com.ppjun.android.smzdm.app.utils.TabUtils
 import com.ppjun.android.smzdm.mvp.ui.activity.fragment.ArticleSearchFragment
-import com.ppjun.android.smzdm.mvp.ui.activity.fragment.MainFragment
-import com.ppjun.android.smzdm.mvp.ui.activity.fragment.PriceFragment
 import com.ppjun.android.smzdm.mvp.ui.activity.fragment.PriceSearchFragment
+import com.ppjun.android.smzdm.mvp.viewModel.KeywordModel
 import kotlinx.android.synthetic.main.search_result_ui.*
 
 class SearchResultActivity : BaseUI<IPresenter>() {
@@ -30,19 +28,20 @@ class SearchResultActivity : BaseUI<IPresenter>() {
     private lateinit var mArticleListFragment: Fragment
     private var currentPosition = 0
     private var mKeyword = ""
-    private var isDifferentKeyWord = false
 
+    lateinit var keywordModel: KeywordModel
     override fun setupActivityComponent(appComponent: AppComponent?) {
 
     }
 
     override fun initView(savedInstanceState: Bundle?): Int {
+        intent.putExtra("isInitToolbar", true)
         return R.layout.search_result_ui
     }
 
 
     override fun initData(savedInstanceState: Bundle?) {
-
+        keywordModel=ViewModelProviders.of(this).get(KeywordModel::class.java)
         mainFragment = PriceSearchFragment()
         mArticleListFragment = ArticleSearchFragment()
         val titles = arrayOf("好价", "好文")
@@ -55,14 +54,12 @@ class SearchResultActivity : BaseUI<IPresenter>() {
             }
 
             override fun onSearchConfirmed(text: CharSequence?) {
-
-                LogUtils.debugInfo("word1=", text.toString())
-                LogUtils.debugInfo("word2=", mKeyword)
-                LogUtils.debugInfo("word3=", searchED.text.toString())
-                isDifferentKeyWord = text.toString() != mKeyword
+                keywordModel.setKeyWord(searchED.text.toString())
 
 
-                mKeyword = searchED.text.toString()
+
+
+
                 when (currentPosition) {
                     0 -> {
                         switchFragment(currentPosition)
@@ -83,7 +80,14 @@ class SearchResultActivity : BaseUI<IPresenter>() {
 
             }
 
+
         })
+        keywordModel.getKeyWord().observe(this,Observer<String>{
+
+            Log.d("debug",it!!)
+        })
+
+
 
         searchED.enableSearch()
         searchED.setPadding(0, StatusUtils.getStatusBarHeight(this), 0, 0)
@@ -104,17 +108,17 @@ class SearchResultActivity : BaseUI<IPresenter>() {
                             0 -> {
                                 switchFragment(currentPosition)
 
-                                    mOnPriceSearchListener?.search(searchED.text.toString())
-                                    searchED.setPlaceHolder(searchED.text.toString())
-                                    searchED.setPlaceHolderColor(R.color.black)
+                                mOnPriceSearchListener?.search(searchED.text.toString())
+                                searchED.setPlaceHolder(searchED.text.toString())
+                                searchED.setPlaceHolderColor(R.color.black)
 
                             }
                             1 -> {
                                 switchFragment(currentPosition)
 
-                                    mOnArticleSearchListener?.search(searchED.text.toString())
-                                    searchED.setPlaceHolder(searchED.text.toString())
-                                    searchED.setPlaceHolderColor(R.color.black)
+                                mOnArticleSearchListener?.search(searchED.text.toString())
+                                searchED.setPlaceHolder(searchED.text.toString())
+                                searchED.setPlaceHolderColor(R.color.black)
 
 
                             }
@@ -197,5 +201,7 @@ class SearchResultActivity : BaseUI<IPresenter>() {
         }
         return super.dispatchKeyEvent(event)
     }
+
+
 
 }

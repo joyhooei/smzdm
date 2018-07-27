@@ -24,6 +24,7 @@ import com.ppjun.android.smzdm.mvp.model.entity.main.ArticleData
 import com.ppjun.android.smzdm.mvp.model.entity.main.PriceRow
 import com.ppjun.android.smzdm.mvp.presenter.ArticleListPresenter
 import com.ppjun.android.smzdm.mvp.ui.activity.MainActivity
+import com.ppjun.android.smzdm.mvp.ui.adapter.BottomLoadingCreator
 import com.ppjun.android.smzdm.mvp.ui.widget.PPJunRecyclerView
 import com.tbruyelle.rxpermissions2.RxPermissions
 import kotlinx.android.synthetic.main.main_rv.view.*
@@ -76,6 +77,7 @@ class ArticleFragment : BaseFragView<ArticleListPresenter>(), ArticleListContrac
 
             mPaginate = Paginate.with(rv, callbacks)
                     .setLoadingTriggerThreshold(0)
+                    .setLoadingListItemCreator(BottomLoadingCreator())
                     .build()
             mPaginate?.setHasMoreDataToLoad(false)
         }

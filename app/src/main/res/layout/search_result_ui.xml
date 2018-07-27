@@ -6,9 +6,6 @@
     android:background="@color/greyBg"
     android:orientation="vertical">
 
-    <include
-        layout="@layout/include_title"
-        android:visibility="gone" />
 
     <com.mancj.materialsearchbar.MaterialSearchBar
         android:id="@+id/searchED"

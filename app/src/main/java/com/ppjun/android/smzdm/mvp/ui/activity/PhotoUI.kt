@@ -32,5 +32,8 @@ class PhotoUI :BaseUI<IPresenter>(){
     override fun setupActivityComponent(appComponent: AppComponent?) {
     }
 
-    override fun initView(savedInstanceState: Bundle?): Int = R.layout.photo_ui
+    override fun initView(savedInstanceState: Bundle?): Int {
+        intent.putExtra("isInitToolbar", true)
+       return R.layout.photo_ui
+    }
 }

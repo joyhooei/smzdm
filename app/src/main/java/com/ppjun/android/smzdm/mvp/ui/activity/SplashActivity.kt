@@ -28,7 +28,7 @@ class SplashActivity : BaseUI<IPresenter>() {
     }
 
     override fun initView(savedInstanceState: Bundle?): Int {
-        intent.putExtra("isInitToolbar", false)
+        intent.putExtra("isInitToolbar", true)
         return R.layout.splash_ui
 
     }

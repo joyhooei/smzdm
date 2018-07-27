@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Message
+import android.support.multidex.MultiDex
 import com.jess.arms.base.delegate.AppLifecycles
 import com.jess.arms.integration.AppManager
 import com.jess.arms.utils.ArmsUtils
@@ -22,7 +23,7 @@ import com.ppjun.android.smzdm.mvp.ui.activity.MainActivity
 
 class AppLifecyclesImpl : AppLifecycles {
     override fun attachBaseContext(base: Context?) {
-
+        MultiDex.install(base)
     }
 
     override fun onCreate(application: Application) {
