@@ -7,6 +7,7 @@ import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import com.jess.arms.base.DefaultAdapter
 import com.jess.arms.di.component.AppComponent
 import com.jess.arms.utils.ArmsUtils
@@ -102,6 +103,9 @@ class PriceCommentActivity : BaseUI<InfoCommentPresenter>(), InfoCommentContract
         ArmsUtils.snackbarText(message)
     }
 
+    override fun toastMessage(message: String?) {
+      Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
+    }
     override fun setupActivityComponent(appComponent: AppComponent?) {
         DaggerPriceCommentComponent.builder()
                 .appComponent(appComponent)

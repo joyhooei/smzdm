@@ -12,6 +12,7 @@ class InfoCommentContract {
         fun startLoadMore()
         fun endLoadMore()
         fun setEmptyView()
+        fun toastMessage(message: String?)
         fun getTheActivity(): Activity
         fun getRxPermission(): RxPermissions
         fun hasLoadedAllItems(isLoadedAll:Boolean)

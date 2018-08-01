@@ -91,7 +91,7 @@ class InfoCommentPresenter @Inject constructor(model: InfoCommentContract.Model,
                         if (!pullToRefresh && result.data.rows.isEmpty()) {
                             // loaded all data
                             mRootView.endLoadMore()
-                            mRootView.showMessage("没有更多数据了")
+                            mRootView.toastMessage("没有更多数据了")
                             mRootView.hasLoadedAllItems(true)
                             return
                         }

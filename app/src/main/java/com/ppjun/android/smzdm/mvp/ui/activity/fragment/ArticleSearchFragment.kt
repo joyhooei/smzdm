@@ -59,7 +59,7 @@ class ArticleSearchFragment : BaseFragView<ArticleSearchPresenter>(), ArticleSea
         rv?.adapter = mAdapter
         initPaginate()
         keywordModel.getKeyWord().observe(this, Observer<String> {
-            mKeyword=it!!
+            mKeyword= requireNotNull(it)
 
             mPresenter.requestArticleList(mKeyword, true)
         })

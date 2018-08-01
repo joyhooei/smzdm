@@ -1,15 +1,24 @@
 package com.ppjun.android.smzdm.mvp.ui.activity
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.app.Dialog
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.support.v4.app.DialogFragment
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
+import android.util.Log
 import android.util.SparseArray
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import com.jess.arms.di.component.AppComponent
 import com.jess.arms.mvp.IPresenter
 import com.jess.arms.utils.ArmsUtils
+import com.jess.arms.utils.LogUtils
 import com.ppjun.android.smzdm.R
 import com.ppjun.android.smzdm.app.base.BaseUI
 import com.ppjun.android.smzdm.app.utils.BottomNavigationHelper
@@ -37,15 +46,12 @@ class MainActivity : BaseUI<IPresenter>() {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         setBackInvisible()
         switchFragment(0)
-
-
     }
 
 
 
     override fun initView(savedInstanceState: Bundle?): Int {
         return R.layout.activity_main
-
     }
 
 
@@ -95,6 +101,15 @@ class MainActivity : BaseUI<IPresenter>() {
     }
 
 
+
+    override fun onPause() {
+        Log.d("onPause","onPause")
+        super.onPause()
+    }
+    override fun onStart() {
+        super.onStart()
+    }
+
     private fun showFragment(transaction: android.support.v4.app.FragmentTransaction, targetFragment: Fragment, tag: String) {
 
         if (targetFragment.isAdded) {
@@ -131,6 +146,5 @@ class MainActivity : BaseUI<IPresenter>() {
     private fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) {
         Toast.makeText(this, message, duration).show()
     }
-
 
 }
