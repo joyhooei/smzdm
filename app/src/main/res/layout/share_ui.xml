@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<com.ppjun.android.smzdm.mvp.ui.widget.AutoConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -11,9 +11,9 @@
     <ImageView
         android:id="@+id/qqShareImg"
         android:layout_width="0dp"
-        android:layout_height="200px"
+        android:layout_height="@dimen/dp60"
         android:foreground="?selectableItemBackgroundBorderless"
-        android:padding="40px"
+        android:padding="@dimen/dp10"
         android:src="@drawable/ic_qq_share"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -22,31 +22,33 @@
     <ImageView
         android:id="@+id/wxShareImg"
         android:layout_width="0dp"
-        android:layout_height="200px"
+        android:layout_height="@dimen/dp60"
         android:foreground="?selectableItemBackgroundBorderless"
-        android:padding="40px"
+        android:padding="@dimen/dp10"
         android:src="@drawable/ic_wechat_share"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintLeft_toRightOf="@+id/qqShareImg"
         app:layout_constraintRight_toLeftOf="@+id/copyShareImg" />
 
     <ImageView
+
         android:id="@+id/copyShareImg"
         android:layout_width="0dp"
-        android:layout_height="200px"
+        android:layout_height="@dimen/dp60"
         android:foreground="?selectableItemBackgroundBorderless"
-        android:padding="40px"
+        android:padding="@dimen/dp10"
         android:src="@drawable/ic_link_share"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintLeft_toRightOf="@+id/wxShareImg"
         app:layout_constraintRight_toLeftOf="@+id/moreShareImg" />
 
     <ImageView
+
         android:id="@+id/moreShareImg"
         android:layout_width="0dp"
-        android:layout_height="200px"
+        android:layout_height="@dimen/dp60"
         android:foreground="?selectableItemBackgroundBorderless"
-        android:padding="40px"
+        android:padding="@dimen/dp10"
         android:src="@drawable/ic_more_share"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintLeft_toRightOf="@+id/copyShareImg"
@@ -57,10 +59,10 @@
         android:id="@+id/qqShareText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10px"
+        android:layout_marginTop="@dimen/dp5"
         android:gravity="center"
         android:text="发送给好友"
-        android:textSize="30px"
+        android:textSize="@dimen/sp12"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/wxShareText"
         app:layout_constraintTop_toBottomOf="@+id/qqShareImg" />
@@ -70,13 +72,12 @@
         android:id="@+id/wxShareText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10px"
+        android:layout_marginTop="@dimen/dp5"
         android:gravity="center"
-        android:text="Wechat"
-        android:textSize="30px"
+        android:text="@string/wechat"
+        android:textSize="@dimen/sp12"
         app:layout_constraintLeft_toRightOf="@+id/qqShareText"
         app:layout_constraintRight_toLeftOf="@id/copyShareText"
-
         app:layout_constraintTop_toBottomOf="@+id/qqShareImg" />
 
 
@@ -84,10 +85,10 @@
         android:id="@+id/copyShareText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10px"
+        android:layout_marginTop="@dimen/dp5"
         android:gravity="center"
         android:text="复制链接"
-        android:textSize="30px"
+        android:textSize="@dimen/sp12"
         app:layout_constraintLeft_toRightOf="@+id/wxShareText"
         app:layout_constraintRight_toLeftOf="@+id/moreShareText"
         app:layout_constraintTop_toBottomOf="@+id/qqShareImg" />
@@ -97,10 +98,10 @@
         android:id="@+id/moreShareText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10px"
+        android:layout_marginTop="@dimen/dp5"
         android:gravity="center"
-        android:text="更多"
-        android:textSize="30px"
+        android:text="@string/more"
+        android:textSize="@dimen/sp12"
         app:layout_constraintLeft_toRightOf="@+id/copyShareText"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/qqShareImg" />
@@ -108,19 +109,19 @@
     <View
         android:id="@+id/shareLine"
         android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_marginTop="30px"
+        android:layout_height="@dimen/dp1"
+        android:layout_marginTop="@dimen/dp10"
         android:background="@color/greyBg"
         app:layout_constraintTop_toBottomOf="@+id/moreShareText" />
 
     <Button
         android:id="@+id/shareCancel"
         android:layout_width="match_parent"
-        android:layout_height="120px"
+        android:layout_height="@dimen/dp40"
         android:foreground="?selectableItemBackground"
-        android:text="取消"
+        android:text="@string/cancel"
         android:background="@color/white"
-        android:textSize="30px"
+        android:textSize="@dimen/sp12"
         app:layout_constraintTop_toBottomOf="@+id/shareLine" />
 
-</com.ppjun.android.smzdm.mvp.ui.widget.AutoConstraintLayout>
+</android.support.constraint.ConstraintLayout>

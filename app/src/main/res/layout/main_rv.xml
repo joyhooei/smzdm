@@ -18,30 +18,29 @@
         android:layout_below="@+id/toolbar">
 
         <RelativeLayout
-            android:maxHeight="300px"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
 
             <com.ppjun.android.smzdm.mvp.ui.widget.PPJunRecyclerView
                 android:id="@+id/mainViewRv"
                 android:layout_width="match_parent"
-
                 android:layout_height="wrap_content"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
             <ImageView
                 android:id="@+id/mainToTop"
-                android:layout_width="80px"
-                android:layout_height="80px"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="80px"
+                android:layout_marginBottom="@dimen/dp28"
                 android:background="@drawable/ic_lens_black_24dp"
-                android:elevation="20px"
+                android:elevation="@dimen/dp5"
                 android:foreground="?selectableItemBackgroundBorderless"
-                android:padding="10px"
+                android:padding="@dimen/dp5"
+                android:scaleType="centerCrop"
                 android:src="@drawable/ic_keyboard_capslock_black_24dp"
                 android:visibility="gone" />
         </RelativeLayout>

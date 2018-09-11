@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<com.ppjun.android.smzdm.mvp.ui.widget.AutoCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="20px"
+    android:layout_marginTop="@dimen/dp10"
+    android:layout_marginLeft="@dimen/dp10"
+    android:layout_marginRight="@dimen/dp10"
     android:background="@color/white"
     android:foreground="?selectableItemBackground">
 
@@ -18,37 +19,38 @@
             android:id="@+id/mainArticleTip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20px"
-            android:padding="10px"
+            android:layout_marginLeft="@dimen/dp10"
+            android:padding="@dimen/dp5"
             android:textColor="@color/black"
-            android:textSize="36px"
-            tools:text="好文" />
+            android:textSize="@dimen/sp14"
+            tools:text="@string/app_name" />
 
         <View
             android:id="@+id/mainArticleLine"
             android:layout_width="match_parent"
-            android:layout_height="1px"
+            android:layout_height="@dimen/dp1"
             android:background="@color/greyBg" />
 
 
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
 
             <ImageView
+                android:background="@color/greyBg"
                 android:id="@+id/mainArticleImg"
                 android:layout_width="match_parent"
-                android:layout_height="450px"
-                android:layout_marginLeft="30px"
-                android:layout_marginRight="30px"
-                android:layout_marginTop="30px"
-
+                android:layout_height="@dimen/dp150"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginRight="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp10"
+                android:scaleType="centerCrop"
                 />
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="150px"
+                android:layout_height="@dimen/dp70"
                 android:layout_alignBottom="@+id/mainArticleImg"
                 android:layout_alignLeft="@+id/mainArticleImg"
                 android:layout_alignRight="@+id/mainArticleImg"
@@ -58,28 +60,31 @@
 
             <ImageView
                 android:id="@+id/mainAuthorImg"
-                android:layout_width="80px"
-                android:layout_height="80px"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
                 android:layout_alignBottom="@+id/mainArticleImg"
                 android:layout_alignParentLeft="true"
-                android:layout_marginBottom="20px"
-                android:layout_marginLeft="60px"
+                android:layout_marginBottom="@dimen/dp10"
+                android:layout_marginLeft="@dimen/dp20"
+                android:scaleType="centerCrop"
                 android:src="@color/greyBg" />
 
 
             <TextView
-                android:textSize="30px"
+                android:textSize="@dimen/sp10"
                 android:id="@+id/mainAuthor"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/dp15"
                 android:layout_alignBottom="@id/mainArticleImg"
-                android:layout_marginBottom="30px"
-                android:layout_marginLeft="30px"
+                android:layout_marginBottom="@dimen/dp15"
+                android:layout_marginLeft="@dimen/dp10"
                 android:layout_toRightOf="@+id/mainAuthorImg"
                 android:background="@drawable/shape_pink"
-                android:padding="5px"
+                android:paddingLeft="@dimen/dp5"
+                android:paddingRight="@dimen/dp5"
+                android:gravity="center"
                 android:textColor="@color/white"
-                tools:text="asdasdasdasdasdsa" />
+                tools:text="@string/app_name" />
 
 
             <TextView
@@ -89,14 +94,14 @@
                 android:layout_alignBottom="@id/mainAuthor"
                 android:layout_alignRight="@+id/mainArticleImg"
                 android:layout_alignTop="@+id/mainAuthor"
-                android:layout_marginRight="30px"
-
+                android:layout_marginRight="@dimen/dp15"
                 android:background="@drawable/shape_pink"
                 android:gravity="center"
-                android:padding="5px"
+                android:paddingLeft="@dimen/dp5"
+                android:paddingRight="@dimen/dp5"
                 android:textColor="@color/white"
-                android:textSize="30px"
-                tools:text="asda" />
+                android:textSize="@dimen/sp10"
+                tools:text="@string/app_name" />
 
 
             <TextView
@@ -106,14 +111,14 @@
                 android:layout_alignLeft="@id/mainArticleImg"
                 android:layout_alignRight="@+id/mainArticleImg"
                 android:layout_below="@id/mainArticleImg"
-                android:layout_marginTop="50px"
+                android:layout_marginTop="@dimen/dp5"
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:singleLine="true"
                 android:textColor="@color/black"
-                android:textSize="40px"
+                android:textSize="@dimen/sp15"
                 android:textStyle="bold"
-                tools:text="asdasdasdasdasdsa" />
+                tools:text="@string/app_name" />
 
             <TextView
                 android:id="@+id/mainArticleTag"
@@ -121,11 +126,12 @@
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/mainArticleTitle"
                 android:layout_below="@+id/mainArticleTitle"
-                android:layout_marginBottom="30px"
-                android:layout_marginTop="50px"
+                android:layout_marginBottom="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp10"
+                android:lines="1"
                 android:textColor="@color/greyBlack"
-                android:textSize="36px"
-                tools:text="asdasdasdasdasdsa" />
+                android:textSize="@dimen/sp12"
+                tools:text="@string/app_name" />
 
 
             <TextView
@@ -134,16 +140,18 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_alignTop="@+id/mainArticleTag"
-                android:layout_marginRight="30px"
-                android:textSize="36px"
+                android:layout_marginRight="@dimen/dp15"
+                android:textSize="@dimen/sp12"
+
                 tools:text="10" />
 
             <ImageView
                 android:id="@+id/mainArticleCommentImg"
-                android:layout_width="40px"
-                android:layout_height="40px"
-                android:layout_alignBottom="@+id/mainArticleComment"
-                android:layout_marginRight="10px"
+                android:layout_width="@dimen/dp15"
+                android:layout_height="@dimen/dp15"
+                android:layout_alignTop="@+id/mainArticleComment"
+                android:layout_marginRight="@dimen/dp5"
+                android:layout_marginTop="@dimen/dp2"
                 android:layout_toLeftOf="@+id/mainArticleComment"
                 android:src="@drawable/ic_article_24dp"
 
@@ -154,26 +162,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/mainArticleTag"
+                android:layout_marginRight="@dimen/dp15"
 
-                android:layout_marginRight="30px"
                 android:layout_toLeftOf="@+id/mainArticleCommentImg"
-                android:textSize="36px"
+                android:textSize="@dimen/sp12"
                 tools:text="10" />
 
             <ImageView
                 android:id="@+id/mainArticleCollectImg"
-                android:layout_width="40px"
-                android:layout_height="40px"
+                android:layout_width="@dimen/dp15"
+                android:layout_height="@dimen/dp15"
                 android:layout_alignBottom="@+id/mainArticleCommentImg"
-                android:layout_marginBottom="5px"
-                android:layout_marginRight="10px"
+                android:layout_marginRight="@dimen/dp5"
                 android:layout_toLeftOf="@+id/mainArticleCollect"
                 android:src="@drawable/ic_star_black_24dp"
-
                 />
 
         </RelativeLayout>
 
     </LinearLayout>
 
-</com.ppjun.android.smzdm.mvp.ui.widget.AutoCardView>
+</android.support.v7.widget.CardView>

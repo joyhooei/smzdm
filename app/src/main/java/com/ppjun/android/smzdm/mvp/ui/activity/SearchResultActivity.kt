@@ -30,7 +30,7 @@ class SearchResultActivity : BaseUI<IPresenter>() {
     private var mKeyword = ""
 
     lateinit var keywordModel: KeywordModel
-    override fun setupActivityComponent(appComponent: AppComponent?) {
+    override fun setupActivityComponent(appComponent: AppComponent) {
 
     }
 

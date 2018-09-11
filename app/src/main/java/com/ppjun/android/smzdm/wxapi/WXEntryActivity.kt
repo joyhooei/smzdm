@@ -3,6 +3,7 @@ package com.ppjun.android.smzdm.wxapi
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
 import com.jess.arms.utils.ArmsUtils
 import com.jess.arms.utils.LogUtils
 import com.ppjun.android.smzdm.R
@@ -23,9 +24,7 @@ class WXEntryActivity : Activity(), IWXAPIEventHandler {
         mIWXAPI.handleIntent(intent, this)
     }
 
-    override fun onSaveInstanceState(outState: Bundle?) {
-        //super.onSaveInstanceState(outState)
-    }
+
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
         mIWXAPI.handleIntent(intent, this)
@@ -73,4 +72,11 @@ class WXEntryActivity : Activity(), IWXAPIEventHandler {
 
     override fun onReq(p0: BaseReq?) {
     }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        LogUtils.debugInfo("debug=","wx  onSaveInstanceStateonSaveInstanceState")
+    }
+
+
 }

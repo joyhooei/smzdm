@@ -37,11 +37,17 @@ class ArticleHolder(itemView: android.view.View) : BaseHolder<Row>(itemView) {
         mainArticleComment.text = data?.articleComment
         mainArticleTip.text = data?.articleChannelName
         mImageLoader.loadImage(itemView.context, ImageConfigImpl.builder()
+
                 .imageView(mainArticleImg).url(data?.articlePic).build())
 
-        Glide.with(itemView.context).applyDefaultRequestOptions( RequestOptions().circleCrop())
-                .load(data?.articleAvator)
-                .into(mainAuthorImg)
+
+
+        mImageLoader.loadImage(itemView.context,ImageConfigImpl.builder()
+                .isCircle(true)
+                .imageView(mainAuthorImg)
+                .url(data?.articleAvator)
+                .build())
+
         itemView.setOnClickListener {
             val resultIntent= Intent(itemView.context, ArticleInfoActivity::class.java)
             resultIntent.putExtra(Constant.ID,data?.articleId)

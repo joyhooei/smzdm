@@ -68,7 +68,8 @@ class ArticleInfoActivity : BaseUI<ArticleInfoPresenter>(), ArticleInfoContract.
                                     info.articleUrl,
                                     info.articleSmallPic))
                     arguments = bundle
-                    show(supportFragmentManager, "tag")
+
+                    show(supportFragmentManager,"")
                 }
     }
 
@@ -125,7 +126,7 @@ class ArticleInfoActivity : BaseUI<ArticleInfoPresenter>(), ArticleInfoContract.
     override fun showLoading() {
     }
 
-    override fun launchActivity(intent: Intent?) {
+    override fun launchActivity(intent: Intent) {
     }
 
     override fun hideLoading() {
@@ -134,7 +135,7 @@ class ArticleInfoActivity : BaseUI<ArticleInfoPresenter>(), ArticleInfoContract.
     override fun killMyself() {
     }
 
-    override fun showMessage(message: String?) {
+    override fun showMessage(message: String) {
     }
 
     override fun initData(savedInstanceState: Bundle?) {
@@ -143,7 +144,7 @@ class ArticleInfoActivity : BaseUI<ArticleInfoPresenter>(), ArticleInfoContract.
 
     }
 
-    override fun setupActivityComponent(appComponent: AppComponent?) {
+    override fun setupActivityComponent(appComponent: AppComponent) {
         DaggerArticleInfoComponent.builder()
                 .appComponent(appComponent)
                 .articleInfoModule(ArticleInfoModule(this))
@@ -158,5 +159,11 @@ class ArticleInfoActivity : BaseUI<ArticleInfoPresenter>(), ArticleInfoContract.
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         mShareFragment?.onQQActivityResult(requestCode, resultCode, data)
+    }
+
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        LogUtils.debugInfo("debug=","info onSaveInstanceStateonSaveInstanceState")
     }
 }

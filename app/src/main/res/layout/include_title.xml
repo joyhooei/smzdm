@@ -1,50 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.jess.arms.widget.autolayout.AutoToolbar xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    android:elevation="1dp"
-    app:contentInsetStart="0dp">
+    android:elevation="@dimen/dp5"
+    app:elevation="@dimen/dp5"
+    app:contentInsetStart="@dimen/dp0">
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="?actionBarSize">
 
-        <com.zhy.autolayout.AutoRelativeLayout
+        <RelativeLayout
             android:id="@+id/toolBack"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:foreground="?selectableItemBackgroundBorderless"
-            android:gravity="left">
+            android:gravity="start">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="30px"
-                android:layout_marginRight="30px"
+                android:layout_marginLeft="@dimen/dp15"
+                android:layout_marginRight="@dimen/dp15"
+                android:scaleType="centerCrop"
                 android:src="@drawable/ic_arrow_back_white_24dp" />
 
 
-        </com.zhy.autolayout.AutoRelativeLayout>
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/toolbarTitle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="left"
+            android:layout_gravity="start"
             android:layout_toRightOf="@+id/toolBack"
             android:ellipsize="end"
             android:foreground="?selectableItemBackground"
             android:gravity="center"
-            android:paddingLeft="30px"
-            android:paddingRight="30px"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingRight="@dimen/dp15"
             android:singleLine="true"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="@dimen/sp18"
             tools:text="asd" />
 
 
@@ -54,10 +56,9 @@
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:foreground="?selectableItemBackgroundBorderless"
-            android:paddingLeft="50px"
-            android:paddingRight="60px"
-
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp10"
             android:src="@drawable/ic_search_black_24dp" />
     </RelativeLayout>
 
-</com.jess.arms.widget.autolayout.AutoToolbar>
+</android.support.v7.widget.Toolbar>

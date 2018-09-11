@@ -94,12 +94,12 @@ class ArticleFragment : BaseFragView<ArticleListPresenter>(), ArticleListContrac
 
     }
 
-    override fun initView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
-        return inflater!!.inflate(R.layout.main_rv, container, false)
+        return inflater.inflate(R.layout.main_rv, container, false)
     }
 
-    override fun setupFragmentComponent(appComponent: AppComponent?) {
+    override fun setupFragmentComponent(appComponent: AppComponent) {
         DaggerArticleListComponent.builder()
                 .appComponent(appComponent)
                 .articleListModule(ArticleListModule(this))
@@ -131,7 +131,7 @@ class ArticleFragment : BaseFragView<ArticleListPresenter>(), ArticleListContrac
         swipe?.isRefreshing = true
     }
 
-    override fun launchActivity(intent: Intent?) {
+    override fun launchActivity(intent: Intent) {
     }
 
     override fun hideLoading() {
@@ -141,7 +141,7 @@ class ArticleFragment : BaseFragView<ArticleListPresenter>(), ArticleListContrac
     override fun killMyself() {
     }
 
-    override fun showMessage(message: String?) {
+    override fun showMessage(message: String) {
         ArmsUtils.snackbarText(message)
     }
 

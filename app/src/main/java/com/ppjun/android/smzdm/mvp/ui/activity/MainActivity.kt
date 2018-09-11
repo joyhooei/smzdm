@@ -29,7 +29,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : BaseUI<IPresenter>() {
-    override fun setupActivityComponent(appComponent: AppComponent?) {
+    override fun setupActivityComponent(appComponent: AppComponent) {
 
     }
 
@@ -138,7 +138,7 @@ class MainActivity : BaseUI<IPresenter>() {
             firstTimeStamp = System.currentTimeMillis()
         } else {
             finish()
-            System.exit(0)
+
 
         }
     }

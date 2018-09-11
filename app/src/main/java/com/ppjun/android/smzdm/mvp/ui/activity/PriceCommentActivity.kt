@@ -80,7 +80,7 @@ class PriceCommentActivity : BaseUI<InfoCommentPresenter>(), InfoCommentContract
         swipe?.isRefreshing = true
     }
 
-    override fun launchActivity(intent: Intent?) {
+    override fun launchActivity(intent: Intent) {
     }
 
     override fun hideLoading() {
@@ -99,14 +99,14 @@ class PriceCommentActivity : BaseUI<InfoCommentPresenter>(), InfoCommentContract
 
     }
 
-    override fun showMessage(message: String?) {
+    override fun showMessage(message: String) {
         ArmsUtils.snackbarText(message)
     }
 
     override fun toastMessage(message: String?) {
       Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
     }
-    override fun setupActivityComponent(appComponent: AppComponent?) {
+    override fun setupActivityComponent(appComponent: AppComponent) {
         DaggerPriceCommentComponent.builder()
                 .appComponent(appComponent)
                 .priceCommentModule(PriceCommentModule(this))

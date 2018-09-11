@@ -34,13 +34,13 @@ class MainDelegateAdapter(var datas: List<Row>) : DelegateAdapter.Adapter<Recycl
     private val NEWS = 2
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return  when (viewType) {
+        return when (viewType) {
             ARTICLE -> {
-                 ArticleHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_article_list, parent, false))
+                ArticleHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_article_list, parent, false))
 
             }
             else -> {
-                 MainHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_main_list, parent, false))
+                MainHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_main_list, parent, false))
             }
         }
 
@@ -66,9 +66,6 @@ class MainDelegateAdapter(var datas: List<Row>) : DelegateAdapter.Adapter<Recycl
     }
 
 
-
-
-
     override fun onBindViewHolder(aholder: RecyclerView.ViewHolder, position: Int) {
         val data = datas[position]
         val mAppComponent: AppComponent = ArmsUtils.obtainAppComponentFromContext(aholder.itemView.context)
@@ -76,10 +73,10 @@ class MainDelegateAdapter(var datas: List<Row>) : DelegateAdapter.Adapter<Recycl
 
 
 
-        if (getItemViewType(position)==ARTICLE) {
+        if (getItemViewType(position) == ARTICLE) {
 
 
-           val  holder =aholder as ArticleHolder
+            val holder = aholder as ArticleHolder
 
             holder.mainAuthor.text = data?.articleReferrals
             holder.mainArticleTime.text = data?.articleFormatDate
@@ -89,24 +86,30 @@ class MainDelegateAdapter(var datas: List<Row>) : DelegateAdapter.Adapter<Recycl
             holder.mainArticleComment.text = data?.articleComment
             holder.mainArticleTip.text = data?.articleChannelName
             mImageLoader.loadImage(holder.itemView.context, ImageConfigImpl.builder()
-                    .imageView(holder.mainArticleImg).url(data?.articlePic).build())
+                    .imageView(holder.mainArticleImg).imageRadius(10).url(data.articlePic).build())
 
-            Glide.with(holder.itemView.context).applyDefaultRequestOptions(RequestOptions().circleCrop())
-                    .load(data?.articleAvator)
-                    .into(holder.mainAuthorImg)
+
+
+            mImageLoader.loadImage(holder.itemView.context, ImageConfigImpl.builder()
+                    .imageView(holder.mainAuthorImg)
+                    .url(data.articleAvator)
+                    .isCircle(true)
+                    .build())
+
+
+
             holder.itemView.setOnClickListener {
                 val resultIntent = Intent(holder.itemView.context, ArticleInfoActivity::class.java)
                 resultIntent.putExtra(Constant.ID, data?.articleId)
                 resultIntent.putExtra(Constant.COLLECT, data?.articleCollection)
                 resultIntent.putExtra(Constant.COMMENT, data?.articleComment)
-                holder. itemView.context.startActivity(resultIntent)
+                holder.itemView.context.startActivity(resultIntent)
 
             }
 
         } else {
 
-            val  holder =aholder as MainHolder
-
+            val holder = aholder as MainHolder
             holder.mainProductTip.text = data?.articleChannelName
             holder.mainProductTitle.text = data?.articleTitle
             holder.mainProductPrice.text = data?.articlePrice
@@ -151,10 +154,11 @@ class MainDelegateAdapter(var datas: List<Row>) : DelegateAdapter.Adapter<Recycl
             holder.mainProductComment.text = requireNotNull(data).articleComment
 
 
-            mImageLoader.loadImage(holder.itemView.context, ImageConfigImpl.builder()
-                    .url(requireNotNull(data).articlePic)
-                    .imageView(holder.mainProductImg)
-                    .build())
+            mImageLoader.loadImage(holder.itemView.context,
+                    ImageConfigImpl.builder()
+                            .url(requireNotNull(data).articlePic)
+                            .imageView(holder.mainProductImg)
+                            .build())
 
         }
     }

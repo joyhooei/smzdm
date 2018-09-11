@@ -11,11 +11,11 @@
         android:id="@+id/searchED"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20px"
-        android:layout_marginRight="20px"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp10"
         android:imeOptions="actionSearch"
         android:singleLine="true"
-        app:mt_hint="输入商品"
+        app:mt_hint="@string/enter_product_name"
         app:mt_textCursorTint="@color/colorAccent"
         app:mt_highlightedTextColor="@color/colorAccent"
         app:mt_placeholder="@string/app_name" />
@@ -24,20 +24,18 @@
         android:id="@+id/searchTablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20px"
-        android:layout_marginRight="20px"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp10"
         android:background="@color/greyBg"
         app:tabIndicatorColor="@color/colorAccent"
-        app:tabIndicatorHeight="10px"
+        app:tabIndicatorHeight="@dimen/dp2"
         app:tabSelectedTextColor="@color/colorAccent"
         app:tabTextColor="@color/black"
         app:tabGravity="fill"
         app:tabMode="fixed"
-
         />
 
     <FrameLayout
-
         android:id="@+id/searchFrame"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

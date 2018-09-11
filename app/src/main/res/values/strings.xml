@@ -15,4 +15,10 @@
     <string name="no_data">噫，什么都没找到：）</string>
     <string name="author">爆料人：%s</string>
     <string name="loading_text">努力加载中：）</string>
+    <string name="enter_product_name">输入商品</string>
+    <string name="more">更多</string>
+    <string name="cancel">取消</string>
+    <string name="to_link">直达链接</string>
+    <string name="wechat">微信</string>
+    <string name="message">资讯</string>
 </resources>

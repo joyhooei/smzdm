@@ -255,4 +255,7 @@
 -keep class com.tencent.wxop.** {*;}
 
 -keep class com.tencent.mm.sdk.** {*;}
+#autosize
+-keep class me.jessyan.autosize.** {*;}
+-keep interface me.jessyan.autosize.** {*;}
 

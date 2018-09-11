@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.alibaba.android.vlayout.DelegateAdapter
 import com.alibaba.android.vlayout.LayoutHelper
 import com.alibaba.android.vlayout.VirtualLayoutManager
-import com.zhy.autolayout.utils.AutoUtils
+
 
 abstract class BaseAdapter(context: Context, layoutHelper: LayoutHelper, count: Int): DelegateAdapter.Adapter<BaseAdapter.MainViewHolder>() {
 
@@ -23,7 +23,7 @@ abstract class BaseAdapter(context: Context, layoutHelper: LayoutHelper, count: 
     class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         init {
-            AutoUtils.autoSize(itemView)
+
             createdTimes++
             existing++
         }

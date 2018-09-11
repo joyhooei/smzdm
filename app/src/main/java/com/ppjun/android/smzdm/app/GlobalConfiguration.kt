@@ -5,32 +5,23 @@ import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
-import com.google.gson.GsonBuilder
 import com.jess.arms.base.delegate.AppLifecycles
-import com.jess.arms.di.module.AppModule
-import com.jess.arms.di.module.ClientModule
 import com.jess.arms.di.module.GlobalConfigModule
-import com.jess.arms.http.RequestInterceptor
+import com.jess.arms.http.imageloader.glide.GlideImageLoaderStrategy
 import com.jess.arms.integration.ConfigModule
 import com.jess.arms.utils.ArmsUtils
-import com.jess.arms.utils.LogUtils
-import com.ppjun.android.smzdm.BuildConfig
 import com.ppjun.android.smzdm.mvp.model.api.Api.Companion.APP_DOMAIN
 import com.squareup.leakcanary.RefWatcher
 import me.jessyan.progressmanager.ProgressManager
-import me.jessyan.rxerrorhandler.handler.listener.ResponseErrorListener
-import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 
 class GlobalConfiguration : ConfigModule {
 
-
     override fun applyOptions(context: Context?, builder: GlobalConfigModule.Builder?) {
 
-          //  builder?.printHttpLogLevel(RequestInterceptor.Level.REQUEST)
-
-
+        //  builder?.printHttpLogLevel(RequestInterceptor.Level.REQUEST)
         requireNotNull(builder).baseurl(APP_DOMAIN)
+                .imageLoaderStrategy(GlideImageLoaderStrategy())
                 .globalHttpHandler(GlobalHttpHandlerImpl(context!!))
                 .responseErrorListener(ResponseErrorListenerImpl())
                 .gsonConfiguration { _, builder ->

@@ -71,7 +71,7 @@ class MainFragment : BaseFragView<MainPresenter>(), MainContract.View {
         mPresenter.requestMainList(true)
     }
 
-    override fun launchActivity(intent: Intent?) {
+    override fun launchActivity(intent: Intent) {
 
     }
 
@@ -83,7 +83,7 @@ class MainFragment : BaseFragView<MainPresenter>(), MainContract.View {
         return requireNotNull(activity)
     }
 
-    override fun setupFragmentComponent(appComponent: AppComponent?) {
+    override fun setupFragmentComponent(appComponent: AppComponent) {
         DaggerMainComponent
                 .builder()
                 .appComponent(appComponent)
@@ -151,7 +151,7 @@ class MainFragment : BaseFragView<MainPresenter>(), MainContract.View {
 
     }
 
-    override fun initView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return requireNotNull(inflater).inflate(R.layout.main_rv, container, false)
     }
 
@@ -178,7 +178,7 @@ class MainFragment : BaseFragView<MainPresenter>(), MainContract.View {
     }
 
 
-    override fun showMessage(message: String?) {
+    override fun showMessage(message: String) {
         ArmsUtils.snackbarText(message)
     }
 

@@ -8,6 +8,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ImageView
 import com.jess.arms.di.component.AppComponent
+import com.jess.arms.http.imageloader.ImageLoader
 import com.jess.arms.http.imageloader.glide.GlideArms
 import com.jess.arms.http.imageloader.glide.ImageConfigImpl
 import com.jess.arms.utils.ArmsUtils
@@ -40,7 +41,7 @@ class NewsInfoActivity : BaseUI<NewsInfoPresenter>(), NewsInfoContract.View {
         mPresenter.requestNewsInfo(intent.getStringExtra(Constant.ID))
     }
 
-    override fun setupActivityComponent(appComponent: AppComponent?) {
+    override fun setupActivityComponent(appComponent: AppComponent) {
         DaggerNewsInfoComponent.builder()
                 .appComponent(appComponent)
                 .newsInfoModule(NewsInfoModule(this))
@@ -85,7 +86,7 @@ class NewsInfoActivity : BaseUI<NewsInfoPresenter>(), NewsInfoContract.View {
                                     info.articleUrl,
                                     info.articleSmallPic))
                     arguments = bundle
-                    show(supportFragmentManager, "tag")
+                    show(supportFragmentManager,"")
                 }
     }
 
@@ -117,13 +118,18 @@ class NewsInfoActivity : BaseUI<NewsInfoPresenter>(), NewsInfoContract.View {
 
 
         newsInfoBanner.setBannerData(images)
-
+        val mAppComponent: AppComponent = ArmsUtils.obtainAppComponentFromContext(this)
+        val mImageLoader: ImageLoader = mAppComponent.imageLoader()
         newsInfoBanner.mOnBannerSwitchListener = object : PPBannerView.OnBannerSwitchListener {
             override fun onSwitch(position: Int, imageView: AppCompatImageView) {
-                ArmsUtils.obtainAppComponentFromContext(this@NewsInfoActivity).imageLoader().loadImage(this@NewsInfoActivity, ImageConfigImpl.builder()
-                        .url(images[position])
+
+                mImageLoader.loadImage(imageView.context, ImageConfigImpl.builder()
                         .imageView(imageView)
+                        .url(images[position])
                         .build())
+
+
+
             }
 
         }
@@ -153,7 +159,7 @@ class NewsInfoActivity : BaseUI<NewsInfoPresenter>(), NewsInfoContract.View {
     override fun showLoading() {
     }
 
-    override fun launchActivity(intent: Intent?) {
+    override fun launchActivity(intent: Intent) {
     }
 
     override fun hideLoading() {
@@ -162,7 +168,7 @@ class NewsInfoActivity : BaseUI<NewsInfoPresenter>(), NewsInfoContract.View {
     override fun killMyself() {
     }
 
-    override fun showMessage(message: String?) {
+    override fun showMessage(message: String) {
         ArmsUtils.snackbarText(message)
 
     }

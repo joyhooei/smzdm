@@ -19,7 +19,6 @@ class PhotoUI :BaseUI<IPresenter>(){
         val imageUrl = intent.getStringExtra(Constant.KEY)
         Glide.with(this)
                 .asBitmap()
-
                 .load(imageUrl)
                 .into(object : SimpleTarget<Bitmap>() {
                     override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
@@ -29,7 +28,7 @@ class PhotoUI :BaseUI<IPresenter>(){
 
     }
 
-    override fun setupActivityComponent(appComponent: AppComponent?) {
+    override fun setupActivityComponent(appComponent: AppComponent) {
     }
 
     override fun initView(savedInstanceState: Bundle?): Int {

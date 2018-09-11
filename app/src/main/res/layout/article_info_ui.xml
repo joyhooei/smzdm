@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,23 +9,19 @@
 
 
     <RelativeLayout
-
         android:id="@+id/articleShareLayout"
         android:layout_width="match_parent"
-        android:layout_height="130px"
+        android:layout_height="@dimen/dp50"
         android:layout_alignParentBottom="true"
         android:background="@color/bottom">
 
 
         <ImageView
             android:id="@+id/articleInfoShareImg"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
             android:foreground="?selectableItemBackgroundBorderless"
-            android:paddingBottom="40px"
-            android:paddingLeft="40px"
-            android:paddingRight="40px"
-            android:paddingTop="40px"
+            android:padding="@dimen/dp16"
             android:src="@drawable/ic_share_black_24dp" />
 
 
@@ -33,32 +29,26 @@
             android:id="@+id/articleInfoCollect"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginRight="30px"
             android:layout_toRightOf="@+id/articleInfoShareImg"
-            android:background="?selectableItemBackground"
-            android:paddingLeft="10px"
-            android:paddingRight="10px">
+            android:background="?selectableItemBackground">
 
             <ImageView
                 android:id="@+id/articleInfoCollectImg"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/dp50"
                 android:layout_height="match_parent"
-                android:paddingBottom="40px"
-                android:paddingTop="40px"
+                android:padding="@dimen/dp16"
                 android:src="@drawable/ic_star_black_24dp" />
 
             <TextView
                 android:id="@+id/articleInfoCollectText"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10px"
-                android:layout_toRightOf="@+id/articleInfoCollectImg"
-                android:gravity="left|center_vertical"
-
+                android:gravity="center"
+                android:minWidth="10dp"
+                android:paddingRight="@dimen/dp10"
                 android:textColor="@color/greyBlack"
-                android:textSize="35px"
-                tools:text="1" />
+                android:textSize="15sp"
+                tools:text="100" />
 
         </LinearLayout>
 
@@ -66,71 +56,59 @@
             android:id="@+id/articleInfoComment"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginRight="30px"
             android:layout_toRightOf="@+id/articleInfoCollect"
-            android:background="?selectableItemBackground"
-            android:paddingLeft="10px"
-            android:paddingRight="10px">
+            android:background="?selectableItemBackground">
 
             <ImageView
                 android:id="@+id/articleInfoCommemtImg"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/dp50"
                 android:layout_height="match_parent"
-                android:paddingBottom="40px"
-
-                android:paddingTop="40px"
+                android:padding="@dimen/dp16"
                 android:src="@drawable/ic_article_24dp" />
 
             <TextView
                 android:id="@+id/articleInfoCommentText"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/articleInfoCollectImg"
-                android:gravity="left|center_vertical"
-                android:paddingLeft="10px"
+                android:gravity="center"
+                android:minWidth="10dp"
+                android:paddingRight="@dimen/dp10"
                 android:textColor="@color/greyBlack"
-                android:textSize="35px"
-                tools:text="2" />
+                android:textSize="15sp"
+
+                tools:text="200" />
 
         </LinearLayout>
 
 
         <ImageView
             android:id="@+id/articleInfoTop"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/dp50"
             android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
             android:foreground="?selectableItemBackgroundBorderless"
-            android:paddingLeft="40px"
-            android:paddingRight="40px"
+            android:padding="@dimen/dp16"
             android:src="@drawable/ic_arrow_upward_black_24dp" />
+
     </RelativeLayout>
 
-    <com.jess.arms.widget.autolayout.AutoScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
         android:id="@+id/articleInfoScroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/articleShareLayout"
-
-
         android:scrollbars="none">
 
-        <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
 
 
             <com.ppjun.android.ppbannerview.PPBannerView
                 android:id="@+id/articleInfoBanner"
                 android:layout_width="match_parent"
-                android:layout_height="600px"
-                android:layout_below="@+id/toolbar"
+                android:layout_height="@dimen/dp200"
                 android:background="@color/white"
                 app:pp_imageViewScaleType="FIT_CENTER"
                 app:pp_indicatorGravity="right"
@@ -140,36 +118,36 @@
 
 
             <ImageView
+                android:src="@color/greyBg"
                 android:id="@+id/articleInfoAuthorImg"
-                android:layout_width="150px"
-                android:layout_height="150px"
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp50"
                 android:layout_below="@+id/articleInfoBanner"
-                android:layout_marginLeft="30px"
-                android:layout_marginTop="30px"
-                android:padding="10px"
-
+                android:layout_marginLeft="@dimen/dp15"
+                android:layout_marginTop="@dimen/dp15"
+                android:padding="@dimen/dp5"
+                android:scaleType="centerCrop"
                 android:textColor="@color/white"
-                android:textSize="30px"
                 tools:text="@string/app_name" />
 
 
             <TextView
                 android:id="@+id/articleInfoAuthor"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/dp50"
                 android:layout_alignBottom="@+id/articleInfoAuthorImg"
                 android:layout_alignTop="@+id/articleInfoAuthorImg"
                 android:layout_below="@+id/articleInfoBanner"
-                android:layout_marginBottom="45px"
-                android:layout_marginLeft="20px"
-                android:layout_marginTop="45px"
+                android:layout_marginBottom="@dimen/dp15"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp15"
                 android:layout_toRightOf="@+id/articleInfoAuthorImg"
                 android:background="@drawable/shape_pink"
                 android:gravity="center"
-                android:padding="10px"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp10"
                 android:textColor="@color/white"
-                android:textSize="30px"
-
+                android:textSize="@dimen/sp10"
                 tools:text="@string/app_name" />
 
 
@@ -178,17 +156,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/articleInfoAuthor"
-
                 android:layout_alignTop="@+id/articleInfoAuthor"
-
                 android:layout_below="@+id/articleInfoBanner"
-                android:layout_marginLeft="20px"
+                android:layout_marginLeft="@dimen/dp10"
                 android:layout_toRightOf="@+id/articleInfoAuthor"
                 android:background="@drawable/shape_pink"
-                android:padding="10px"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp10"
                 android:textColor="@color/white"
-                android:textSize="30px"
-
+                android:textSize="@dimen/sp10"
                 tools:text="@string/app_name" />
 
 
@@ -197,15 +174,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/articleInfoAuthorImg"
-                android:layout_marginBottom="60px"
-                android:layout_marginTop="60px"
+                android:layout_marginBottom="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp10"
                 android:ellipsize="end"
                 android:maxLines="3"
-                android:paddingLeft="30px"
-                android:paddingRight="30px"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp15"
                 android:textColor="#434343"
-                android:textSize="60px"
-
+                android:textSize="@dimen/sp20"
+                android:textStyle="bold"
                 tools:text="@string/app_name" />
 
 
@@ -214,14 +191,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/articleInfoTitle"
-                android:paddingBottom="45px"
-                android:paddingTop="45px" />
+                android:paddingBottom="@dimen/dp20"
+                android:paddingTop="@dimen/dp20" />
 
 
-        </com.zhy.autolayout.AutoRelativeLayout>
+        </RelativeLayout>
 
 
-    </com.jess.arms.widget.autolayout.AutoScrollView>
+    </ScrollView>
 
 
-</com.zhy.autolayout.AutoRelativeLayout>
+</RelativeLayout>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,74 +9,56 @@
     <RelativeLayout
         android:id="@+id/newsShareLayout"
         android:layout_width="match_parent"
-        android:layout_height="130px"
+        android:layout_height="@dimen/dp50"
         android:layout_alignParentBottom="true"
         android:background="@color/bottom">
 
-
         <ImageView
-
             android:id="@+id/newsInfoShareImg"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
             android:foreground="?selectableItemBackgroundBorderless"
-            android:paddingBottom="40px"
-            android:paddingLeft="40px"
-            android:paddingRight="40px"
-            android:paddingTop="40px"
+            android:padding="@dimen/dp16"
             android:src="@drawable/ic_share_black_24dp" />
 
         <LinearLayout
             android:id="@+id/newsInfoLoveount"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginRight="30px"
             android:layout_toRightOf="@+id/newsInfoShareImg"
-            android:background="?selectableItemBackground"
-            android:paddingLeft="10px"
-            android:paddingRight="10px">
+            android:background="?selectableItemBackground">
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingBottom="40px"
-                android:paddingTop="40px"
-
+                android:layout_height="@dimen/dp50"
+                android:padding="@dimen/dp16"
                 android:src="@drawable/ic_thumb_up_black_24dp" />
 
             <TextView
                 android:id="@+id/newsInfoLoveountText"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10px"
-                android:layout_toRightOf="@+id/articleInfoCollectImg"
-                android:gravity="left|center_vertical"
+                android:gravity="center"
+                android:minWidth="10dp"
+                android:paddingRight="@dimen/dp10"
                 android:textColor="@color/greyBlack"
-                android:textSize="35px"
-                tools:text="1" />
+                android:textSize="@dimen/sp15"
+                tools:text="100" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:foreground="?selectableItemBackground"
             android:id="@+id/newsInfoComment"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginRight="30px"
             android:layout_toRightOf="@+id/newsInfoLoveount"
-            android:background="?selectableItemBackground"
-            android:paddingLeft="10px"
-            android:paddingRight="10px">
+            android:background="?selectableItemBackground">
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/dp50"
                 android:layout_height="match_parent"
-                android:paddingBottom="40px"
-
-                android:paddingTop="40px"
-
+                android:padding="@dimen/dp16"
                 android:src="@drawable/ic_article_24dp" />
 
             <TextView
@@ -84,40 +66,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="10px"
-                android:gravity="left|center_vertical"
+                android:gravity="center"
+                android:minWidth="@dimen/dp10"
+                android:paddingRight="@dimen/dp10"
                 android:textColor="@color/greyBlack"
-                android:textSize="35px"
+                android:textSize="@dimen/sp15"
                 tools:text="2" />
-
         </LinearLayout>
 
 
         <ImageView
             android:id="@+id/newsInfoTop"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/dp50"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:foreground="?selectableItemBackgroundBorderless"
-            android:paddingLeft="40px"
-            android:paddingRight="40px"
+            android:padding="@dimen/dp16"
+            android:scaleType="centerCrop"
             android:src="@drawable/ic_arrow_upward_black_24dp" />
     </RelativeLayout>
 
-    <com.jess.arms.widget.autolayout.AutoScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
         android:id="@+id/newsInfoScroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/newsShareLayout"
-
-
         android:scrollbars="none">
 
-        <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -125,7 +101,7 @@
             <com.ppjun.android.ppbannerview.PPBannerView
                 android:id="@+id/newsInfoBanner"
                 android:layout_width="match_parent"
-                android:layout_height="600px"
+                android:layout_height="@dimen/dp200"
                 android:layout_below="@+id/toolbar"
                 android:background="@color/white"
                 app:pp_imageViewScaleType="FIT_CENTER"
@@ -137,34 +113,34 @@
 
             <ImageView
                 android:id="@+id/newsInfoAuthorImg"
-                android:layout_width="100px"
-                android:layout_height="100px"
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp50"
                 android:layout_below="@+id/newsInfoBanner"
-                android:layout_marginLeft="30px"
-                android:layout_marginTop="30px"
-                android:padding="10px"
-                android:textColor="@color/white"
-                android:textSize="30px"
-                tools:text="@string/app_name" />
+                android:layout_marginLeft="@dimen/dp15"
+                android:layout_marginTop="@dimen/dp15"
+                android:padding="@dimen/dp5"
+                android:scaleType="centerCrop"
+                android:src="@color/greyBg"
+                android:textColor="@color/white" />
 
 
             <TextView
-
                 android:id="@+id/newsInfoAuthor"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/dp50"
                 android:layout_alignBottom="@+id/newsInfoAuthorImg"
                 android:layout_alignTop="@+id/newsInfoAuthorImg"
                 android:layout_below="@+id/newsInfoBanner"
-                android:layout_marginBottom="20px"
-                android:layout_marginLeft="20px"
-                android:layout_marginTop="20px"
+                android:layout_marginBottom="@dimen/dp15"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp15"
                 android:layout_toRightOf="@+id/newsInfoAuthorImg"
                 android:background="@drawable/shape_pink"
-                android:padding="10px"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp10"
                 android:textColor="@color/white"
-                android:textSize="30px"
-
+                android:textSize="@dimen/sp10"
                 tools:text="@string/app_name" />
 
 
@@ -174,17 +150,15 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/newsInfoAuthor"
                 android:layout_alignTop="@+id/newsInfoAuthor"
-
                 android:layout_below="@+id/newsInfoBanner"
-
-                android:layout_marginLeft="20px"
+                android:layout_marginLeft="@dimen/dp10"
                 android:layout_toRightOf="@+id/newsInfoAuthor"
                 android:background="@drawable/shape_pink"
-                android:padding="10px"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp10"
                 android:textColor="@color/white"
-                android:textSize="30px"
+                android:textSize="@dimen/sp10"
                 android:visibility="gone"
-
                 tools:text="@string/app_name" />
 
 
@@ -193,14 +167,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/newsInfoAuthorImg"
-                android:layout_marginTop="30px"
+                android:layout_marginBottom="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp10"
                 android:ellipsize="end"
                 android:maxLines="3"
-                android:paddingLeft="30px"
-                android:paddingRight="30px"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp15"
                 android:textColor="#434343"
-                android:textSize="60px"
-
+                android:textSize="@dimen/sp20"
+                android:textStyle="bold"
                 tools:text="@string/app_name" />
 
 
@@ -209,14 +184,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/newsInfoTitle"
-
-                />
-
-
-        </com.zhy.autolayout.AutoRelativeLayout>
+                android:paddingBottom="@dimen/dp20"
+                android:paddingTop="@dimen/dp20" />
 
 
-    </com.jess.arms.widget.autolayout.AutoScrollView>
+        </RelativeLayout>
 
 
-</com.zhy.autolayout.AutoRelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

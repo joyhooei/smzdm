@@ -8,14 +8,15 @@
     <include layout="@layout/include_title" />
 
     <com.tencent.smtt.sdk.WebView
-         android:layout_below="@+id/toolbar"
         android:id="@+id/x5WebView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar" />
+
     <android.support.v4.widget.ContentLoadingProgressBar
-        android:layout_below="@+id/toolbar"
         android:id="@+id/progress"
-        android:layout_width="match_parent"
         style="?android:progressBarStyleHorizontal"
-        android:layout_height="3dp" />
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp3"
+        android:layout_below="@+id/toolbar" />
 </RelativeLayout>

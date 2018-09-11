@@ -12,16 +12,14 @@ import com.ppjun.android.smzdm.app.base.Constant
 import com.ppjun.android.smzdm.mvp.model.entity.main.Row
 import com.ppjun.android.smzdm.mvp.ui.activity.NewsInfoActivity
 import com.ppjun.android.smzdm.mvp.ui.activity.PriceInfoActivity
-import com.zhy.autolayout.utils.AutoUtils
+
 import kotlinx.android.synthetic.main.item_main_list.view.*
 import java.math.BigDecimal
 import java.text.DecimalFormat
 
 class MainHolder(itemView: View) : BaseHolder<Row>(itemView) {
 
-    init {
-        AutoUtils.autoSize(itemView)
-    }
+
     private var mAppComponent: AppComponent = ArmsUtils.obtainAppComponentFromContext(itemView.context)
     private var mImageLoader: ImageLoader = mAppComponent.imageLoader()
 

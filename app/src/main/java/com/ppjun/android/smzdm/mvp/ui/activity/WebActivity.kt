@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.include_title.*
 import kotlinx.android.synthetic.main.web_ui.*
 
 class WebActivity : BaseUI<IPresenter>() {
-    override fun setupActivityComponent(appComponent: AppComponent?) {
+    override fun setupActivityComponent(appComponent: AppComponent) {
 
     }
 

@@ -11,6 +11,8 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.bumptech.glide.Glide
 import com.jess.arms.di.component.AppComponent
+import com.jess.arms.http.imageloader.ImageLoader
+import com.jess.arms.http.imageloader.glide.ImageConfigImpl
 import com.jess.arms.utils.ArmsUtils
 import com.ppjun.android.ppbannerview.PPBannerView
 import com.ppjun.android.smzdm.R
@@ -30,7 +32,7 @@ import javax.inject.Inject
 
 class PriceInfoActivity : BaseUI<PriceInfoPresenter>(), PriceInfoContract.View {
     var mShareFragment: ShareBottomSheetDialogFragment? = null
-    override fun setupActivityComponent(appComponent: AppComponent?) {
+    override fun setupActivityComponent(appComponent: AppComponent) {
         DaggerPriceInfoComponent.builder()
                 .appComponent(appComponent)
                 .priceInfoModule(PriceInfoModule(this))
@@ -58,8 +60,6 @@ class PriceInfoActivity : BaseUI<PriceInfoPresenter>(), PriceInfoContract.View {
 
     @SuppressLint("JavascriptInterface")
     override fun showInfo(info: PriceInfo) {
-
-
         setContentView(R.layout.price_info_ui)
         priceInfoCommentLayout.setOnClickListener {
             val resultIntent=Intent(getTheActivity(),PriceCommentActivity::class.java)
@@ -80,12 +80,17 @@ class PriceInfoActivity : BaseUI<PriceInfoPresenter>(), PriceInfoContract.View {
 
         priceInfoBanner.setBannerData(images)
 
+        val mAppComponent: AppComponent = ArmsUtils.obtainAppComponentFromContext(this)
+        val mImageLoader: ImageLoader = mAppComponent.imageLoader()
         priceInfoBanner.mOnBannerSwitchListener = object : PPBannerView.OnBannerSwitchListener {
             override fun onSwitch(position: Int, imageView: AppCompatImageView) {
-                Glide.with(imageView.context)
-                        .asBitmap()
-                        .load(images[position])
-                        .into(imageView)
+
+                mImageLoader.loadImage(imageView.context, ImageConfigImpl.builder()
+                        .imageView(imageView)
+                        .url(images[position])
+                        .build())
+
+
                 imageView.setOnClickListener {
                     val newIntent = Intent(imageView.context, PhotoUI::class.java)
                     newIntent.putExtra(Constant.KEY, images[position])
@@ -144,14 +149,14 @@ class PriceInfoActivity : BaseUI<PriceInfoPresenter>(), PriceInfoContract.View {
                                     info.articleLink,
                                     info.articleSmallPic))
                     arguments = bundle
-                    show(supportFragmentManager, "tag")
+                    show(supportFragmentManager,"")
                 }
     }
 
     override fun showLoading() {
     }
 
-    override fun launchActivity(intent: Intent?) {
+    override fun launchActivity(intent: Intent) {
     }
 
     override fun hideLoading() {
@@ -166,7 +171,7 @@ class PriceInfoActivity : BaseUI<PriceInfoPresenter>(), PriceInfoContract.View {
         mShareFragment = null
     }
 
-    override fun showMessage(message: String?) {
+    override fun showMessage(message: String) {
         ArmsUtils.snackbarText(message)
     }
 

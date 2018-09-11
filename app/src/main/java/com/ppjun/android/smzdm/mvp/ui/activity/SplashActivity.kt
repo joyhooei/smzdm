@@ -22,7 +22,7 @@ class SplashActivity : BaseUI<IPresenter>() {
 
     }
 
-    override fun setupActivityComponent(appComponent: AppComponent?) {
+    override fun setupActivityComponent(appComponent: AppComponent) {
 
 
     }

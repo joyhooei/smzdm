@@ -62,11 +62,11 @@ class PriceSearchFragment : BaseFragView<PriceSearchPresenter>(), PriceSearchCon
     var isLoadedAll = false
 
 
-    override fun initView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun initView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return inflater!!.inflate(R.layout.main_rv, container, false)
     }
 
-    override fun setupFragmentComponent(appComponent: AppComponent?) {
+    override fun setupFragmentComponent(appComponent: AppComponent) {
         DaggerPriceSearchComponent.builder()
                 .appComponent(appComponent)
                 .priceSearchModule(PriceSearchModule(this))
@@ -156,7 +156,7 @@ class PriceSearchFragment : BaseFragView<PriceSearchPresenter>(), PriceSearchCon
         swipe?.isRefreshing = true
     }
 
-    override fun launchActivity(intent: Intent?) {
+    override fun launchActivity(intent: Intent) {
     }
 
     override fun hideLoading() {
@@ -166,7 +166,7 @@ class PriceSearchFragment : BaseFragView<PriceSearchPresenter>(), PriceSearchCon
     override fun killMyself() {
     }
 
-    override fun showMessage(message: String?) {
+    override fun showMessage(message: String) {
         ArmsUtils.snackbarText(message)
     }
 

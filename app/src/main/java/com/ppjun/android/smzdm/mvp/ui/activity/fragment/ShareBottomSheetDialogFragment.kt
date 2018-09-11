@@ -2,6 +2,7 @@ package com.ppjun.android.smzdm.mvp.ui.activity.fragment
 
 import android.app.Activity
 import android.app.Dialog
+import android.app.DialogFragment
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -50,6 +51,7 @@ class ShareBottomSheetDialogFragment : BottomSheetDialogFragment() {
         var onWxShareListener: OnWxShareListener? = null
 
     }
+
 
     interface OnWxShareListener {
         fun onSuccess()
@@ -142,8 +144,10 @@ class ShareBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
                         onWxShareListener = object : OnWxShareListener {
                             override fun onSuccess() {
-                                Toast.makeText(context, getString(R.string.share_success), Toast.LENGTH_SHORT).show()
-                                dismissAllowingStateLoss()
+                               // ArmsUtils.snackbarText(getString(R.string.share_success))
+                               Toast.makeText(context, getString(R.string.share_success), Toast.LENGTH_SHORT).show()
+                                 dismissAllowingStateLoss()
+
                             }
 
                             override fun onFailure() {
@@ -163,6 +167,10 @@ class ShareBottomSheetDialogFragment : BottomSheetDialogFragment() {
                 })
 
     }
+
+
+
+
 
 
     private fun qqShare(share: Share?) {
@@ -239,7 +247,10 @@ class ShareBottomSheetDialogFragment : BottomSheetDialogFragment() {
     }
 
 
-
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        LogUtils.debugInfo("debug=","dialog onSaveInstanceState")
+    }
 
 }
 

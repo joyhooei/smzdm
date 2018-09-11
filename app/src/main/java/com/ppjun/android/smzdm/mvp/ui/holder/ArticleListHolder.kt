@@ -1,9 +1,8 @@
 package com.ppjun.android.smzdm.mvp.ui.holder
 
 import android.content.Intent
+import android.media.Image
 import android.view.View
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.jess.arms.base.BaseHolder
 import com.jess.arms.di.component.AppComponent
 import com.jess.arms.http.imageloader.ImageLoader
@@ -12,7 +11,6 @@ import com.jess.arms.http.imageloader.glide.ImageConfigImpl
 import com.jess.arms.utils.ArmsUtils
 import com.ppjun.android.smzdm.app.base.Constant
 import com.ppjun.android.smzdm.mvp.model.entity.main.ArticleData
-import com.ppjun.android.smzdm.mvp.model.entity.main.Row
 import com.ppjun.android.smzdm.mvp.ui.activity.ArticleInfoActivity
 import kotlinx.android.synthetic.main.item_article_list.view.*
 
@@ -46,15 +44,19 @@ class ArticleListHolder(itemView: android.view.View) : BaseHolder<ArticleData>(i
         mainArticleComment.text = data?.articleComment
         mainArticleTip.visibility= View.GONE
         mainArticleLine.visibility= View.GONE
+
         mImageLoader.loadImage(itemView.context, ImageConfigImpl.builder()
-                .imageView(mainArticleImg).url(data?.articlePic).build())
+                .imageView(mainArticleImg)
+                .url(data?.articlePic).build())
 
 
-        GlideArms.with(itemView.context)
-                .load(data?.articleAvatar)
-                .circleCrop()
-                .into(mainAuthorImg)
 
+
+        mImageLoader.loadImage(itemView.context,ImageConfigImpl.builder()
+                .isCircle(true)
+                .imageView(mainAuthorImg)
+                .url(data?.articleAvatar)
+                .build())
 
         itemView.setOnClickListener {
             val resultIntent= Intent(itemView.context, ArticleInfoActivity::class.java)

@@ -22,7 +22,9 @@ import com.ppjun.android.smzdm.mvp.ui.activity.MainActivity
 
 
 class AppLifecyclesImpl : AppLifecycles {
-    override fun attachBaseContext(base: Context?) {
+
+
+    override fun attachBaseContext(base: Context) {
         MultiDex.install(base)
     }
 
@@ -60,6 +62,6 @@ class AppLifecyclesImpl : AppLifecycles {
         })
     }
 
-    override fun onTerminate(application: Application?) {
+    override fun onTerminate(application: Application) {
     }
 }

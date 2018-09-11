@@ -1,10 +1,7 @@
 package com.ppjun.android.smzdm.app
 
 import android.content.Context
-import com.google.gson.reflect.TypeToken
 import com.jess.arms.http.GlobalHttpHandler
-import com.jess.arms.http.RequestInterceptor
-import com.jess.arms.utils.ArmsUtils
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response

@@ -35,12 +35,7 @@
         <activity android:name=".mvp.ui.activity.NewsInfoActivity" />
 
 
-        <meta-data
-            android:name="design_width"
-            android:value="1080"/>
-        <meta-data
-            android:name="design_height"
-            android:value="1920"/>
+
 
         <!-- arms配置 -->
         <meta-data
@@ -102,6 +97,13 @@
         </activity>
         <activity android:name=".mvp.ui.activity.PhotoUI" />
         <activity android:name=".mvp.ui.activity.PriceCommentActivity" />
+        <meta-data android:name="android.max_aspect" android:value="2.1" />
+        <meta-data
+            android:name="design_width_in_dp"
+            android:value="360"/>
+        <meta-data
+            android:name="design_height_in_dp"
+            android:value="640"/>
     </application>
 
 </manifest>

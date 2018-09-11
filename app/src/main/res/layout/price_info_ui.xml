@@ -1,9 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--<android.support.design.widget.CoordinatorLayout--><!--xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:app="http://schemas.android.com/apk/res-auto"--><!--xmlns:tools="http://schemas.android.com/tools"--><!--android:layout_width="match_parent"-->
-
-<!--android:layout_height="match_parent"--><!--android:background="@color/white">-->
-
-
-<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,27 +7,21 @@
     android:background="@color/white">
 
 
-    <com.jess.arms.widget.autolayout.AutoScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
         android:layout_width="match_parent"
-
         android:layout_height="match_parent"
         android:layout_above="@+id/priceInfoBottom"
         android:scrollbars="none">
 
-        <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
 
 
             <com.ppjun.android.ppbannerview.PPBannerView
                 android:id="@+id/priceInfoBanner"
                 android:layout_width="match_parent"
-                android:layout_height="600px"
+                android:layout_height="@dimen/dp200"
                 android:layout_below="@+id/toolbar"
                 android:background="@color/white"
                 app:pp_imageViewScaleType="FIT_CENTER"
@@ -46,12 +36,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/priceInfoBanner"
-                android:layout_marginLeft="30px"
-                android:layout_marginTop="30px"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp10"
                 android:background="@drawable/shape_pink"
-                android:padding="10px"
+                android:gravity="center"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp10"
                 android:textColor="@color/white"
-                android:textSize="30px"
+                android:textSize="@dimen/sp10"
                 android:visibility="invisible"
                 tools:text="@string/app_name" />
 
@@ -60,14 +52,15 @@
                 android:id="@+id/priceInfoTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/priceInfoShop"
                 android:layout_below="@+id/priceInfoBanner"
-                android:layout_marginLeft="20px"
-                android:layout_marginTop="30px"
+                android:layout_marginLeft="@dimen/dp10"
                 android:layout_toRightOf="@+id/priceInfoShop"
                 android:background="@drawable/shape_pink"
-                android:padding="10px"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp10"
                 android:textColor="@color/white"
-                android:textSize="30px"
+                android:textSize="@dimen/sp10"
                 android:visibility="invisible"
                 tools:text="@string/app_name" />
 
@@ -76,14 +69,15 @@
                 android:id="@+id/priceInfoAuthor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/priceInfoShop"
                 android:layout_below="@+id/priceInfoBanner"
-                android:layout_marginLeft="20px"
-                android:layout_marginTop="30px"
+                android:layout_marginLeft="@dimen/dp10"
                 android:layout_toRightOf="@+id/priceInfoTime"
                 android:background="@drawable/shape_pink"
-                android:padding="10px"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp10"
                 android:textColor="@color/white"
-                android:textSize="30px"
+                android:textSize="@dimen/sp10"
                 android:visibility="invisible"
                 tools:text="@string/app_name" />
 
@@ -93,14 +87,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/priceInfoShop"
-                android:layout_marginTop="30px"
+                android:layout_marginTop="@dimen/dp10"
                 android:ellipsize="end"
                 android:maxLines="3"
-                android:paddingLeft="30px"
-                android:paddingRight="30px"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp10"
                 android:textColor="#434343"
-                android:textSize="60px"
-
+                android:textSize="@dimen/sp20"
                 tools:text="@string/app_name" />
 
 
@@ -110,13 +103,13 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/priceInfoTitle"
                 android:ellipsize="end"
-                android:paddingBottom="20px"
-                android:paddingLeft="30px"
-                android:paddingRight="30px"
-                android:paddingTop="30px"
+                android:paddingBottom="@dimen/dp5"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp10"
+                android:paddingTop="@dimen/dp5"
                 android:singleLine="true"
                 android:textColor="@color/red"
-                android:textSize="50px"
+                android:textSize="@dimen/sp18"
                 android:textStyle="bold"
                 tools:text="@string/app_name" />
 
@@ -125,10 +118,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/priceInfoPrice"
-                android:layout_margin="10px"
-                android:padding="30px"
+                android:layout_margin="@dimen/dp5"
+                android:padding="@dimen/dp10"
                 android:textColor="#434343"
-                android:textSize="50px"
+                android:textSize="@dimen/sp15"
                 android:textStyle="bold"
                 tools:text="@string/app_name" />
 
@@ -137,61 +130,57 @@
                 android:id="@+id/priceInfoWeb"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/priceInfoDesc" />
+                android:layout_below="@+id/priceInfoDesc"
+                android:paddingBottom="@dimen/dp20"
+                android:paddingTop="@dimen/dp20" />
 
 
-        </com.zhy.autolayout.AutoRelativeLayout>
+        </RelativeLayout>
 
 
-    </com.jess.arms.widget.autolayout.AutoScrollView>
+    </ScrollView>
 
 
     <RelativeLayout
         android:id="@+id/priceInfoBottom"
         android:layout_width="match_parent"
-        android:layout_height="130px"
+        android:layout_height="@dimen/dp50"
         android:layout_alignParentBottom="true"
         android:background="@color/bottom">
 
         <ImageView
+            android:foreground="?selectableItemBackground"
             android:id="@+id/priceInfoShareImg"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/dp50"
             android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:paddingBottom="40px"
-            android:paddingLeft="40px"
-            android:paddingRight="40px"
-            android:paddingTop="40px"
+            android:padding="@dimen/dp16"
             android:src="@drawable/ic_share_black_24dp" />
 
         <LinearLayout
             android:id="@+id/priceInfoWorthLayout"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+
             android:layout_toRightOf="@+id/priceInfoShareImg"
-            android:paddingLeft="10px"
-            android:layout_marginRight="30px"
-            android:paddingRight="10px">
+          >
 
             <ImageView
                 android:id="@+id/priceInfoWorthImg"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/dp50"
                 android:layout_height="match_parent"
-                android:paddingBottom="40px"
-
-                android:paddingTop="40px"
+               android:padding="@dimen/dp16"
                 android:src="@drawable/ic_thumb_up_black_24dp" />
 
             <TextView
                 android:id="@+id/priceInfoWorth"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+
                 android:layout_toRightOf="@+id/priceInfoWorthImg"
-                android:gravity="left|center_vertical"
-                android:layout_marginLeft="10px"
+                android:gravity="center"
 
                 android:textColor="@color/colorAccent"
-                android:textSize="35px"
+                android:textSize="@dimen/sp15"
                 tools:text="100" />
         </LinearLayout>
 
@@ -200,85 +189,67 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/priceInfoWorthLayout"
-            android:paddingLeft="10px"
-            android:layout_marginRight="30px"
-            android:paddingRight="10px">
+         >
 
             <ImageView
                 android:id="@+id/priceInfoUnWorthImg"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/dp50"
                 android:layout_height="match_parent"
-                android:paddingBottom="40px"
-                android:paddingTop="40px"
+                android:padding="@dimen/dp16"
                 android:src="@drawable/ic_thumb_down_black_24dp" />
 
             <TextView
-                android:layout_marginLeft="10px"
                 android:id="@+id/priceInfoUnworth"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
+                android:gravity="center"
                 android:textColor="@color/greyBlack"
-                android:textSize="35px"
+                android:textSize="@dimen/sp15"
+                android:layout_marginRight="@dimen/dp10"
                 tools:text="100" />
 
         </LinearLayout>
 
 
-
         <LinearLayout
-            android:foreground="?selectableItemBackgroundBorderless"
             android:id="@+id/priceInfoCommentLayout"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/priceInfoUnWorthLayout"
-            android:paddingLeft="10px"
-            android:layout_marginRight="30px"
-            android:paddingRight="10px">
+            android:foreground="?selectableItemBackgroundBorderless"
+       >
 
-        <ImageView
-            android:paddingBottom="40px"
-            android:paddingTop="40px"
-            android:id="@+id/priceInfoComment"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_article_24dp"
-          />
+            <ImageView
+                android:id="@+id/priceInfoComment"
+                android:layout_width="@dimen/dp50"
+                android:layout_height="match_parent"
+                android:padding="@dimen/dp16"
+                android:src="@drawable/ic_article_24dp"
+                />
 
             <TextView
-                android:layout_marginLeft="10px"
                 android:id="@+id/priceInfoCommentText"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:gravity="left|center_vertical"
+                android:gravity="center"
+                android:layout_marginRight="@dimen/dp5"
                 android:textColor="@color/greyBlack"
-                android:textSize="35px"
+                android:textSize="@dimen/sp15"
                 tools:text="100" />
         </LinearLayout>
 
         <TextView
-            android:id="@+id/priceInfoShare"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/priceInfoShareImg"
-            android:gravity="center"
-            android:text="@string/share"
-            android:textColor="@color/greyBlack"
-            android:textSize="35px"
-            android:visibility="gone" />
-
-        <TextView
             android:id="@+id/priceInfoBuy"
             android:layout_width="wrap_content"
-            android:layout_height="130px"
+            android:layout_height="@dimen/dp50"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:background="@drawable/shape_pink_corner"
             android:gravity="center"
-            android:paddingLeft="50px"
-            android:paddingRight="35px"
-            android:text="直达链接"
+            android:paddingLeft="@dimen/dp15"
+            android:paddingRight="@dimen/dp10"
+            android:text="@string/to_link"
             android:textColor="@color/white"
-            android:textSize="38px" />
+            android:textSize="@dimen/sp15" />
     </RelativeLayout>
-</com.zhy.autolayout.AutoRelativeLayout>
+</RelativeLayout>
