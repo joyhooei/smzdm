@@ -21,4 +21,7 @@
     <string name="to_link">直达链接</string>
     <string name="wechat">微信</string>
     <string name="message">资讯</string>
+    <string name="theme_color">主题颜色</string>
+    <string name="setting">设置</string>
+    <string name="about">关于</string>
 </resources>

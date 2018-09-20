@@ -24,6 +24,8 @@ interface Constant {
         val YOU_HUI = "youhui"
         val YUAN_CHUANG = "yuanchuang"
         val NEWS = "news"
+        val IS_INIT_TOOLBAR="isInitToolbar"
+        val THEME_COLOR="theme_color"
     }
 
 }

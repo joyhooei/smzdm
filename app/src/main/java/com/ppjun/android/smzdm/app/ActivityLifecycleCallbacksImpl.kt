@@ -14,6 +14,7 @@ import android.widget.Toolbar
 import com.jess.arms.mvp.IPresenter
 import com.ppjun.android.smzdm.R
 import com.ppjun.android.smzdm.app.base.BaseUI
+import com.ppjun.android.smzdm.app.base.Constant
 import com.ppjun.android.smzdm.mvp.ui.activity.SearchResultActivity
 import timber.log.Timber
 
@@ -29,8 +30,8 @@ class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
     override fun onActivityStarted(activity: Activity?) {
         Timber.w(activity.toString() + "-onActivityStarted")
         if(activity is BaseUI<*>) {
-            if (activity.intent.getBooleanExtra("isInitToolbar", false).not()) {
-                activity.intent.putExtra("isInitToolbar", true)
+            if (activity.intent.getBooleanExtra(Constant.IS_INIT_TOOLBAR, false).not()) {
+                activity.intent.putExtra(Constant.IS_INIT_TOOLBAR, true)
                 if (activity.findViewById<Toolbar>(R.id.toolbar) != null) {
                     if (activity is AppCompatActivity) {
                         activity.setSupportActionBar(activity.findViewById(R.id.toolbar))

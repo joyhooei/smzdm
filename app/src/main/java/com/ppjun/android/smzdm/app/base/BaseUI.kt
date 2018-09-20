@@ -12,6 +12,8 @@ import com.jess.arms.integration.cache.CacheType
 import com.jess.arms.integration.lifecycle.ActivityLifecycleable
 import com.jess.arms.mvp.IPresenter
 import com.jess.arms.utils.ArmsUtils
+import com.ppjun.android.smzdm.R
+import com.ppjun.android.smzdm.app.utils.PreferencesUtil
 import com.ppjun.android.smzdm.app.utils.StatusUtils
 import com.ppjun.android.smzdm.app.utils.StatusUtils.Companion.StatusBarLightMode
 import com.ppjun.android.smzdm.mvp.ui.activity.WebActivity
@@ -30,6 +32,7 @@ abstract class BaseUI<P : IPresenter> : AppCompatActivity(), IActivity, Activity
     var mUnbinder: Unbinder? = null
     @Inject
     lateinit var mPresenter: P
+    lateinit var mCurrentTheme:String
 
 
     @Synchronized
@@ -43,6 +46,11 @@ abstract class BaseUI<P : IPresenter> : AppCompatActivity(), IActivity, Activity
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        mCurrentTheme = PreferencesUtil.getString(this, Constant.THEME_COLOR)
+        when (mCurrentTheme) {
+            "mint" -> setTheme(R.style.AppThemeDark)
+            else -> setTheme(R.style.AppTheme)
+        }
 
         val layoutResID = initView(savedInstanceState)
         if (layoutResID != 0) {
@@ -55,6 +63,14 @@ abstract class BaseUI<P : IPresenter> : AppCompatActivity(), IActivity, Activity
     }
 
 
+    override fun onResume() {
+        super.onResume()
+        val theme = PreferencesUtil.getString(this, Constant.THEME_COLOR)
+        if (mCurrentTheme != theme) {
+            recreate()
+        }
+    }
+
     fun setToolbarPadding() {
         toolbar?.setPadding(0, StatusUtils.getStatusBarHeight(this), 0, 0)
     }
@@ -66,7 +82,6 @@ abstract class BaseUI<P : IPresenter> : AppCompatActivity(), IActivity, Activity
     fun setToolBarGone() {
         toolbar?.visibility = View.GONE
     }
-
 
 
     override fun useFragment(): Boolean {

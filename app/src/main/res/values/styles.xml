@@ -12,10 +12,23 @@
     </style>
 
 
+
+    <style name="AppThemeDark" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#252627</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">#252627</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowTranslucentStatus">true</item>
+
+    </style>
+
+
     <style name="SplashTheme" parent="AppTheme">
         <item name="android:windowBackground">@drawable/layer_splash_bg</item>
         <item name="colorPrimaryDark">@android:color/white</item>
         <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowFullscreen">true</item>
     </style>
+
 </resources>

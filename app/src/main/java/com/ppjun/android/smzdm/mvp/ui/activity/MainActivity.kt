@@ -25,6 +25,7 @@ import com.ppjun.android.smzdm.app.utils.BottomNavigationHelper
 import com.ppjun.android.smzdm.mvp.ui.activity.fragment.ArticleFragment
 import com.ppjun.android.smzdm.mvp.ui.activity.fragment.MainFragment
 import com.ppjun.android.smzdm.mvp.ui.activity.fragment.PriceFragment
+import com.ppjun.android.smzdm.mvp.ui.activity.fragment.SettingFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -35,20 +36,20 @@ class MainActivity : BaseUI<IPresenter>() {
 
     private var currentFragment: Fragment? = null
     private lateinit var mainFragment: Fragment
-    private lateinit var mPriceListFragment:Fragment
-    private lateinit var mArticleListFragment:Fragment
+    private lateinit var mPriceListFragment: Fragment
+    private lateinit var mArticleListFragment: Fragment
+    private lateinit var mSettingFragment: Fragment
     private var firstTimeStamp = 0L
     override fun initData(savedInstanceState: Bundle?) {
         mainFragment = MainFragment()
-        mPriceListFragment=PriceFragment()
-        mArticleListFragment=ArticleFragment()
+        mPriceListFragment = PriceFragment()
+        mArticleListFragment = ArticleFragment()
+        mSettingFragment = SettingFragment()
         BottomNavigationHelper.disableShiftModel(navigation)
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         setBackInvisible()
         switchFragment(0)
     }
-
-
 
     override fun initView(savedInstanceState: Bundle?): Int {
         return R.layout.activity_main
@@ -67,6 +68,10 @@ class MainActivity : BaseUI<IPresenter>() {
             }
             R.id.navigation_notifications -> {
                 switchFragment(2)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_setting -> {
+                switchFragment(3)
                 return@OnNavigationItemSelectedListener true
             }
 
@@ -89,9 +94,13 @@ class MainActivity : BaseUI<IPresenter>() {
             }
             2 -> {
 
-                val priceTag = "mArticleListFragment"
-                showFragment(transaction, mArticleListFragment, priceTag)
+                val articleTag = "mArticleListFragment"
+                showFragment(transaction, mArticleListFragment, articleTag)
 
+            }
+            3 -> {
+                val settingTag = "mSettingFragment"
+                showFragment(transaction, mSettingFragment, settingTag)
             }
         }
         transaction.setTransitionStyle(android.support.v4.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE)
@@ -101,11 +110,11 @@ class MainActivity : BaseUI<IPresenter>() {
     }
 
 
-
     override fun onPause() {
-        Log.d("onPause","onPause")
+        Log.d("onPause", "onPause")
         super.onPause()
     }
+
     override fun onStart() {
         super.onStart()
     }
@@ -129,7 +138,6 @@ class MainActivity : BaseUI<IPresenter>() {
 
 
     override fun onBackPressed() {
-
 
 
         if (System.currentTimeMillis() - firstTimeStamp > 2000) {

@@ -29,6 +29,7 @@ class WebActivity : BaseUI<IPresenter>() {
     }
 
     override fun initView(savedInstanceState: Bundle?): Int {
+        intent.putExtra(Constant.IS_INIT_TOOLBAR, true)
         return R.layout.web_ui
     }
 

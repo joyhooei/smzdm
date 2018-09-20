@@ -111,4 +111,5 @@ dependencies {
     implementation project(':arms')
     implementation project(':arms-imageloader-glide')
     implementation rootProject.ext.dependencies["autosize"]
+    implementation rootProject.ext.dependencies["circle-imageview"]
 }

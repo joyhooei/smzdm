@@ -19,6 +19,7 @@ import com.tencent.bugly.crashreport.CrashReport
 import com.tencent.smtt.sdk.QbSdk
 import timber.log.Timber
 import com.ppjun.android.smzdm.mvp.ui.activity.MainActivity
+import java.io.File
 
 
 class AppLifecyclesImpl : AppLifecycles {
